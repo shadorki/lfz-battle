@@ -1,4 +1,4 @@
-export default abstract class Observer {
+export abstract class Observer {
   private _isReadyToUpdate: boolean
   private _handleUpdate: Function
   constructor(handleUpdate: Function) {

@@ -1,4 +1,4 @@
-import Observer from './entities/observer'
+import { Observer } from './entities'
 
 export default class Engine {
   private _observers: Array<Observer>

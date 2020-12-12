@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  background-color: rgb(27, 27, 27)
+}
+#root {
+  border: 2px solid red;
+  height: 200px;
+  width: 200px;
+}
