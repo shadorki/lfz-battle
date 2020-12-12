@@ -1,9 +1,17 @@
 body {
   margin: 0;
-  background-color: rgb(27, 27, 27)
+  height: 100vh;
+  background-color: rgb(27, 27, 27);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #root {
-  border: 2px solid red;
-  height: 200px;
-  width: 200px;
+  border: 1px solid rgba(0.5, 0.5, 0.5, .5);
+  box-shadow: 10px 10px 5px black;
+  width: 320px;
+  height: 240px;
+  background-image: url('./assets/images/map.png');
+  image-rendering: pixelated;
+  transform: scale(3);
 }
