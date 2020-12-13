@@ -1,11 +1,14 @@
 import { Observer } from './entities'
+import { TaskQueue } from './helpers'
 
 export default class Engine {
   private _observers: Array<Observer>
   private _intervalId: number
-  constructor() {
+  private _taskQueue: TaskQueue
+  constructor(taskQueue: TaskQueue) {
     this._observers = []
     this._intervalId = null
+    this._taskQueue = taskQueue
   }
   addObserver(observer: Observer): void {
     this._observers.push(observer)
@@ -14,7 +17,9 @@ export default class Engine {
     this._observers = this._observers.filter(o => o !== observer)
   }
   loop(): void {
-    this._observers.forEach(o => o.update())
+    if(!this._taskQueue.isTaskAvailable) return
+    this._observers.forEach(o => o.update(this._taskQueue.currentTask))
+    this._taskQueue.endCurrentTask()
   }
   start(): void {
     this._intervalId = window.setInterval(this.loop.bind(this), 1000/60)

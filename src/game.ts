@@ -12,7 +12,7 @@ export default class Game {
   constructor() {
     this.$root = document.getElementById('root')
     this.taskQueue = new TaskQueue()
-    this.engine = new Engine()
+    this.engine = new Engine(this.taskQueue)
     this.player = new Player('MC', './assets/images/players/player.png', [4, 6])
     this.input = new Input(this.taskQueue)
   }

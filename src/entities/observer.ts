@@ -1,18 +1,9 @@
-export abstract class Observer {
-  private _isReadyToUpdate: boolean
-  constructor() {
-    this._isReadyToUpdate = false
-  }
-  abstract handleUpdate (): void
+import { Task } from "../helpers"
 
-  set isReadyToUpdate (isReady: boolean) {
-    this._isReadyToUpdate = isReady;
-  }
-  get isReadyToUpdate (): boolean {
-    return this._isReadyToUpdate
-  }
-  update(): void {
-    if(!this._isReadyToUpdate) return
-    this.handleUpdate()
+export abstract class Observer {
+  abstract handleUpdate (task: Task): void
+
+  update(task: Task): void {
+    this.handleUpdate(task)
   }
 }

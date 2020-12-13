@@ -1,6 +1,6 @@
 import Game from "./game";
 // TODO:
-// Design input system
+// Design input system X
 // Get character moving first
 // Design the command stack where the observers get updates depending on what command is on the command stack
 // pop off the stack when observers are finished updating
