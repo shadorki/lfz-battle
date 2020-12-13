@@ -1,10 +1,10 @@
 export abstract class Observer {
   private _isReadyToUpdate: boolean
-  private _handleUpdate: Function
-  constructor(handleUpdate: Function) {
+  constructor() {
     this._isReadyToUpdate = false
-    this._handleUpdate = handleUpdate
   }
+  abstract handleUpdate (): void
+
   set isReadyToUpdate (isReady: boolean) {
     this._isReadyToUpdate = isReady;
   }
@@ -13,6 +13,6 @@ export abstract class Observer {
   }
   update(): void {
     if(!this._isReadyToUpdate) return
-    this._handleUpdate()
+    this.handleUpdate()
   }
 }

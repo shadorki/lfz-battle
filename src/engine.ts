@@ -23,5 +23,6 @@ export default class Engine {
     clearInterval(this._intervalId)
   }
   init(): void {
+    this.start()
   }
 }

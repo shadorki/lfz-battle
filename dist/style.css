@@ -11,7 +11,7 @@ body {
   box-shadow: 10px 10px 5px black;
   width: 320px;
   height: 240px;
-  background-image: url('./assets/images/map.png');
+  background-image: url('./assets/images/maps/map.png');
   image-rendering: pixelated;
   transform: scale(3);
 }

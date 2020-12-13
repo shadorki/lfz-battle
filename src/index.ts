@@ -1,2 +1,5 @@
-console.log('meow')
-console.log('hello')
+import Game from "./game";
+
+const game = new Game()
+
+game.start()
