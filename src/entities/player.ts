@@ -21,7 +21,6 @@ export class Player extends Observer {
     element.style.backgroundRepeat = 'no-repeat'
     element.style.width = `${width}px`
     element.style.height = `${height}px`
-    element.style.transform = 'scale(0.5)'
     return element
   }
   async init(): Promise<HTMLElement> {
