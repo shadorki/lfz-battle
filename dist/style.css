@@ -10,8 +10,15 @@ body {
   position: relative;
   border: 1px solid rgba(0.5, 0.5, 0.5, .5);
   box-shadow: 10px 10px 5px black;
-  width: 640px;
-  height: 480px;
+  width: 1920px;
+  height: 1280px;
   background-image: url('./assets/images/maps/map-3.png');
   image-rendering: pixelated;
+}
+.space {
+  height: 64px;
+  width: 32px;
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid black;
 }

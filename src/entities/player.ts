@@ -20,6 +20,7 @@ export class Player extends Observer {
       x: 0,
       y: 0
     }
+    this.debug(0, 0)
   }
   handleUpdate({name, action}: Task): void {
     if(!this._acceptedTasks.has(name)) return
@@ -43,6 +44,7 @@ export class Player extends Observer {
     const { x, y } = this._position
     this.domElement.style.top = `${y * this.height}px`
     this.domElement.style.left = `${x * this.width}px`
+    this.debug(x, y)
   }
   createElement(): HTMLElement {
     const element = document.createElement('div')
@@ -57,6 +59,15 @@ export class Player extends Observer {
     element.style.height = `${height}px`
     element.style.position = 'absolute'
     return element
+  }
+  debug(x: number, y: number): void{
+    const element = document.createElement('div')
+    element.className = 'space'
+    element.dataset.x = x.toString()
+    element.dataset.y = y.toString()
+    element.style.top = `${y * this.height}px`
+    element.style.left = `${x * this.width}px`
+    document.getElementById('root').append(element)
   }
   async init(): Promise<HTMLElement> {
     await this.sprite.init()
