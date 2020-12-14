@@ -40,9 +40,27 @@ export class Player extends Observer {
     const { x, y } = position
     if(!this._isSpaceWalkable(x, y))
     movements[direction](this._position)
-    this.updatePosition()
+    this.updatePositionOnDOM(direction)
   }
-  updatePosition(): void {
+  updatePositionOnDOM(direction: keyof Movements): void {
+    let [ left, top ] = this.playerPositionOnDOM
+    const movements: Movements = {
+      up: () => top -= this.height,
+      down: () => top += this.height,
+      left: () => left -= this.width,
+      right: () => left += this.width
+    }
+    movements[direction]()
+    this.domElement.style.top = `${top}px`
+    this.domElement.style.left = `${left}px`
+  }
+  get playerPositionOnDOM(): Array<number> {
+    const { left, top } = this.domElement.style
+    const newLeft = Number(left.substring(0, left.length - 2))
+    const newTop = Number(top.substring(0, top.length - 2))
+    return [newLeft, newTop]
+  }
+  setInitialPositionOnDom(): void {
     const { x, y } = this._position
     this.domElement.style.top = `${y * this.height}px`
     this.domElement.style.left = `${x * this.width}px`
@@ -59,6 +77,7 @@ export class Player extends Observer {
     element.style.width = `${width}px`
     element.style.height = `${height}px`
     element.style.position = 'absolute'
+    element.style.transitionDuration = '500ms'
     return element
   }
   debug(x: number, y: number): void{
@@ -73,7 +92,7 @@ export class Player extends Observer {
   async init(): Promise<HTMLElement> {
     await this.sprite.init()
     this.domElement = this.createElement()
-    this.updatePosition()
+    this.setInitialPositionOnDom()
     return this.domElement
   }
 }

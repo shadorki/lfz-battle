@@ -17,7 +17,9 @@ body {
   height: 320px;
   transform: scale(2.0);
   background-image: url('./assets/images/maps/map-3.png');
+  background-position: 0px 0px;
   image-rendering: pixelated;
+  transition-duration: 500ms;
 }
 .space {
   height: 64px;

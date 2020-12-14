@@ -17,7 +17,7 @@ export default class Game {
     this.taskQueue = new TaskQueue()
     this.engine = new Engine(this.taskQueue)
     this.level = new Level('Level1', this.$root)
-    this.camera = new Camera(640, 320, true)
+    this.camera = new Camera(640, 320, this.$root, true)
     this.player = new Player(
       'MC',
       './assets/images/players/player.png',
@@ -35,10 +35,11 @@ export default class Game {
   }
   async start(): Promise<void> {
     const playerElement = await this.player.init()
-    const cameraElement = this.camera.init()
+    const cameraElement = this.camera.init(this.player)
     this.input.init()
     this.setupDOM(playerElement, cameraElement)
     this.engine.addObserver(this.player)
+    this.engine.addObserver(this.camera)
     this.engine.start()
   }
 }
