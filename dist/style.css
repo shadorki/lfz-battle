@@ -7,11 +7,15 @@ body {
   align-items: center;
 }
 #root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   border: 1px solid rgba(0.5, 0.5, 0.5, .5);
   box-shadow: 10px 10px 5px black;
-  width: 1920px;
-  height: 1280px;
+  width: 640px;
+  height: 320px;
+  transform: scale(2.0);
   background-image: url('./assets/images/maps/map-3.png');
   image-rendering: pixelated;
 }

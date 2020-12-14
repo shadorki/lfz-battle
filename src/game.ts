@@ -1,5 +1,5 @@
 import Engine from './engine'
-import { Player } from './entities'
+import { Camera, Player } from './entities'
 import { TaskQueue } from './helpers'
 import Input from './input'
 import Level from './level'
@@ -7,15 +7,17 @@ import Level from './level'
 export default class Game {
   $root: HTMLElement
   engine: Engine
-  player: Player
   input: Input
   taskQueue: TaskQueue
   level: Level
+  camera: Camera
+  player: Player
   constructor() {
     this.$root = document.getElementById('root')
     this.taskQueue = new TaskQueue()
     this.engine = new Engine(this.taskQueue)
     this.level = new Level('Level1', this.$root)
+    this.camera = new Camera(640, 320, true)
     this.player = new Player(
       'MC',
       './assets/images/players/player.png',
@@ -33,8 +35,9 @@ export default class Game {
   }
   async start(): Promise<void> {
     const playerElement = await this.player.init()
+    const cameraElement = this.camera.init()
     this.input.init()
-    this.setupDOM(playerElement)
+    this.setupDOM(playerElement, cameraElement)
     this.engine.addObserver(this.player)
     this.engine.start()
   }
