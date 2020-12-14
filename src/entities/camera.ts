@@ -38,13 +38,19 @@ export class Camera extends Observer {
   handleMovement(): void {
     const [ left, top ] = this._player.playerPositionOnDOM
     const [ maxLeft, maxRight, maxTop, maxBottom] = this.playerBoundaries
-    let selectedMovement = null
+    let selectedMovement: keyof Movements = null
     if(left > maxLeft) {
-      console.log('meow2')
-      this._player.updatePositionOnDOM('left')
-      this.moveCamera('left')
+      selectedMovement = 'left'
+    } else if(left < maxRight) {
+      selectedMovement = 'right'
+    } else if (top > maxTop) {
+      selectedMovement = 'up'
+    } else if( top < maxBottom) {
+      selectedMovement = 'down'
     }
-    console.log(this._visibleWidth)
+    if(!selectedMovement) return
+    this._player.updatePositionOnDOM(selectedMovement)
+    this.moveCamera(selectedMovement)
   }
   moveCamera(direction: keyof Movements): void {
     const { width, height } = this._player
@@ -68,7 +74,7 @@ export class Camera extends Observer {
       this._collisionWidth,
       this._visibleWidth - this._collisionWidth,
       this._collisionHeight,
-      this._visibleHeight - this._collisionHeight
+      Math.abs(this._visibleHeight - this._collisionHeight * 2)
     ]
   }
   createElement(): HTMLElement {

@@ -72,7 +72,7 @@ export class Player extends Observer {
     this.width = width
     this.height = height
     element.style.backgroundImage = `url('${path}')`
-    element.style.backgroundPosition = `${x}px ${y}px`
+    element.style.backgroundPosition = `${x}px ${y - 24}px`
     element.style.backgroundRepeat = 'no-repeat'
     element.style.width = `${width}px`
     element.style.height = `${height}px`
