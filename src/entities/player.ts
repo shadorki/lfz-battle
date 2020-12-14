@@ -10,7 +10,7 @@ export class Player extends Observer {
   private _acceptedTasks: Set<string>
   private _position: Position
   private _isSpaceWalkable: Function
-  constructor(name: string, path: string, grid: Array<number>, startingPosition: Position, isSpaceWalkable: Function) {
+  constructor(name: string, path: string, grid: number[], startingPosition: Position, isSpaceWalkable: Function) {
     super()
     this.sprite = new Sprite(name, path, grid)
     this.domElement = null
@@ -54,7 +54,7 @@ export class Player extends Observer {
     this.domElement.style.top = `${top}px`
     this.domElement.style.left = `${left}px`
   }
-  get playerPositionOnDOM(): Array<number> {
+  get playerPositionOnDOM(): number[] {
     const { left, top } = this.domElement.style
     const newLeft = Number(left.substring(0, left.length - 2))
     const newTop = Number(top.substring(0, top.length - 2))

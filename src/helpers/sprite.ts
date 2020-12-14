@@ -1,11 +1,11 @@
 export class Sprite {
   public name: string
   public path: string
-  public grid: Array<number>
-  public sheet: Array<Array<number>>
+  public grid: number[]
+  public sheet: number[][]
   public width: number
   public height: number
-  constructor(name: string, path: string, grid: Array<number>) {
+  constructor(name: string, path: string, grid: number[]) {
     this.name = name
     this.path = path
     this.grid = grid
@@ -13,7 +13,7 @@ export class Sprite {
     this.width = null
     this.height = null
   }
-  async loadImageData(): Promise<Array<number>> {
+  async loadImageData(): Promise<number[]> {
     return new Promise((resolve, reject) => {
       const image = new Image()
       image.src = this.path

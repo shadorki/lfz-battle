@@ -12,7 +12,7 @@ export class Camera extends Observer {
   private _isDebugMode: boolean
   private _player: Player
   private _backgroundElement: HTMLElement
-  private _cameraPosition: Array<number>
+  private _cameraPosition: number[]
   public domElement: HTMLElement
   constructor(width: number, height: number, backgroundElement: HTMLElement, isDebugMode: boolean = false) {
     super()
@@ -69,7 +69,7 @@ export class Camera extends Observer {
     const [x, y] = this._cameraPosition
     this._backgroundElement.style.backgroundPosition = `${x}px ${y}px`
   }
-  get playerBoundaries(): Array<number> {
+  get playerBoundaries(): number[] {
     return [
       this._collisionWidth,
       this._visibleWidth - this._collisionWidth,
