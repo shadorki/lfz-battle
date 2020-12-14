@@ -38,7 +38,9 @@ export class Camera extends Observer {
   handleMovement(): void {
     const [ left, top ] = this._player.playerPositionOnDOM
     const [ maxLeft, maxRight, maxTop, maxBottom] = this.playerBoundaries
+    let selectedMovement = null
     if(left > maxLeft) {
+      console.log('meow2')
       this._player.updatePositionOnDOM('left')
       this.moveCamera('left')
     }
@@ -48,10 +50,10 @@ export class Camera extends Observer {
     const { width, height } = this._player
     let [ x, y ] = this._cameraPosition
     const movements: Movements = {
-      up: () => x -= height,
-      down: () => x += height,
-      left: () => y -= width,
-      right: () => y += width
+      up: () => y -= height,
+      down: () => y += height,
+      left: () => x -= width,
+      right: () => x += width
     }
     movements[direction]()
     this._cameraPosition = [ x, y ]
@@ -59,7 +61,7 @@ export class Camera extends Observer {
   }
   updatePositionOnDOM(): void {
     const [x, y] = this._cameraPosition
-    this._backgroundElement.style.backgroundPosition = `${y}px ${x}px`
+    this._backgroundElement.style.backgroundPosition = `${x}px ${y}px`
   }
   get playerBoundaries(): Array<number> {
     return [

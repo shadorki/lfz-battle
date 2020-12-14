@@ -38,7 +38,7 @@ export class Player extends Observer {
     }
     movements[direction](position)
     const { x, y } = position
-    if(!this._isSpaceWalkable(x, y))
+    if(this._isSpaceWalkable(x, y)) return
     movements[direction](this._position)
     this.updatePositionOnDOM(direction)
   }
