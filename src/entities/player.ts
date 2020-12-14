@@ -9,18 +9,16 @@ export class Player extends Observer {
   public height: number
   private _acceptedTasks: Set<string>
   private _position: Position
-  constructor(name: string, path: string, grid: Array<number>) {
+  private _isSpaceWalkable: Function
+  constructor(name: string, path: string, grid: Array<number>, startingPosition: Position, isSpaceWalkable: Function) {
     super()
     this.sprite = new Sprite(name, path, grid)
     this.domElement = null
     this.width = null
     this.height = null
     this._acceptedTasks = new Set(['movement'])
-    this._position = {
-      x: 0,
-      y: 0
-    }
-    this.debug(0, 0)
+    this._position = startingPosition
+    this._isSpaceWalkable = isSpaceWalkable
   }
   handleUpdate({name, action}: Task): void {
     if(!this._acceptedTasks.has(name)) return
@@ -31,20 +29,23 @@ export class Player extends Observer {
     }
   }
   handleMovement(direction: keyof Movements): void {
-    const movements = {
-      up: () => this._position.y--,
-      down: () => this._position.y++,
-      left: () => this._position.x--,
-      right: () => this._position.x++
+    const position: Position = { ...this._position }
+    const movements: Movements = {
+      up: p => p.y--,
+      down: p => p.y++,
+      left: p => p.x--,
+      right: p => p.x++
     }
-    movements[direction]()
+    movements[direction](position)
+    const { x, y } = position
+    if(!this._isSpaceWalkable(x, y))
+    movements[direction](this._position)
     this.updatePosition()
   }
   updatePosition(): void {
     const { x, y } = this._position
     this.domElement.style.top = `${y * this.height}px`
     this.domElement.style.left = `${x * this.width}px`
-    this.debug(x, y)
   }
   createElement(): HTMLElement {
     const element = document.createElement('div')
@@ -72,6 +73,7 @@ export class Player extends Observer {
   async init(): Promise<HTMLElement> {
     await this.sprite.init()
     this.domElement = this.createElement()
+    this.updatePosition()
     return this.domElement
   }
 }

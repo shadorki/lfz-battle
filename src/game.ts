@@ -2,6 +2,7 @@ import Engine from './engine'
 import { Player } from './entities'
 import { TaskQueue } from './helpers'
 import Input from './input'
+import Level from './level'
 
 export default class Game {
   $root: HTMLElement
@@ -9,11 +10,22 @@ export default class Game {
   player: Player
   input: Input
   taskQueue: TaskQueue
+  level: Level
   constructor() {
     this.$root = document.getElementById('root')
     this.taskQueue = new TaskQueue()
     this.engine = new Engine(this.taskQueue)
-    this.player = new Player('MC', './assets/images/players/player.png', [4, 6])
+    this.level = new Level('Level1', this.$root)
+    this.player = new Player(
+      'MC',
+      './assets/images/players/player.png',
+      [4, 6],
+      {
+        x: 4,
+        y: 1
+      },
+      this.level.isSpaceWalkable.bind(this.level)
+    )
     this.input = new Input(this.taskQueue)
   }
   setupDOM(...args: Array<HTMLElement>) {

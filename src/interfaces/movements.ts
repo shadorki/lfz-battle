@@ -1,6 +1,8 @@
+import { Position } from './'
+
 export interface Movements {
-  up: Function
-  left: Function
-  right: Function
-  down: Function
+  up: (arg0: Position) => number
+  left: (arg0: Position) => number
+  right: (arg0: Position) => number
+  down: (arg0: Position) => number
 }
