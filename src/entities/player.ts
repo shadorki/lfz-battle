@@ -45,6 +45,7 @@ export class Player extends Observer {
     movements[direction](position)
     const { x, y } = position
     this.setFacingPosition(direction)
+    this.animator.play(direction)
     if(this._isSpaceWalkable(x, y)) return
     movements[direction](this._position)
     this.updatePositionOnDOM(direction)
@@ -111,7 +112,34 @@ export class Player extends Observer {
         sheet[1],
         sheet[2],
       ],
-      500,
+      100,
+    )
+    this.animator.addAnimation(
+      'up',
+      [
+        sheet[6],
+        sheet[7],
+        sheet[8],
+      ],
+      100,
+    )
+    this.animator.addAnimation(
+      'left',
+      [
+        sheet[12],
+        sheet[13],
+        sheet[14],
+      ],
+      100,
+    )
+    this.animator.addAnimation(
+      'right',
+      [
+        sheet[18],
+        sheet[19],
+        sheet[20],
+      ],
+      100,
     )
   }
   setFacingPositions() {

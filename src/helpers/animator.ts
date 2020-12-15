@@ -1,5 +1,6 @@
 import { Animations } from "../interfaces/animations"
 import { Animation } from './animation'
+
 export class Animator {
   private _animations: Animations
   private _animatedElement: HTMLElement

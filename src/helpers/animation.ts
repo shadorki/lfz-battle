@@ -12,11 +12,13 @@ export class Animation {
     this._animatedElement = getAnimatedElement
   }
   play(): void {
+    clearInterval(this._intervalId)
     let spriteCounter = 0
     this._intervalId = window.setInterval(() => {
-      if(spriteCounter === this._sheet.length - 1) return clearInterval(this._intervalId)
-      const [x, y] = this._sheet[spriteCounter]
-      this._animatedElement.style.backgroundPosition = `${x}px ${y}px`
+      if(spriteCounter === this._sheet.length + 1) return clearInterval(this._intervalId)
+      const [x, y] = this._sheet[spriteCounter] || this._sheet[0]
+      this._animatedElement.style.backgroundPosition = `${x}px ${y - 24}px`
+      spriteCounter++
     }, this._speed)
   }
 }
