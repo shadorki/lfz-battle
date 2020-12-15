@@ -1,9 +1,10 @@
-import { Sprite, Task } from '../helpers'
+import { Animator, Sprite, Task } from '../helpers'
 import { Observer } from './'
 import { Movements, Position } from '../interfaces'
 
 export class Player extends Observer {
   public sprite: Sprite
+  public animator: Animator
   public domElement: HTMLElement
   public width: number
   public height: number
@@ -13,6 +14,7 @@ export class Player extends Observer {
   constructor(name: string, path: string, grid: number[], startingPosition: Position, isSpaceWalkable: Function) {
     super()
     this.sprite = new Sprite(name, path, grid)
+    this.animator = null
     this.domElement = null
     this.width = null
     this.height = null

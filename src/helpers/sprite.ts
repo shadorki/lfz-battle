@@ -27,12 +27,11 @@ export class Sprite {
     const sheet = []
     this.width = imageWidth / columns
     this.height = imageHeight / rows
-    for(let rowCounter = 0; rowCounter < imageHeight; rowCounter+=this.width) {
-      for(let columnCounter = 0; columnCounter < imageWidth; columnCounter+=this.height) {
-        sheet.push([-rowCounter, -columnCounter])
+    for(let x = 0; x < columns; x++) {
+      for (let i = 0; i < rows; i++) {
+        sheet.push([-(x * this.width), -(i * this.height)])
       }
     }
-    console.log(sheet)
     this.sheet = sheet
   }
 }
