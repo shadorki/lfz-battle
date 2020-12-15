@@ -1213,7 +1213,7 @@
   "9/12": {
     "x": 9,
     "y": 12,
-    "isWalkable": false
+    "isWalkable": true
   },
   "8/13": {
     "x": 8,
@@ -1313,7 +1313,7 @@
   "10/12": {
     "x": 10,
     "y": 12,
-    "isWalkable": false
+    "isWalkable": true
   },
   "9/13": {
     "x": 9,
@@ -1413,7 +1413,7 @@
   "11/12": {
     "x": 11,
     "y": 12,
-    "isWalkable": false
+    "isWalkable": true
   },
   "10/13": {
     "x": 10,
@@ -1968,7 +1968,7 @@
   "26/3": {
     "x": 26,
     "y": 3,
-    "isWalkable": false
+    "isWalkable": true
   },
   "25/4": {
     "x": 25,
@@ -2578,7 +2578,7 @@
   "30/5": {
     "x": 30,
     "y": 5,
-    "isWalkable": false
+    "isWalkable": true
   },
   "29/6": {
     "x": 29,
@@ -3138,7 +3138,7 @@
   "23/17": {
     "x": 23,
     "y": 17,
-    "isWalkable": false
+    "isWalkable": true
   },
   "22/18": {
     "x": 22,
