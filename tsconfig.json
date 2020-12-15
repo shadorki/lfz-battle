@@ -7,7 +7,8 @@
     "noImplicitAny": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "suppressImplicitAnyIndexErrors": true
   },
   "exclude": [
     "node_modules"

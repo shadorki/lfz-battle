@@ -16,16 +16,12 @@ export default class Game {
     this.$root = document.getElementById('root')
     this.taskQueue = new TaskQueue()
     this.engine = new Engine(this.taskQueue)
-    this.level = new Level('Level1', this.$root)
+    this.level = new Level('home', this.$root)
     this.camera = new Camera(640, 320, this.$root)
     this.player = new Player(
       'MC',
       './assets/images/players/player.png',
       [4, 6],
-      {
-        x: 4,
-        y: 1
-      },
       this.level.isSpaceWalkable.bind(this.level)
     )
     this.input = new Input(this.taskQueue)
@@ -34,7 +30,8 @@ export default class Game {
     this.$root.append(...args)
   }
   async start(): Promise<void> {
-    const playerElement = await this.player.init()
+    const playerSpawnPoint = this.level.init()
+    const playerElement = await this.player.init(playerSpawnPoint)
     const cameraElement = this.camera.init(this.player)
     this.input.init()
     this.setupDOM(playerElement, cameraElement)

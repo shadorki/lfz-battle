@@ -1,5 +1,10 @@
 {
-  "path": "./assets/images/maps/map-3.png",
+  "path": "./assets/images/maps/home.png",
+  "playerSpawnPoint": {
+        "x": 4,
+        "y": 1
+  },
+  "backgroundSpawnPoint": [0, 0],
   "0/0": {
     "x": 0,
     "y": 0,

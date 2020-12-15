@@ -1,4 +1,5 @@
-import Level1 from './data/level-1.json'
+import levels from './data'
+import { Position } from './interfaces'
 
 export default class Level {
   public root: HTMLElement
@@ -7,7 +8,7 @@ export default class Level {
   constructor(name: string, root: HTMLElement, isDebugMode: boolean = false) {
     this.root = root
     this.name = name
-    this.grid = Level1
+    this.grid = levels[name].default
     if(isDebugMode) {
       this.triggerDebugView()
     }
@@ -33,5 +34,11 @@ export default class Level {
     }
     this.root.style.width = '1920px'
     this.root.style.height = '1280px'
+  }
+  init(): Position {
+    const { path, playerSpawnPoint, backgroundSpawnPoint} = this.grid
+    this.root.style.backgroundImage = `url('${path}')`
+    this.root.style.backgroundPosition = `${backgroundSpawnPoint[0]}px ${backgroundSpawnPoint[1]}px`
+    return playerSpawnPoint
   }
 }

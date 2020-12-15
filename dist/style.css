@@ -16,9 +16,7 @@ body {
   width: 640px;
   height: 320px;
   transform: scale(2.0);
-  background-image: url('./assets/images/maps/map-3.png');
   background-repeat: no-repeat;
-  background-position: 0px 0px;
   image-rendering: pixelated;
   transition-duration: 500ms;
 }

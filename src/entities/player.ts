@@ -13,7 +13,7 @@ export class Player extends Observer {
   private _playerFacingPositions: PlayerFacingPositions
   private _currentFacingPosition: keyof PlayerFacingPositions
   private _isSpaceWalkable: Function
-  constructor(name: string, path: string, grid: number[], startingPosition: Position, isSpaceWalkable: Function) {
+  constructor(name: string, path: string, grid: number[], isSpaceWalkable: Function) {
     super()
     this.sprite = new Sprite(name, path, grid)
     this.animator = null
@@ -21,7 +21,7 @@ export class Player extends Observer {
     this.width = null
     this.height = null
     this._acceptedTasks = new Set(['movement'])
-    this._position = startingPosition
+    this._position = null
     this._playerFacingPositions = null
     this._currentFacingPosition = 'down'
     this._isSpaceWalkable = isSpaceWalkable
@@ -151,7 +151,8 @@ export class Player extends Observer {
       'left': sheet[12],
     }
   }
-  async init(): Promise<HTMLElement> {
+  async init(startingPosition: Position): Promise<HTMLElement> {
+    this._position = startingPosition
     await this.sprite.init()
     this.domElement = this.createElement()
     this.setFacingPositions()
