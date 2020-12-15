@@ -1733,7 +1733,13 @@
   "11/15": {
     "x": 11,
     "y": 15,
-    "isWalkable": true
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "gymArena1",
+      "playerPositionOnDOM": [192, 288],
+      "backgroundPositionOnDOM": [-64, -320],
+      "playerFacingPosition": "up"
+    }
   },
   "10/16": {
     "x": 10,

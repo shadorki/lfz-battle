@@ -45,7 +45,7 @@ export class Player extends Observer {
     movements[direction](position)
     const { x, y } = position
     this.setFacingPosition(direction)
-    if(this._isSpaceWalkable(x, y)) return
+    if(!this._isSpaceWalkable(x, y)) return
     this.animator.play(direction)
     movements[direction](this._position)
     this.updatePositionOnDOM(direction)

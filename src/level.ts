@@ -1,5 +1,5 @@
 import levels from './data'
-import { Position } from './interfaces'
+import { Position, SceneTransition, Tile } from './interfaces'
 
 export default class Level {
   public root: HTMLElement
@@ -13,9 +13,19 @@ export default class Level {
       this.triggerDebugView()
     }
   }
+  getTile(x: number, y:number): Tile {
+    return this.grid[`${x}/${y}`]
+  }
+  getSceneTransition(x: number, y:number): SceneTransition {
+    return this.getTile(x, y).sceneTransition
+  }
   isSpaceWalkable(x: number, y: number): boolean {
-    if(!this.grid[`${x}/${y}`]) return false
-    return !this.grid[`${x}/${y}`].isWalkable
+    if(!this.getTile(x, y)) return false
+    return this.getTile(x, y).isWalkable
+  }
+  isSceneTransition(x: number, y: number): boolean {
+    if (!this.getTile(x, y)) return false
+    return !!this.getTile(x, y).sceneTransition
   }
   triggerDebugView(): void {
     for(const tile in this.grid) {
