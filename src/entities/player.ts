@@ -1,6 +1,6 @@
 import { Animator, Sprite, Task } from '../helpers'
 import { Observer } from './'
-import { Movements, Position } from '../interfaces'
+import { Movements, PlayerFacingPositions, Position } from '../interfaces'
 
 export class Player extends Observer {
   public sprite: Sprite
@@ -10,6 +10,8 @@ export class Player extends Observer {
   public height: number
   private _acceptedTasks: Set<string>
   private _position: Position
+  private _playerFacingPositions: PlayerFacingPositions
+  private _currentFacingPosition: keyof PlayerFacingPositions
   private _isSpaceWalkable: Function
   constructor(name: string, path: string, grid: number[], startingPosition: Position, isSpaceWalkable: Function) {
     super()
@@ -20,6 +22,8 @@ export class Player extends Observer {
     this.height = null
     this._acceptedTasks = new Set(['movement'])
     this._position = startingPosition
+    this._playerFacingPositions = null
+    this._currentFacingPosition = 'down'
     this._isSpaceWalkable = isSpaceWalkable
   }
   handleUpdate({name, action}: Task): void {
@@ -40,6 +44,7 @@ export class Player extends Observer {
     }
     movements[direction](position)
     const { x, y } = position
+    this.setFacingPosition(direction)
     if(this._isSpaceWalkable(x, y)) return
     movements[direction](this._position)
     this.updatePositionOnDOM(direction)
@@ -55,6 +60,11 @@ export class Player extends Observer {
     movements[direction]()
     this.domElement.style.top = `${top}px`
     this.domElement.style.left = `${left}px`
+  }
+  setFacingPosition(direction: keyof PlayerFacingPositions): void {
+    this._currentFacingPosition = direction
+    const [x, y] = this._playerFacingPositions[direction]
+    this.domElement.style.backgroundPosition = `${x}px ${y - 24}px`
   }
   get playerPositionOnDOM(): number[] {
     const { left, top } = this.domElement.style
@@ -79,7 +89,7 @@ export class Player extends Observer {
     element.style.width = `${width}px`
     element.style.height = `${height}px`
     element.style.position = 'absolute'
-    element.style.transitionDuration = '500ms'
+    element.style.transition = 'left 500ms, top 500ms'
     return element
   }
   debug(x: number, y: number): void{
@@ -91,9 +101,33 @@ export class Player extends Observer {
     element.style.left = `${x * this.width}px`
     document.getElementById('root').append(element)
   }
+  createAnimations(): void {
+    const { sheet } = this.sprite
+    this.animator = new Animator(this.domElement)
+    this.animator.addAnimation(
+      'down',
+      [
+        sheet[0],
+        sheet[1],
+        sheet[2],
+      ],
+      500,
+    )
+  }
+  setFacingPositions() {
+    const { sheet } = this.sprite
+    this._playerFacingPositions = {
+      'up': sheet[6],
+      'down': sheet[0],
+      'right': sheet[18],
+      'left': sheet[12],
+    }
+  }
   async init(): Promise<HTMLElement> {
     await this.sprite.init()
     this.domElement = this.createElement()
+    this.setFacingPositions()
+    this.createAnimations()
     this.setInitialPositionOnDom()
     return this.domElement
   }
