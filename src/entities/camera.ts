@@ -40,6 +40,8 @@ export class Camera extends Observer {
   }
   handleMovement(): void {
     const [ left, top ] = this._player.playerPositionOnDOM
+    console.log("playerPositionOnDOM", [left, top])
+    console.log("backgroundPositionOnDOM", this._cameraPosition)
     const [ maxLeft, maxRight, maxTop, maxBottom] = this.playerBoundaries
     let selectedMovement: keyof Movements = null
     if(left > maxLeft) {

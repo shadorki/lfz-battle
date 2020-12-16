@@ -95,7 +95,7 @@ export class Player extends Observer {
       right: () => left += this.width
     }
     movements[direction]()
-    this.setPlayerPositionOnDom(top, left)
+    this.setPlayerPositionOnDom(left, top)
   }
   setFacingPosition(direction: keyof PlayerFacingPositions): void {
     this._currentFacingPosition = direction
@@ -109,8 +109,8 @@ export class Player extends Observer {
     return [newLeft, newTop]
   }
   setPlayerPositionOnDom(x: number, y:number): void {
-    this.domElement.style.top = `${x}px`
-    this.domElement.style.left = `${y}px`
+    this.domElement.style.left = `${x}px`
+    this.domElement.style.top = `${y}px`
   }
   setInitialPositionOnDom(): void {
     const { x, y } = this._position

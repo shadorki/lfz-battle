@@ -1058,7 +1058,23 @@
   "11/8": {
     "x": 11,
     "y": 8,
-    "isWalkable": true
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "home",
+      "playerPosition": {
+        "x": 11,
+        "y": 15
+      },
+      "playerPositionOnDOM": [
+        288,
+        64
+      ],
+      "backgroundPositionOnDOM": [
+        -64,
+        -896
+      ],
+      "playerFacingPosition": "down"
+    }
   },
   "12/8": {
     "x": 12,
