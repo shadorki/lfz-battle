@@ -1735,8 +1735,8 @@
     "y": 15,
     "isWalkable": true,
     "sceneTransition": {
-      "level": "gymArena1",
-      "playerPositionOnDOM": [192, 288],
+      "level": "gymEntrance",
+      "playerPositionOnDOM": [8, 11],
       "backgroundPositionOnDOM": [-64, -320],
       "playerFacingPosition": "up"
     }

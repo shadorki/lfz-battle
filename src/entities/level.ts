@@ -1,17 +1,33 @@
-import levels from './data'
-import { Position, SceneTransition, Tile } from './interfaces'
+import levels from '../data'
+import { Observer } from '.'
+import { Task } from '../helpers'
+import { Position, SceneTransition, Tile } from '../interfaces'
 
-export default class Level {
+export class Level extends Observer {
+  public _acceptedTasks: Set<string>
   public root: HTMLElement
   public name: string
   public grid: any
   constructor(name: string, root: HTMLElement, isDebugMode: boolean = false) {
+    super()
+    this._acceptedTasks = new Set(['scene-transition-start'])
     this.root = root
     this.name = name
     this.grid = levels[name].default
     if(isDebugMode) {
       this.triggerDebugView()
     }
+  }
+  handleUpdate({ name, action}: Task): void {
+    if (!this._acceptedTasks.has(name)) return
+    switch(name) {
+      case 'scene-transition-start':
+        this.handleSceneTransitionStart(action)
+      break;
+    }
+  }
+  handleSceneTransitionStart(action: any) {
+    console.log(action)
   }
   getTile(x: number, y:number): Tile {
     return this.grid[`${x}/${y}`]
@@ -24,7 +40,7 @@ export default class Level {
     return this.getTile(x, y).isWalkable
   }
   isSceneTransition(x: number, y: number): boolean {
-    if (!this.getTile(x, y)) return false
+    if (!this.getTile(x, y).sceneTransition) return false
     return !!this.getTile(x, y).sceneTransition
   }
   triggerDebugView(): void {

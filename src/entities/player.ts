@@ -1,4 +1,4 @@
-import { Animator, Sprite, Task } from '../helpers'
+import { Animator, Sprite, Task, TaskQueue } from '../helpers'
 import { Observer } from './'
 import { Movements, PlayerFacingPositions, Position } from '../interfaces'
 
@@ -8,23 +8,37 @@ export class Player extends Observer {
   public domElement: HTMLElement
   public width: number
   public height: number
+  public getSceneTransition: Function
+  public isSpaceWalkable: Function
+  public isSceneTransition: Function
+  private _taskQueue: TaskQueue
   private _acceptedTasks: Set<string>
   private _position: Position
   private _playerFacingPositions: PlayerFacingPositions
   private _currentFacingPosition: keyof PlayerFacingPositions
-  private _isSpaceWalkable: Function
-  constructor(name: string, path: string, grid: number[], isSpaceWalkable: Function) {
+  constructor(
+    name: string,
+    path: string,
+    grid: number[],
+    taskQueue: TaskQueue,
+    getSceneTransition: Function,
+    isSpaceWalkable: Function,
+    isSceneTransition: Function
+  ) {
     super()
     this.sprite = new Sprite(name, path, grid)
     this.animator = null
     this.domElement = null
     this.width = null
     this.height = null
+    this._taskQueue = taskQueue
     this._acceptedTasks = new Set(['movement'])
     this._position = null
     this._playerFacingPositions = null
     this._currentFacingPosition = 'down'
-    this._isSpaceWalkable = isSpaceWalkable
+    this.getSceneTransition = getSceneTransition
+    this.isSpaceWalkable = isSpaceWalkable
+    this.isSceneTransition = isSceneTransition
   }
   handleUpdate({name, action}: Task): void {
     if(!this._acceptedTasks.has(name)) return
@@ -45,10 +59,18 @@ export class Player extends Observer {
     movements[direction](position)
     const { x, y } = position
     this.setFacingPosition(direction)
-    if(!this._isSpaceWalkable(x, y)) return
+    if(!this.isSpaceWalkable(x, y)) return
     this.animator.play(direction)
     movements[direction](this._position)
     this.updatePositionOnDOM(direction)
+    if(this.isSceneTransition(x, y)) {
+      this._taskQueue.addTask(
+        new Task(
+          'scene-transition-start',
+          this.getSceneTransition(x, y)
+        )
+      )
+    }
   }
   updatePositionOnDOM(direction: keyof Movements): void {
     let [ left, top ] = this.playerPositionOnDOM

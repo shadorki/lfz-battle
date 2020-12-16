@@ -1,8 +1,7 @@
 import Engine from './engine'
-import { Camera, Player } from './entities'
+import { Camera, Player, Level } from './entities'
 import { TaskQueue } from './helpers'
 import Input from './input'
-import Level from './level'
 
 export default class Game {
   $root: HTMLElement
@@ -22,7 +21,10 @@ export default class Game {
       'MC',
       './assets/images/players/player.png',
       [4, 6],
-      this.level.isSpaceWalkable.bind(this.level)
+      this.taskQueue,
+      this.level.getSceneTransition.bind(this.level),
+      this.level.isSpaceWalkable.bind(this.level),
+      this.level.isSceneTransition.bind(this.level)
     )
     this.input = new Input(this.taskQueue)
   }
@@ -36,6 +38,7 @@ export default class Game {
     this.input.init()
     this.setupDOM(playerElement, cameraElement)
     this.engine.addObserver(this.player)
+    this.engine.addObserver(this.level)
     this.engine.addObserver(this.camera)
     this.engine.start()
   }
