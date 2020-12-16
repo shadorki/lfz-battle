@@ -16,7 +16,7 @@ export class Camera extends Observer {
   public domElement: HTMLElement
   constructor(width: number, height: number, backgroundElement: HTMLElement, isDebugMode: boolean = false) {
     super()
-    this._acceptedTasks = new Set(['movement'])
+    this._acceptedTasks = new Set(['movement', 'scene-transition-start'])
     this._visibleWidth = width
     this._visibleHeight = height
     this._collisionWidth = width / 10 * 8
@@ -27,12 +27,15 @@ export class Camera extends Observer {
     this._cameraPosition = [0, 0]
     this.domElement = null
   }
-  handleUpdate({ name }: Task): void {
+  handleUpdate({ name, action }: Task): void {
     if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'movement':
         this.handleMovement()
-        break
+      break
+      case 'scene-transition-start':
+        this.handleSceneTransitionStart(action)
+      break
     }
   }
   handleMovement(): void {
@@ -51,6 +54,13 @@ export class Camera extends Observer {
     if(!selectedMovement) return
     this._player.updatePositionOnDOM(selectedMovement)
     this.moveCamera(selectedMovement)
+  }
+  handleSceneTransitionStart(action: any) {
+    const {
+      backgroundPositionOnDOM
+    } = action
+    this._cameraPosition = backgroundPositionOnDOM
+    this.updatePositionOnDOM()
   }
   moveCamera(direction: keyof Movements): void {
     const { width, height } = this._player

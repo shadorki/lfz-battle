@@ -27,7 +27,12 @@ export class Level extends Observer {
     }
   }
   handleSceneTransitionStart(action: any) {
-    console.log(action)
+    const {
+      level,
+    } = action
+    this.changeGrid(level)
+    const { path } = this.grid
+    this.changeMap(path)
   }
   getTile(x: number, y:number): Tile {
     return this.grid[`${x}/${y}`]
@@ -36,6 +41,7 @@ export class Level extends Observer {
     return this.getTile(x, y).sceneTransition
   }
   isSpaceWalkable(x: number, y: number): boolean {
+    console.log(this.getTile(x, y))
     if(!this.getTile(x, y)) return false
     return this.getTile(x, y).isWalkable
   }
@@ -61,10 +67,20 @@ export class Level extends Observer {
     this.root.style.width = '1920px'
     this.root.style.height = '1280px'
   }
+  changeMap(path: string): void {
+    this.root.style.backgroundImage = `url('${path}')`
+  }
+  changeGrid(gridName: string): void {
+    this.grid = levels[gridName].default
+  }
+  shiftBackgroundPosition(x: number, y:number) {
+    this.root.style.backgroundPosition = `${x}px ${y}px`
+  }
   init(): Position {
     const { path, playerSpawnPoint, backgroundSpawnPoint} = this.grid
-    this.root.style.backgroundImage = `url('${path}')`
-    this.root.style.backgroundPosition = `${backgroundSpawnPoint[0]}px ${backgroundSpawnPoint[1]}px`
+    const [x, y] = backgroundSpawnPoint
+    this.changeMap(path)
+    this.shiftBackgroundPosition(x, y)
     return playerSpawnPoint
   }
 }

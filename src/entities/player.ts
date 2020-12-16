@@ -32,7 +32,7 @@ export class Player extends Observer {
     this.width = null
     this.height = null
     this._taskQueue = taskQueue
-    this._acceptedTasks = new Set(['movement'])
+    this._acceptedTasks = new Set(['movement', 'scene-transition-start'])
     this._position = null
     this._playerFacingPositions = null
     this._currentFacingPosition = 'down'
@@ -45,6 +45,9 @@ export class Player extends Observer {
     switch(name) {
       case 'movement':
         this.handleMovement(action as keyof Movements)
+      break
+      case 'scene-transition-start':
+        this.handleSceneTransitionStart(action)
       break
     }
   }
@@ -72,6 +75,17 @@ export class Player extends Observer {
       )
     }
   }
+  handleSceneTransitionStart(action: any) {
+    const {
+      playerPositionOnDOM,
+      playerPosition,
+      playerFacingPosition,
+    } = action
+    const [x, y] = playerPositionOnDOM
+    this.setFacingPosition(playerFacingPosition)
+    this._position = playerPosition
+    this.setPlayerPositionOnDom(x, y)
+  }
   updatePositionOnDOM(direction: keyof Movements): void {
     let [ left, top ] = this.playerPositionOnDOM
     const movements: Movements = {
@@ -81,8 +95,7 @@ export class Player extends Observer {
       right: () => left += this.width
     }
     movements[direction]()
-    this.domElement.style.top = `${top}px`
-    this.domElement.style.left = `${left}px`
+    this.setPlayerPositionOnDom(top, left)
   }
   setFacingPosition(direction: keyof PlayerFacingPositions): void {
     this._currentFacingPosition = direction
@@ -94,6 +107,10 @@ export class Player extends Observer {
     const newLeft = Number(left.substring(0, left.length - 2))
     const newTop = Number(top.substring(0, top.length - 2))
     return [newLeft, newTop]
+  }
+  setPlayerPositionOnDom(x: number, y:number): void {
+    this.domElement.style.top = `${x}px`
+    this.domElement.style.left = `${y}px`
   }
   setInitialPositionOnDom(): void {
     const { x, y } = this._position
