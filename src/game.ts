@@ -1,7 +1,6 @@
 import Engine from './engine'
-import { Camera, Player, Level } from './entities'
+import { Camera, Player, Level, Input } from './entities'
 import { TaskQueue } from './helpers'
-import Input from './input'
 
 export default class Game {
   $root: HTMLElement
@@ -35,8 +34,8 @@ export default class Game {
     const playerSpawnPoint = this.level.init()
     const playerElement = await this.player.init(playerSpawnPoint)
     const cameraElement = this.camera.init(this.player)
-    this.input.init()
     this.setupDOM(playerElement, cameraElement)
+    this.input.init()
     this.engine.addObserver(this.player)
     this.engine.addObserver(this.level)
     this.engine.addObserver(this.camera)

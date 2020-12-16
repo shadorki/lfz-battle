@@ -73,6 +73,12 @@ export class Player extends Observer {
           this.getSceneTransition(x, y)
         )
       )
+      this._taskQueue.addTask(
+        new Task(
+          'scene-transition-end',
+          null
+        )
+      )
     }
   }
   handleSceneTransitionStart(action: any) {
