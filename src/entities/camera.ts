@@ -1,4 +1,4 @@
-import { Sprite, Task } from '../helpers'
+import { Sprite, Task, TaskQueue } from '../helpers'
 import { Observer } from './'
 import { Movements, Position } from '../interfaces'
 import { Player } from './player'
@@ -13,9 +13,17 @@ export class Camera extends Observer {
   private _player: Player
   private _backgroundElement: HTMLElement
   private _cameraPosition: number[]
+  private _taskQueue: TaskQueue
   public domElement: HTMLElement
-  constructor(width: number, height: number, backgroundElement: HTMLElement, isDebugMode: boolean = false) {
+  constructor(
+    taskQueue: TaskQueue,
+    width: number,
+    height: number,
+    backgroundElement: HTMLElement,
+    isDebugMode: boolean = false
+  ) {
     super()
+    this._taskQueue = taskQueue
     this._acceptedTasks = new Set(['movement', 'scene-transition-start'])
     this._visibleWidth = width
     this._visibleHeight = height
@@ -40,8 +48,6 @@ export class Camera extends Observer {
   }
   handleMovement(): void {
     const [ left, top ] = this._player.playerPositionOnDOM
-    console.log("playerPositionOnDOM", [left, top])
-    console.log("backgroundPositionOnDOM", this._cameraPosition)
     const [ maxLeft, maxRight, maxTop, maxBottom] = this.playerBoundaries
     let selectedMovement: keyof Movements = null
     if(left > maxLeft) {
@@ -56,6 +62,7 @@ export class Camera extends Observer {
     if(!selectedMovement) return
     this._player.updatePositionOnDOM(selectedMovement)
     this.moveCamera(selectedMovement)
+    this._taskQueue.addTask(new Task('npc-movement', selectedMovement))
   }
   handleSceneTransitionStart(action: any) {
     const {

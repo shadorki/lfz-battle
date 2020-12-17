@@ -1,6 +1,5 @@
-import { PlayerFacingPositions } from "../interfaces";
+import { Movements, PlayerFacingPositions, Position} from "../interfaces";
 import { Sprite } from ".";
-import { Position } from '../interfaces'
 
 export class NPC {
   public name: string
@@ -19,6 +18,38 @@ export class NPC {
     this.domElement = null
     this.width = null
     this.height = null
+  }
+  handleMovement(direction: keyof Movements): void {
+    const movements: Movements = {
+      up: p => p.y--,
+      down: p => p.y++,
+      left: p => p.x--,
+      right: p => p.x++
+    }
+    movements[direction](this._position)
+    const { x, y } = this._position
+    this.updatePositionOnDOM(direction)
+  }
+  updatePositionOnDOM(direction: keyof Movements): void {
+    let [left, top] = this.npcPositionOnDOM
+    const movements: Movements = {
+      up: () => top -= this.height,
+      down: () => top += this.height,
+      left: () => left -= this.width,
+      right: () => left += this.width
+    }
+    movements[direction]()
+    this.setNPCPositionOnDom(left, top)
+  }
+  get npcPositionOnDOM(): number[] {
+    const { left, top } = this.domElement.style
+    const newLeft = Number(left.substring(0, left.length - 2))
+    const newTop = Number(top.substring(0, top.length - 2))
+    return [newLeft, newTop]
+  }
+  setNPCPositionOnDom(x: number, y: number): void {
+    this.domElement.style.left = `${x}px`
+    this.domElement.style.top = `${y}px`
   }
   setFacingPositions() {
     const { sheet } = this.sprite
@@ -41,6 +72,7 @@ export class NPC {
     element.style.width = `${width}px`
     element.style.height = `${height}px`
     element.style.position = 'absolute'
+    element.style.transition = 'left 500ms, top 500ms'
     return element
   }
   setInitialPositionOnDom(): void {
