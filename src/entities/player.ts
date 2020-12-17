@@ -1,6 +1,6 @@
 import { Animator, Sprite, Task, TaskQueue } from '../helpers'
 import { Observer } from './'
-import { Movements, PlayerFacingPositions, Position } from '../interfaces'
+import { Levels, Movements, PlayerFacingPositions, Position, StoredBackgroundPositions } from '../interfaces'
 
 export class Player extends Observer {
   public sprite: Sprite
@@ -15,12 +15,15 @@ export class Player extends Observer {
   private _acceptedTasks: Set<string>
   private _position: Position
   private _playerFacingPositions: PlayerFacingPositions
+  private _currentLevel: keyof Levels
+  private _storedBackgroundPositions: StoredBackgroundPositions
   private _currentFacingPosition: keyof PlayerFacingPositions
   constructor(
     name: string,
     path: string,
     grid: number[],
     taskQueue: TaskQueue,
+    currentLevel: keyof Levels,
     getSceneTransition: Function,
     isSpaceWalkable: Function,
     isSceneTransition: Function
@@ -32,6 +35,8 @@ export class Player extends Observer {
     this.width = null
     this.height = null
     this._taskQueue = taskQueue
+    this._currentLevel = currentLevel
+    this._storedBackgroundPositions = {}
     this._acceptedTasks = new Set(['movement', 'scene-transition-start'])
     this._position = null
     this._playerFacingPositions = null
@@ -67,27 +72,34 @@ export class Player extends Observer {
     movements[direction](this._position)
     this.updatePositionOnDOM(direction)
     if(this.isSceneTransition(x, y)) {
+      const sceneTransition = this.getSceneTransition(x, y)
       this._taskQueue.addTask(
         new Task(
           'scene-transition-start',
-          this.getSceneTransition(x, y)
+          sceneTransition
         )
       )
       this._taskQueue.addTask(
         new Task(
           'scene-transition-end',
-          null
+          sceneTransition
         )
       )
     }
   }
   handleSceneTransitionStart(action: any) {
+    this._storedBackgroundPositions[this._currentLevel] = this.playerPositionOnDOM
+    this._storedBackgroundPositions[this._currentLevel]
     const {
       playerPositionOnDOM,
       playerPosition,
       playerFacingPosition,
+      level
     } = action
-    const [x, y] = playerPositionOnDOM
+    this._currentLevel = level
+    console.log(this._storedBackgroundPositions[this._currentLevel])
+    const [x, y] = this._storedBackgroundPositions[this._currentLevel]
+                    || playerPositionOnDOM
     this.setFacingPosition(playerFacingPosition)
     this._position = playerPosition
     this.setPlayerPositionOnDom(x, y)

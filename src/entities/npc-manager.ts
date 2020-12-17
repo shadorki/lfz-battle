@@ -35,7 +35,6 @@ export class NPCManager extends Observer {
     this._npcs[this._currentLevel].forEach(npc => npc.handleMovement(direction))
   }
   async handleSceneTransitionStart({ level }: SceneTransition): Promise<void> {
-    console.log(level)
     this._npcs[this._currentLevel].forEach(npc => npc.ejectFromDom())
     this.switchLevel(level)
     let npcElements = null

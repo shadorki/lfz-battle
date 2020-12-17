@@ -15,7 +15,7 @@ body {
   border: 1px solid rgba(0.5, 0.5, 0.5, .5);
   box-shadow: 10px 10px 5px black;
   width: 640px;
-  height: 320px;
+  height: 384px;
   transform: scale(2.0);
   background-repeat: no-repeat;
   image-rendering: pixelated;

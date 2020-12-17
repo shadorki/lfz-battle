@@ -41,7 +41,6 @@ export class Level extends Observer {
     return this.getTile(x, y).sceneTransition
   }
   isSpaceWalkable(x: number, y: number): boolean {
-    console.log(this.getTile(x, y))
     if(!this.getTile(x, y)) return false
     return this.getTile(x, y).isWalkable
   }

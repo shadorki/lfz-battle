@@ -1,6 +1,6 @@
 import { Sprite, Task, TaskQueue } from '../helpers'
 import { Observer } from './'
-import { Movements, Position } from '../interfaces'
+import { Levels, Movements, Position, StoredBackgroundPositions } from '../interfaces'
 import { Player } from './player'
 
 export class Camera extends Observer {
@@ -9,26 +9,33 @@ export class Camera extends Observer {
   private _visibleHeight: number
   private _collisionWidth: number
   private _collisionHeight: number
+  private _playerBoundaries: number[]
   private _isDebugMode: boolean
   private _player: Player
   private _backgroundElement: HTMLElement
   private _cameraPosition: number[]
   private _taskQueue: TaskQueue
+  private _currentLevel: keyof Levels
+  private _storedBackgroundPositions: StoredBackgroundPositions
   public domElement: HTMLElement
   constructor(
     taskQueue: TaskQueue,
     width: number,
     height: number,
     backgroundElement: HTMLElement,
+    currentLevel: keyof Levels,
     isDebugMode: boolean = false
   ) {
     super()
     this._taskQueue = taskQueue
+    this._storedBackgroundPositions = {}
+    this._currentLevel = currentLevel
     this._acceptedTasks = new Set(['movement', 'scene-transition-start'])
     this._visibleWidth = width
     this._visibleHeight = height
     this._collisionWidth = width / 10 * 8
     this._collisionHeight = height / 10 * 6
+    this._playerBoundaries = [512, 96, 256, 128]
     this._isDebugMode = isDebugMode
     this._player = null
     this._backgroundElement = backgroundElement
@@ -48,13 +55,13 @@ export class Camera extends Observer {
   }
   handleMovement(): void {
     const [ left, top ] = this._player.playerPositionOnDOM
-    const [ maxLeft, maxRight, maxTop, maxBottom] = this.playerBoundaries
+    const [ maxLeft, maxRight, maxTop, maxBottom] = this._playerBoundaries
     let selectedMovement: keyof Movements = null
     if(left > maxLeft) {
       selectedMovement = 'left'
     } else if(left < maxRight) {
       selectedMovement = 'right'
-    } else if (top > maxTop) {
+    } else if (top >= maxTop) {
       selectedMovement = 'up'
     } else if( top < maxBottom) {
       selectedMovement = 'down'
@@ -65,10 +72,17 @@ export class Camera extends Observer {
     this._taskQueue.addTask(new Task('npc-movement', selectedMovement))
   }
   handleSceneTransitionStart(action: any) {
+    this._storedBackgroundPositions[this._currentLevel] = this.currentBackgroundPosition
+    console.log(this._storedBackgroundPositions[this._currentLevel])
     const {
-      backgroundPositionOnDOM
+      backgroundPositionOnDOM,
+      level
     } = action
-    this._cameraPosition = backgroundPositionOnDOM
+    console.log(backgroundPositionOnDOM)
+    this._currentLevel = level
+    this._cameraPosition = this._storedBackgroundPositions[this._currentLevel]
+                            || backgroundPositionOnDOM
+    console.log(this._cameraPosition)
     this.updatePositionOnDOM()
   }
   moveCamera(direction: keyof Movements): void {
@@ -88,13 +102,11 @@ export class Camera extends Observer {
     const [x, y] = this._cameraPosition
     this._backgroundElement.style.backgroundPosition = `${x}px ${y}px`
   }
-  get playerBoundaries(): number[] {
-    return [
-      this._collisionWidth,
-      this._visibleWidth - this._collisionWidth,
-      this._collisionHeight,
-      Math.abs(this._visibleHeight - this._collisionHeight * 2)
-    ]
+  get currentBackgroundPosition(): number[] {
+    const { backgroundPositionX , backgroundPositionY } = this._backgroundElement.style
+    const x = Number(backgroundPositionX.substring(0, backgroundPositionX.length - 2))
+    const y = Number(backgroundPositionY.substring(0, backgroundPositionY.length - 2))
+    return [x, y]
   }
   createElement(): HTMLElement {
     const element = document.createElement('div')

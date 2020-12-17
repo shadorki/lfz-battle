@@ -22,17 +22,6 @@ export class NPC {
     this.height = null
   }
   handleMovement(direction: keyof Movements): void {
-    const movements: Movements = {
-      up: p => p.y--,
-      down: p => p.y++,
-      left: p => p.x--,
-      right: p => p.x++
-    }
-    movements[direction](this._position)
-    const { x, y } = this._position
-    this.updatePositionOnDOM(direction)
-  }
-  updatePositionOnDOM(direction: keyof Movements): void {
     let [left, top] = this.npcPositionOnDOM
     const movements: Movements = {
       up: () => top -= this.height,

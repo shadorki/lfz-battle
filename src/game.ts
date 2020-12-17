@@ -17,12 +17,13 @@ export default class Game {
     this.engine = new Engine(this.taskQueue)
     this.level = new Level('home', this.$root)
     this.npcManager = new NPCManager('home', this.$root)
-    this.camera = new Camera(this.taskQueue, 640, 320, this.$root)
+    this.camera = new Camera(this.taskQueue, 640, 384, this.$root, 'home', true)
     this.player = new Player(
       'MC',
       './assets/images/players/player.png',
       [4, 6],
       this.taskQueue,
+      'home',
       this.level.getSceneTransition.bind(this.level),
       this.level.isSpaceWalkable.bind(this.level),
       this.level.isSceneTransition.bind(this.level)
@@ -39,11 +40,11 @@ export default class Game {
     const cameraElement = this.camera.init(this.player)
     this.setupDOM(playerElement, cameraElement, ...npcElements)
     this.input.init()
-    this.engine.addObserver(this.player)
-    this.engine.addObserver(this.level)
     this.engine.addObserver(this.camera)
-    this.engine.addObserver(this.input)
+    this.engine.addObserver(this.player)
     this.engine.addObserver(this.npcManager)
+    this.engine.addObserver(this.level)
+    this.engine.addObserver(this.input)
     this.engine.start()
   }
 }
