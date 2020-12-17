@@ -72,17 +72,16 @@ export class Player extends Observer {
     movements[direction](this._position)
     this.updatePositionOnDOM(direction)
     if(this.isSceneTransition(x, y)) {
-      const sceneTransition = this.getSceneTransition(x, y)
       this._taskQueue.addTask(
         new Task(
           'scene-transition-start',
-          sceneTransition
+          this.getSceneTransition(x, y)
         )
       )
       this._taskQueue.addTask(
         new Task(
           'scene-transition-end',
-          sceneTransition
+          null
         )
       )
     }

@@ -6,6 +6,7 @@
         "x": 8,
         "y": 1
       },
+      "positionOnDOM": [256, 64],
       "facingPosition": "left"
     }
   },
@@ -16,6 +17,7 @@
         "x": 0,
         "y": 3
       },
+      "positionOnDOM": [-64, -128],
       "facingPosition": "right"
     }
   }

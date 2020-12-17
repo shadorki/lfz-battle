@@ -73,18 +73,18 @@ export class NPC {
     element.style.transition = 'left 500ms, top 500ms'
     return element
   }
-  setInitialPositionOnDom(): void {
-    const { x, y } = this._position
-    this.domElement.style.top = `${y * this.height}px`
-    this.domElement.style.left = `${x * this.width}px`
+  setInitialPositionOnDom(x: number, y:number): void {
+    this.domElement.style.top = `${y}px`
+    this.domElement.style.left = `${x}px`
   }
-  async init(startingPosition: Position): Promise<HTMLElement> {
+  async init(startingPosition: Position, positionOnDOM: number[]): Promise<HTMLElement> {
     this._position = startingPosition
+    const [x, y] = positionOnDOM
     await this.sprite.init()
     this.domElement = this.createElement()
     this.setFacingPositions()
     this.setFacingPosition()
-    this.setInitialPositionOnDom()
+    this.setInitialPositionOnDom(x, y)
     return this.domElement
   }
 }

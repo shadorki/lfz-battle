@@ -53,10 +53,10 @@ export class NPCManager extends Observer {
     const npcs = []
     const npcElements = []
     for (const npcKey in this.npcData) {
-      const { path, startingPosition, facingPosition } = this.npcData[npcKey]
+      const { path, startingPosition, facingPosition, positionOnDOM } = this.npcData[npcKey]
       const npc = new NPC(npcKey, path, facingPosition)
       npcs.push(npc)
-      npcElements.push(await npc.init(startingPosition))
+      npcElements.push(await npc.init(startingPosition, positionOnDOM))
     }
     this._npcs[this._currentLevel] = npcs
     return npcElements
