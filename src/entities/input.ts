@@ -3,6 +3,7 @@ import { KeyTable } from '../interfaces'
 import { Observer } from "./";
 export class Input extends Observer {
   private _isDisabled: boolean
+  private _currentMode: keyof KeyTable
   private _acceptedTasks: Set<string>
   private _taskQueue: TaskQueue
   private _keyTable: KeyTable
@@ -10,12 +11,16 @@ export class Input extends Observer {
     super()
     this._isDisabled = true
     this._acceptedTasks = new Set(['scene-transition-start', 'scene-transition-end'])
+    this._currentMode = 'walking'
     this._taskQueue = taskQueue
     this._keyTable = {
-      'w': ['movement', 'up'],
-      'a': ['movement', 'left'],
-      's': ['movement', 'down'],
-      'd': ['movement', 'right']
+      walking: {
+        'w': ['movement', 'up'],
+        'a': ['movement', 'left'],
+        's': ['movement', 'down'],
+        'd': ['movement', 'right'],
+        ' ': ['interaction', null]
+      }
     }
   }
   get isDisabled(): boolean {
@@ -43,8 +48,9 @@ export class Input extends Observer {
   }
   handleInput({ key }: KeyboardEvent): void {
     if(this.isDisabled) return
-    if(!this._keyTable[key]) return
-    const [ name, action ] = this._keyTable[key]
+    const keyTable = this._keyTable[this._currentMode]
+    if(!keyTable[key]) return
+    const [ name, action ] = keyTable[key]
     this._taskQueue.addTask(new Task(name, action))
   }
   init(): void {

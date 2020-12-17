@@ -37,7 +37,7 @@ export class Player extends Observer {
     this._taskQueue = taskQueue
     this._currentLevel = currentLevel
     this._storedBackgroundPositions = {}
-    this._acceptedTasks = new Set(['movement', 'scene-transition-start'])
+    this._acceptedTasks = new Set(['movement', 'scene-transition-start', 'interaction'])
     this._position = null
     this._playerFacingPositions = null
     this._currentFacingPosition = 'down'
@@ -53,6 +53,9 @@ export class Player extends Observer {
       break
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)
+      break
+      case 'interaction':
+        this.handleInteraction()
       break
     }
   }
@@ -102,6 +105,9 @@ export class Player extends Observer {
     this.setFacingPosition(playerFacingPosition)
     this._position = playerPosition
     this.setPlayerPositionOnDom(x, y)
+  }
+  handleInteraction(): void {
+    console.log('interacting')
   }
   updatePositionOnDOM(direction: keyof Movements): void {
     let [ left, top ] = this.playerPositionOnDOM

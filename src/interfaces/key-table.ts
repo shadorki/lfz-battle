@@ -1,3 +1,5 @@
 export interface KeyTable {
-  [key: string]: Array<string>
+  [key: string]: {
+    [key: string]: string[]
+  }
 }
