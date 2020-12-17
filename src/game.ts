@@ -1,5 +1,5 @@
 import Engine from './engine'
-import { Camera, Player, Level, Input } from './entities'
+import { Camera, Player, Level, Input, NPCManager } from './entities'
 import { TaskQueue } from './helpers'
 
 export default class Game {
@@ -8,6 +8,7 @@ export default class Game {
   input: Input
   taskQueue: TaskQueue
   level: Level
+  npcManager: NPCManager
   camera: Camera
   player: Player
   constructor() {
@@ -15,6 +16,7 @@ export default class Game {
     this.taskQueue = new TaskQueue()
     this.engine = new Engine(this.taskQueue)
     this.level = new Level('home', this.$root)
+    this.npcManager = new NPCManager('home')
     this.camera = new Camera(640, 320, this.$root)
     this.player = new Player(
       'MC',
@@ -33,12 +35,15 @@ export default class Game {
   async start(): Promise<void> {
     const playerSpawnPoint = this.level.init()
     const playerElement = await this.player.init(playerSpawnPoint)
+    const npcElements = await this.npcManager.init()
     const cameraElement = this.camera.init(this.player)
-    this.setupDOM(playerElement, cameraElement)
+    this.setupDOM(playerElement, cameraElement, ...npcElements)
     this.input.init()
     this.engine.addObserver(this.player)
     this.engine.addObserver(this.level)
     this.engine.addObserver(this.camera)
+    this.engine.addObserver(this.input)
+    this.engine.addObserver(this.npcManager)
     this.engine.start()
   }
 }

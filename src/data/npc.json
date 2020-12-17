@@ -1,0 +1,20 @@
+{
+  "home": {
+    "kevin": {
+      "path": "./assets/images/players/npc-nerd.png",
+      "startingPosition": {
+        "x": 8,
+        "y": 1
+      }
+    }
+  },
+  "gymEntrance": {
+    "cassandra": {
+      "path": "./assets/images/players/npc-nerd.png",
+      "startingPosition": {
+        "x": 21,
+        "y": 7
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import levels from '../data'
+import { levels } from '../data'
 import { Observer } from '.'
 import { Task } from '../helpers'
 import { Position, SceneTransition, Tile } from '../interfaces'
