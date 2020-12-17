@@ -1,19 +1,22 @@
 import { NPC, Sprite, Task } from '../helpers'
 import { npcData } from '../data'
 import { Observer } from './'
-import { Movements, Position } from '../interfaces'
+import { Movements, NPCList, Position, SceneTransition } from '../interfaces'
 
 export class NPCManager extends Observer {
   private _currentLevel: string
-  private _npcs: NPC[]
+  private _root: HTMLElement
+  private _npcs: NPCList
   private npcData: any
   private _acceptedTasks: Set<string>
   constructor(
-    currentLevel: string
+    currentLevel: string,
+    root: HTMLElement
   ) {
     super()
+    this._root = root
     this._currentLevel = currentLevel
-    this._npcs = null
+    this._npcs = {}
     this.npcData = npcData[currentLevel]
     this._acceptedTasks = new Set(['npc-movement', 'scene-transition-start'])
   }
@@ -21,22 +24,42 @@ export class NPCManager extends Observer {
     if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'npc-movement':
-        this.handleMovement(action as keyof Movements)
+        this.handleNPCMovement(action as keyof Movements)
+      break
+      case 'scene-transition-start':
+        this.handleSceneTransitionStart(action)
+      break
     }
   }
-  handleMovement(direction: keyof Movements) {
-    this._npcs.forEach(npc => npc.handleMovement(direction))
+  handleNPCMovement(direction: keyof Movements): void {
+    this._npcs[this._currentLevel].forEach(npc => npc.handleMovement(direction))
+  }
+  async handleSceneTransitionStart({ level }: SceneTransition): Promise<void> {
+    console.log(level)
+    this._npcs[this._currentLevel].forEach(npc => npc.ejectFromDom())
+    this.switchLevel(level)
+    let npcElements = null
+    if(!this._npcs[this._currentLevel]) {
+      npcElements = await this.init()
+    } else {
+      npcElements = this._npcs[this._currentLevel].map(npc => npc.domElement)
+    }
+    this._root.append(...npcElements)
+  }
+  switchLevel(newLevel: string) {
+    this.npcData = npcData[newLevel]
+    this._currentLevel = newLevel
   }
   async init(): Promise<Array<HTMLElement>> {
     const npcs = []
     const npcElements = []
     for (const npcKey in this.npcData) {
-      const { path, startingPosition } = this.npcData[npcKey]
-      const npc = new NPC(npcKey, path)
+      const { path, startingPosition, facingPosition } = this.npcData[npcKey]
+      const npc = new NPC(npcKey, path, facingPosition)
       npcs.push(npc)
       npcElements.push(await npc.init(startingPosition))
     }
-    this._npcs = npcs
+    this._npcs[this._currentLevel] = npcs
     return npcElements
   }
 }

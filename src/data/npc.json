@@ -5,16 +5,18 @@
       "startingPosition": {
         "x": 8,
         "y": 1
-      }
+      },
+      "facingPosition": "left"
     }
   },
   "gymEntrance": {
     "cassandra": {
       "path": "./assets/images/players/npc-nerd.png",
       "startingPosition": {
-        "x": 21,
-        "y": 7
-      }
+        "x": 0,
+        "y": 3
+      },
+      "facingPosition": "right"
     }
   }
 }

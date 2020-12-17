@@ -13,8 +13,10 @@ export class NPC {
   constructor(
     name: string,
     path: string,
+    currentFacingPosition: keyof PlayerFacingPositions
   ) {
     this.sprite = new Sprite(name, path, [4, 1])
+    this._currentFacingPosition = currentFacingPosition
     this.domElement = null
     this.width = null
     this.height = null
@@ -41,6 +43,9 @@ export class NPC {
     movements[direction]()
     this.setNPCPositionOnDom(left, top)
   }
+  ejectFromDom(): void {
+    this.domElement.remove()
+  }
   get npcPositionOnDOM(): number[] {
     const { left, top } = this.domElement.style
     const newLeft = Number(left.substring(0, left.length - 2))
@@ -59,6 +64,10 @@ export class NPC {
       'right': sheet[3],
       'left': sheet[2],
     }
+  }
+  setFacingPosition(): void {
+    const [x, y] = this._npcFacingPositions[this._currentFacingPosition]
+    this.domElement.style.backgroundPosition = `${x}px ${y - 24}px`
   }
   createElement(): HTMLElement {
     const element = document.createElement('div')
@@ -85,6 +94,7 @@ export class NPC {
     await this.sprite.init()
     this.domElement = this.createElement()
     this.setFacingPositions()
+    this.setFacingPosition()
     this.setInitialPositionOnDom()
     return this.domElement
   }

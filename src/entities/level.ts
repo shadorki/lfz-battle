@@ -64,8 +64,8 @@ export class Level extends Observer {
       }
       this.root.append(element)
     }
-    this.root.style.width = '1920px'
-    this.root.style.height = '1280px'
+    this.root.style.width = '800px'
+    this.root.style.height = '522px'
   }
   changeMap(path: string): void {
     this.root.style.backgroundImage = `url('${path}')`

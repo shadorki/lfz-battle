@@ -16,7 +16,7 @@ export default class Game {
     this.taskQueue = new TaskQueue()
     this.engine = new Engine(this.taskQueue)
     this.level = new Level('home', this.$root)
-    this.npcManager = new NPCManager('home')
+    this.npcManager = new NPCManager('home', this.$root)
     this.camera = new Camera(this.taskQueue, 640, 320, this.$root)
     this.player = new Player(
       'MC',
