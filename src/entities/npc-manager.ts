@@ -1,7 +1,7 @@
 import { NPC, Sprite, Task } from '../helpers'
 import { npcData } from '../data'
 import { Observer } from './'
-import { Movements, NPCList, Position, SceneTransition } from '../interfaces'
+import { Movements, NPCList, Position, SceneTransition, NPCData } from '../interfaces'
 
 export class NPCManager extends Observer {
   private _currentLevel: string
@@ -50,13 +50,14 @@ export class NPCManager extends Observer {
     this._currentLevel = newLevel
   }
   async init(): Promise<Array<HTMLElement>> {
-    const npcs = []
+    const npcs: NPC[] = []
     const npcElements = []
-    for (const npcKey in this.npcData) {
-      const { path, startingPosition, facingPosition, positionOnDOM } = this.npcData[npcKey]
-      const npc = new NPC(npcKey, path, facingPosition)
-      npcs.push(npc)
-      npcElements.push(await npc.init(startingPosition, positionOnDOM))
+    for(let i = 0; i < this.npcData.length; i++) {
+      const { path, startingPosition, facingPosition, positionOnDOM, name } = this.npcData[i]
+      const npcData: NPC = new NPC(name, path, facingPosition)
+      const element = await npcData.init(startingPosition, positionOnDOM)
+      npcs.push(npcData)
+      npcElements.push(element)
     }
     this._npcs[this._currentLevel] = npcs
     return npcElements

@@ -1,18 +1,20 @@
 {
-  "home": {
-    "kevin": {
+  "home": [
+    {
+      "name": "Kevin",
       "path": "./assets/images/players/npc-nerd.png",
       "startingPosition": {
-        "x": 8,
-        "y": 1
+        "x": 21,
+        "y": 6
       },
-      "positionOnDOM": [256, 64],
-      "facingPosition": "left"
+      "positionOnDOM": [672, 384],
+      "facingPosition": "up"
     }
-  },
-  "gymEntrance": {
-    "cassandra": {
-      "path": "./assets/images/players/npc-nerd.png",
+  ],
+  "gymEntrance": [
+    {
+      "name": "Cassandra",
+      "path": "./assets/images/players/npc-brunette-girl.png",
       "startingPosition": {
         "x": 0,
         "y": 3
@@ -20,5 +22,5 @@
       "positionOnDOM": [-64, -128],
       "facingPosition": "right"
     }
-  }
+  ]
 }
