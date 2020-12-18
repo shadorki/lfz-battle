@@ -1,4 +1,18 @@
+@font-face {
+  font-family: 'Poke\'mon FireRed & LeafGreen Font Recreation';
+  src: url('../fonts/Pokmon-FireRed--LeafGreen-Font-Recreation.eot');
+  src: url('../fonts/Pokmon-FireRed--LeafGreen-Font-Recreation.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Pokmon-FireRed--LeafGreen-Font-Recreation.woff2') format('woff2'),
+      url('../fonts/Pokmon-FireRed--LeafGreen-Font-Recreation.woff') format('woff'),
+      url('../fonts/Pokmon-FireRed--LeafGreen-Font-Recreation.ttf') format('truetype'),
+      url('../fonts/Pokmon-FireRed--LeafGreen-Font-Recreation.svg#Pokmon-FireRed-&-LeafGreen-Font-Recreation') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
+  font-family: 'Poke\'mon FireRed & LeafGreen Font Recreation';
   margin: 0;
   height: 100vh;
   background-color: rgb(27, 27, 27);

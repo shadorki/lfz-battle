@@ -1,7 +1,7 @@
 import { NPC, Sprite, Task } from '../helpers'
 import { npcData } from '../data'
 import { Observer } from './'
-import { Movements, NPCList, Position, SceneTransition, NPCData } from '../interfaces'
+import { Movements, NPCList, Position, SceneTransition } from '../interfaces'
 
 export class NPCManager extends Observer {
   private _currentLevel: string
@@ -18,7 +18,13 @@ export class NPCManager extends Observer {
     this._currentLevel = currentLevel
     this._npcs = {}
     this.npcData = npcData[currentLevel]
-    this._acceptedTasks = new Set(['npc-movement', 'scene-transition-start'])
+    this._acceptedTasks = new Set(['npc-movement', 'npc-interaction', 'scene-transition-start'])
+  }
+  get npcs(): NPC[] {
+    return this._npcs[this._currentLevel]
+  }
+  set npcs(npcs: NPC[]) {
+    this._npcs[this._currentLevel] = npcs
   }
   handleUpdate({name, action}: Task): void {
     if (!this._acceptedTasks.has(name)) return
@@ -26,22 +32,30 @@ export class NPCManager extends Observer {
       case 'npc-movement':
         this.handleNPCMovement(action as keyof Movements)
       break
+      case 'npc-interaction':
+        this.handleNPCInteraction(action)
+      break
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)
       break
     }
   }
+  handleNPCInteraction(action: any): void {
+    const { name, playerFacingPosition } = action
+    const npc = this.npcs.find(npc => npc.name === name)
+    npc.faceTowardsPlayer(playerFacingPosition)
+  }
   handleNPCMovement(direction: keyof Movements): void {
-    this._npcs[this._currentLevel].forEach(npc => npc.handleMovement(direction))
+    this.npcs.forEach(npc => npc.handleMovement(direction))
   }
   async handleSceneTransitionStart({ level }: SceneTransition): Promise<void> {
-    this._npcs[this._currentLevel].forEach(npc => npc.ejectFromDom())
+    this.npcs.forEach(npc => npc.ejectFromDom())
     this.switchLevel(level)
     let npcElements = null
-    if(!this._npcs[this._currentLevel]) {
+    if(!this.npcs) {
       npcElements = await this.init()
     } else {
-      npcElements = this._npcs[this._currentLevel].map(npc => npc.domElement)
+      npcElements = this.npcs.map(npc => npc.domElement)
     }
     this._root.append(...npcElements)
   }
@@ -59,7 +73,7 @@ export class NPCManager extends Observer {
       npcs.push(npcData)
       npcElements.push(element)
     }
-    this._npcs[this._currentLevel] = npcs
+    this.npcs = npcs
     return npcElements
   }
 }

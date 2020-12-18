@@ -15,6 +15,7 @@ export class NPC {
     path: string,
     currentFacingPosition: keyof PlayerFacingPositions
   ) {
+    this.name = name
     this.sprite = new Sprite(name, path, [4, 1])
     this._currentFacingPosition = currentFacingPosition
     this.domElement = null
@@ -34,6 +35,16 @@ export class NPC {
   }
   ejectFromDom(): void {
     this.domElement.remove()
+  }
+  faceTowardsPlayer(direction: keyof Movements) {
+    const oppositeDirections: object = {
+      up: 'down',
+      down: 'up',
+      left: 'right',
+      right: 'left'
+    }
+    this._currentFacingPosition = oppositeDirections[direction]
+    this.setFacingPosition()
   }
   get npcPositionOnDOM(): number[] {
     const { left, top } = this.domElement.style

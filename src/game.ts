@@ -24,9 +24,11 @@ export default class Game {
       [4, 6],
       this.taskQueue,
       'home',
+      this.level.isSceneTransition.bind(this.level),
       this.level.getSceneTransition.bind(this.level),
-      this.level.isSpaceWalkable.bind(this.level),
-      this.level.isSceneTransition.bind(this.level)
+      this.level.isInteraction.bind(this.level),
+      this.level.getInteraction.bind(this.level),
+      this.level.isSpaceWalkable.bind(this.level)
     )
     this.input = new Input(this.taskQueue)
   }

@@ -11,6 +11,8 @@ export class Player extends Observer {
   public getSceneTransition: Function
   public isSpaceWalkable: Function
   public isSceneTransition: Function
+  public isInteraction: Function
+  public getInteraction: Function
   private _taskQueue: TaskQueue
   private _acceptedTasks: Set<string>
   private _position: Position
@@ -24,9 +26,11 @@ export class Player extends Observer {
     grid: number[],
     taskQueue: TaskQueue,
     currentLevel: keyof Levels,
+    isSceneTransition: Function,
     getSceneTransition: Function,
-    isSpaceWalkable: Function,
-    isSceneTransition: Function
+    isInteraction: Function,
+    getInteraction: Function,
+    isSpaceWalkable: Function
   ) {
     super()
     this.sprite = new Sprite(name, path, grid)
@@ -44,6 +48,8 @@ export class Player extends Observer {
     this.getSceneTransition = getSceneTransition
     this.isSpaceWalkable = isSpaceWalkable
     this.isSceneTransition = isSceneTransition
+    this.isInteraction = isInteraction
+    this.getInteraction = getInteraction
   }
   handleUpdate({name, action}: Task): void {
     if(!this._acceptedTasks.has(name)) return
@@ -59,7 +65,7 @@ export class Player extends Observer {
       break
     }
   }
-  handleMovement(direction: keyof Movements): void {
+  getTargetedPosition(direction: keyof Movements): Position {
     const position: Position = { ...this._position }
     const movements: Movements = {
       up: p => p.y--,
@@ -68,11 +74,15 @@ export class Player extends Observer {
       right: p => p.x++
     }
     movements[direction](position)
+    return position
+  }
+  handleMovement(direction: keyof Movements): void {
+    const position = this.getTargetedPosition(direction)
     const { x, y } = position
     this.setFacingPosition(direction)
     if(!this.isSpaceWalkable(x, y)) return
     this.animator.play(direction)
-    movements[direction](this._position)
+    this._position = position
     this.updatePositionOnDOM(direction)
     if(this.isSceneTransition(x, y)) {
       this._taskQueue.addTask(
@@ -107,7 +117,16 @@ export class Player extends Observer {
     this.setPlayerPositionOnDom(x, y)
   }
   handleInteraction(): void {
-    console.log('interacting')
+    const { x, y } = this.getTargetedPosition(this._currentFacingPosition)
+    if(!this.isInteraction(x, y)) return
+    const interaction = this.getInteraction(x, y)
+    this._taskQueue.addTask(new Task(
+      `${interaction.type}-interaction`,
+      {
+        playerFacingPosition: this._currentFacingPosition,
+        ...interaction
+      }
+    ))
   }
   updatePositionOnDOM(direction: keyof Movements): void {
     let [ left, top ] = this.playerPositionOnDOM

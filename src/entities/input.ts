@@ -10,7 +10,7 @@ export class Input extends Observer {
   constructor(taskQueue: TaskQueue) {
     super()
     this._isDisabled = true
-    this._acceptedTasks = new Set(['scene-transition-start', 'scene-transition-end'])
+    this._acceptedTasks = new Set(['npc-interaction', 'scene-transition-start', 'scene-transition-end'])
     this._currentMode = 'walking'
     this._taskQueue = taskQueue
     this._keyTable = {
@@ -20,6 +20,9 @@ export class Input extends Observer {
         's': ['movement', 'down'],
         'd': ['movement', 'right'],
         ' ': ['interaction', null]
+      },
+      dialogue: {
+        ' ': ['dialogue', null]
       }
     }
   }
@@ -38,7 +41,13 @@ export class Input extends Observer {
       case 'scene-transition-end':
         this.handleSceneTransitionEnd()
       break
+      case 'npc-interaction':
+        this.handleNPCInteraction()
+      break
     }
+  }
+  handleNPCInteraction(): void {
+    this._currentMode = 'dialogue'
   }
   handleSceneTransitionStart(): void {
     this.isDisabled = true

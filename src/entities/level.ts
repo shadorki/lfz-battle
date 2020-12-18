@@ -1,7 +1,7 @@
 import { levels } from '../data'
 import { Observer } from '.'
 import { Task } from '../helpers'
-import { Position, SceneTransition, Tile } from '../interfaces'
+import { Interaction, Position, SceneTransition, Tile } from '../interfaces'
 
 export class Level extends Observer {
   public _acceptedTasks: Set<string>
@@ -40,6 +40,9 @@ export class Level extends Observer {
   getSceneTransition(x: number, y:number): SceneTransition {
     return this.getTile(x, y).sceneTransition
   }
+  getInteraction(x: number, y: number): Interaction {
+    return this.getTile(x, y).interaction
+  }
   isSpaceWalkable(x: number, y: number): boolean {
     if(!this.getTile(x, y)) return false
     return this.getTile(x, y).isWalkable
@@ -47,6 +50,10 @@ export class Level extends Observer {
   isSceneTransition(x: number, y: number): boolean {
     if (!this.getTile(x, y).sceneTransition) return false
     return !!this.getTile(x, y).sceneTransition
+  }
+  isInteraction(x: number, y: number): boolean {
+    if (!this.getTile(x, y).interaction) return false
+    return !!this.getTile(x, y).interaction
   }
   triggerDebugView(): void {
     for(const tile in this.grid) {

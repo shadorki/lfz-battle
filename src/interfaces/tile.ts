@@ -1,8 +1,9 @@
-import { SceneTransition } from "./";
+import { SceneTransition, Interaction } from "./";
 
 export interface Tile {
   x: number,
   y: number,
   isWalkable: boolean,
-  sceneTransition?: SceneTransition
+  sceneTransition?: SceneTransition,
+  interaction?: Interaction
 }

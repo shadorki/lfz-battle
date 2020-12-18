@@ -1798,7 +1798,11 @@
   "21/6": {
     "x": 21,
     "y": 6,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Kevin"
+    }
   },
   "20/7": {
     "x": 20,
