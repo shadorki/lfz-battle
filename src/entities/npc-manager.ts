@@ -18,7 +18,7 @@ export class NPCManager extends Observer {
     this._currentLevel = currentLevel
     this._npcs = {}
     this.npcData = npcData[currentLevel]
-    this._acceptedTasks = new Set(['npc-movement', 'npc-interaction', 'scene-transition-start'])
+    this._acceptedTasks = new Set(['npc-movement', 'npc-interaction-start', 'scene-transition-start'])
   }
   get npcs(): NPC[] {
     return this._npcs[this._currentLevel]
@@ -32,15 +32,15 @@ export class NPCManager extends Observer {
       case 'npc-movement':
         this.handleNPCMovement(action as keyof Movements)
       break
-      case 'npc-interaction':
-        this.handleNPCInteraction(action)
+      case 'npc-interaction-start':
+        this.handleNPCInteractionStart(action)
       break
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)
       break
     }
   }
-  handleNPCInteraction(action: any): void {
+  handleNPCInteractionStart(action: any): void {
     const { name, playerFacingPosition } = action
     const npc = this.npcs.find(npc => npc.name === name)
     npc.faceTowardsPlayer(playerFacingPosition)

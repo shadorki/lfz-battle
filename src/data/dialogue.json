@@ -1,0 +1,46 @@
+{
+  "home": {
+    "Kevin": [
+      {
+        "isTrigger": false,
+        "text": "Ssssh, they're teaching JavaScript in there."
+      },
+      {
+        "isTrigger": false,
+        "text": "The instructor laughs like Seth Rogan and it's really interesting to watch."
+      },
+      {
+        "isTrigger": false,
+        "text": "I'm hoping I can learn enough about programming so I can take on the gym leaders."
+      },
+      {
+        "isTrigger": true,
+        "type": "npc-interaction-end"
+      }
+    ]
+  },
+  "gymEntrance": {
+    "Cassandra": [
+      {
+        "isTrigger": false,
+        "text": "Hullloooo!"
+      },
+      {
+        "isTrigger": false,
+        "text": "Welcome to the LFZ Gym."
+      },
+      {
+        "isTrigger": false,
+        "text": "You can battle the leaders of LFZ and see what it takes to become a programming master."
+      },
+      {
+        "isTrigger": false,
+        "text": "Just walk through the door above to start the challenge."
+      },
+      {
+        "isTrigger": true,
+        "type": "npc-interaction-end"
+      }
+    ]
+  }
+}

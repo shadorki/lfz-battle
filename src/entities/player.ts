@@ -121,7 +121,7 @@ export class Player extends Observer {
     if(!this.isInteraction(x, y)) return
     const interaction = this.getInteraction(x, y)
     this._taskQueue.addTask(new Task(
-      `${interaction.type}-interaction`,
+      `${interaction.type}-interaction-start`,
       {
         playerFacingPosition: this._currentFacingPosition,
         ...interaction
