@@ -26,7 +26,6 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(0.5, 0.5, 0.5, .5);
   box-shadow: 10px 10px 5px black;
   width: 640px;
   height: 384px;
@@ -35,10 +34,85 @@ body {
   image-rendering: pixelated;
   transition-duration: 500ms;
 }
+.battle-arena-backdrop {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+.battle-arena-container {
+  background-image: url('./assets/images/maps/battle-backgrounds.png');
+  background-repeat: no-repeat;
+  width: 640px;
+  height: 299px;
+  position: relative;
+}
+.enemy, .player {
+  height: 128px;
+  width: 128px;
+  position: absolute;
+}
+.player {
+  background-image: url('./assets/images/players/player-back.png');
+  bottom: 0;
+  left: 64px;
+}
+.enemy {
+  background-image: url('./assets/images/players/gym-leaders.png');
+  top: 64px;
+  right: 96px;
+}
+.ui {
+  position: absolute;
+  width: 350px;
+  height: 100px;
+  border-radius: 6px 2px;
+  border: 3px solid black;
+  background-color: beige;
+}
+.player-ui {
+  bottom: 2px;
+  right: 2px;
+}
+.enemy-ui {
+  top: 2px;
+  left: 2px;
+}
 .space {
   height: 64px;
   width: 32px;
   position: absolute;
   box-sizing: border-box;
   border: 1px solid black;
+}
+.player-health-bar-container,
+.enemy-health-bar-container {
+  position: absolute;
+  height: 100px;
+  width: 20px;
+  border: 2px solid black;
+}
+.player-health-bar-container {
+  left: 2px;
+  bottom: 2px;
+}
+.enemy-health-bar-container {
+  right: 2px;
+  top: 2px;
+}
+.enemy-health {
+  background-color: red;
+  height: 100%;
+}
+.player-health {
+  background-color: green;
+  height: 100%;
+}
+.hidden {
+  display: none;
 }
