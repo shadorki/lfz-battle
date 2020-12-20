@@ -2,9 +2,10 @@ import { Question } from "./";
 
 export interface QuestionData {
   name: string
+  title: string
   openingMessage: string
   level: number
-  battleBackground: string
+  arena: string
   losingMessage: string
   winningMessage: string
   questions: Question[]

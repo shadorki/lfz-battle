@@ -1,4 +1,4 @@
-import { Task, TaskQueue } from '../../helpers'
+import { Delay, Task, TaskQueue } from '../../helpers'
 import { Observer } from '../'
 import { battleData } from '../../data'
 import { BattleComponents, BattleData, Levels, Question, QuestionData } from '../../interfaces'
@@ -17,18 +17,22 @@ export class Battle extends Observer {
   private _taskQueue: TaskQueue
   private _currentLevel: keyof Levels
   private _currentQuestions: Question[]
-  private _currentQuestionData: QuestionData
+  private _currentQuestion: Question
+  private _currentLevelQuestionData: {
+    [key: string]: QuestionData
+  }
+  private _selectedQuestionData: QuestionData
   private _battleData: BattleData
   private _battleComponents: BattleComponents
-  private _startingBattleLifeCycle: string[]
   constructor(taskQueue: TaskQueue, currentLevel: keyof Levels) {
     super()
-    this._acceptedTasks = new Set(['battle-start'])
+    this._acceptedTasks = new Set(['scene-transition-start','battle-start'])
     this._currentLevel = currentLevel
     this._taskQueue = taskQueue
     this._battleData = battleData
-    this._currentQuestionData = battleData[currentLevel]
+    this._currentLevelQuestionData = battleData[currentLevel]
     this._currentQuestions = null
+    this._selectedQuestionData = null
     this.handlePlayerDeath = this.handlePlayerDeath.bind(this)
     this.handleEnemyDeath = this.handleEnemyDeath.bind(this)
     this._battleComponents = {
@@ -41,17 +45,6 @@ export class Battle extends Observer {
       playerHP: new HP(true, this.handlePlayerDeath),
       enemyHP: new HP(false, this.handleEnemyDeath)
     }
-    this._startingBattleLifeCycle = [
-      'setupBackdrop',
-      'setupBattleBackground',
-      'loadInCharacters',
-      'loadEnemyUI',
-      'showStartingMessage',
-      'showOpeningMessage',
-      'loadHealthBars',
-      'beginQuestion',
-      'loadPlayerUI'
-    ]
   }
   handleUpdate({ name, action }: Task): void {
     if (!this._acceptedTasks.has(name)) return
@@ -59,13 +52,76 @@ export class Battle extends Observer {
       case 'battle-start':
         this.handleBattleStart(action)
         break
+      case 'scene-transition-start':
+        this.handleSceneTransitionStart(action)
+        break;
     }
   }
-  handleBattleStart(action: any): void {
-    throw new Error('Method not implemented.')
+  handleSceneTransitionStart({ level }: any): void {
+    this._currentLevel = level
+    this._currentLevelQuestionData = battleData[level]
+  }
+  async handleBattleStart({ fighter }: any): Promise<void> {
+    if (!this._currentLevelQuestionData) throw new Error('Missing questions for this map.')
+    this._selectedQuestionData = this._currentLevelQuestionData[fighter]
+    if (!this._selectedQuestionData) throw new Error('Missing questions for this fighter.')
+    this._currentQuestions = [...this._selectedQuestionData.questions]
+    this.shuffleQuestions()
+    this._currentQuestion = this._currentQuestions.shift()
+    const  {
+      arena,
+      backdrop,
+      enemyFighter,
+      enemyUI,
+      playerFighter,
+      playerUI,
+      playerHP,
+      enemyHP
+    } = this._battleComponents
+    const {
+      arena: background,
+      name,
+      damageToEnemy,
+      damageToPlayer,
+      title,
+      openingMessage,
+    } = this._selectedQuestionData
+    arena.set(background)
+    enemyFighter.set(name)
+    enemyHP.setDamageCounter(damageToEnemy)
+    playerHP.setDamageCounter(damageToPlayer)
+    playerUI.setAnswers(this._currentQuestion.answers)
+    backdrop.show()
+    await Delay.delay(500)
+    arena.show()
+    await Delay.delay(500)
+    playerFighter.show()
+    enemyFighter.show()
+    await Delay.delay(500)
+    enemyUI.show()
+    await Delay.delay(500)
+    await enemyUI.writeText(`${title} ${name} challenges you to a battle!`)
+    await Delay.delay(500)
+    playerHP.show()
+    enemyHP.show()
+    await Delay.delay(500)
+    await enemyUI.writeText(openingMessage)
+    await Delay.delay(1000)
+    await enemyUI.writeText(this._currentQuestion.question)
+    await Delay.delay(500)
+    playerUI.show()
+    console.log('continue')
   }
   handlePlayerDeath(): void { }
   handleEnemyDeath(): void {}
+  shuffleQuestions(): void {
+    for(let i = 0; i < this._currentQuestions.length; i++) {
+      const randomNum = Math.floor(Math.random() * this._currentQuestions.length)
+      const placeHolder = this._currentQuestions[i]
+      this._currentQuestions[i] = this._currentQuestions[randomNum]
+      this._currentQuestions[randomNum] = placeHolder
+    }
+  }
   // writeText() {
   //   this.content = ''
   //   this._writingIntervalId = window.setInterval(() => {

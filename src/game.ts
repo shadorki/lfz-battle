@@ -1,5 +1,6 @@
 import Engine from './engine'
 import { Camera, Player, Level, Input, NPCManager, Dialogue } from './entities'
+import Battle from './entities/battle'
 import { TaskQueue } from './helpers'
 
 export default class Game {
@@ -12,6 +13,7 @@ export default class Game {
   dialogue: Dialogue
   camera: Camera
   player: Player
+  battle: Battle
   constructor() {
     this.$root = document.getElementById('root')
     this.taskQueue = new TaskQueue()
@@ -20,6 +22,7 @@ export default class Game {
     this.npcManager = new NPCManager('home', this.$root)
     this.camera = new Camera(this.taskQueue, 640, 384, this.$root, 'home')
     this.dialogue = new Dialogue(this.taskQueue, 'home')
+    this.battle = new Battle(this.taskQueue, 'home')
     this.player = new Player(
       'MC',
       './assets/images/players/player.png',
@@ -46,6 +49,7 @@ export default class Game {
     this.setupDOM(playerElement, cameraElement, dialogueElement,...npcElements)
     this.input.init()
     this.engine.addObserver(this.camera)
+    this.engine.addObserver(this.battle)
     this.engine.addObserver(this.player)
     this.engine.addObserver(this.dialogue)
     this.engine.addObserver(this.npcManager)

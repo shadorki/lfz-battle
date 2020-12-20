@@ -50,7 +50,7 @@ export class Arena extends BattleComponent {
       }
     })
   }
-  setBackground(arena: string): void {
+  set(arena: string): void {
     this._selectedBackgroundPosition = this._arenaBackgrounds[arena]
     const [x, y] = this._selectedBackgroundPosition
     this._arenaElement.style.backgroundPosition = `${x}px ${y}px`

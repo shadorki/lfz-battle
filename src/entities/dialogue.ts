@@ -19,7 +19,7 @@ export class Dialogue extends Observer {
   private _isShowing: boolean
   constructor(taskQueue: TaskQueue, currentLevel: keyof Levels) {
     super()
-    this._acceptedTasks = new Set(['npc-interaction-start', 'scene-transition-start', 'dialogue', 'npc-interaction-end'])
+    this._acceptedTasks = new Set(['npc-interaction-start', 'scene-transition-start', 'dialogue', 'npc-interaction-end', 'battle-start'])
     this._currentLevel = currentLevel
     this._currentDialogue = []
     this._writingIntervalId = null
@@ -45,6 +45,9 @@ export class Dialogue extends Observer {
       break
       case 'dialogue':
         this.handleDialogue()
+      break
+      case 'battle-start':
+        this.handleNPCInteractionEnd()
       break
     }
   }

@@ -4,7 +4,7 @@ export abstract class Fighter extends BattleComponent {
   private _classBase: string
   private _movingPosition: string[]
   private _isShowing: boolean
-  private _characterContainer: HTMLElement
+  public _characterContainer: HTMLElement
   constructor(
     isPlayer: boolean
   ) {

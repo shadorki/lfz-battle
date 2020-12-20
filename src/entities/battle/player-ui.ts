@@ -14,7 +14,7 @@ export class PlayerUI extends UI {
     this._selectedAnswer = 0
     this.addSelectedClass()
   }
-  setAnswers(answers: string) {
+  setAnswers(answers: string[]) {
     for(let i = 0; i < answers.length; i++) {
       this._answerElements[i].textContent = answers[i]
     }

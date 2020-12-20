@@ -1,10 +1,11 @@
 {
-  "gymArena1PreBattle": [
-    {
+  "gymArena1PreBattle": {
+    "Brett": {
       "name": "Brett",
+      "title": "INSTRUCTOR",
       "openingMessage": "Get ready for some HTML questions good sir!",
       "level": 45,
-      "battleBackground": "normal",
+      "arena": "normal",
       "damageToEnemy": 10,
       "damageToPlayer": 10,
       "losingMessage": "Sorry good sir, come back after some prep!",
@@ -374,5 +375,5 @@
         }
       ]
     }
-  ]
+  }
 }

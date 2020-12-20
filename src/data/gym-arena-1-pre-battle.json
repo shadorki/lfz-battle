@@ -163,7 +163,11 @@
   "6/2": {
     "x": 6,
     "y": 2,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Brett"
+    }
   },
   "7/2": {
     "x": 7,

@@ -1,5 +1,4 @@
 import { BattleComponent } from "."
-
 export class HP extends BattleComponent{
   private _health: number
   private _damage: number

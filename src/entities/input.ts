@@ -10,7 +10,13 @@ export class Input extends Observer {
   constructor(taskQueue: TaskQueue) {
     super()
     this._isDisabled = true
-    this._acceptedTasks = new Set(['npc-interaction-start', 'npc-interaction-end', 'scene-transition-start', 'scene-transition-end'])
+    this._acceptedTasks = new Set([
+      'npc-interaction-start',
+      'npc-interaction-end',
+      'scene-transition-start',
+      'scene-transition-end',
+      'battle-start'
+    ])
     this._currentMode = 'walking'
     this._taskQueue = taskQueue
     this._keyTable = {
@@ -47,7 +53,13 @@ export class Input extends Observer {
       case 'npc-interaction-end':
         this.handleNPCInteractionEnd()
       break
+      case 'battle-start':
+        this.handleBattleStart()
+      break
     }
+  }
+  handleBattleStart() {
+    this.isDisabled = true
   }
   handleNPCInteractionEnd() {
     this._currentMode = 'walking'

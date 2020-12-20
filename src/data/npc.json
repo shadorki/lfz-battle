@@ -28,10 +28,10 @@
       "name": "Brett",
       "path": "./assets/images/players/npc-nerd.png",
       "startingPosition": {
-        "x": 0,
-        "y": 3
+        "x": 6,
+        "y": 2
       },
-      "positionOnDOM": [-64, -128],
+      "positionOnDOM": [288, 64],
       "facingPosition": "down"
     }
   ]

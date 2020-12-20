@@ -42,5 +42,44 @@
         "type": "npc-interaction-end"
       }
     ]
+  },
+  "gymArena1PreBattle": {
+    "Brett": [
+      {
+        "isTrigger": false,
+        "text": "Hello Good sir!"
+      },
+      {
+        "isTrigger": false,
+        "text": "I am the first leader of LFZ."
+      },
+      {
+        "isTrigger": false,
+        "text": "I will be asking several questions related to HTML."
+      },
+      {
+        "isTrigger": false,
+        "text": "Every question you answer incorrectly you will take damage."
+      },
+      {
+        "isTrigger": false,
+        "text": "And of course every question your answer correctly I will take damage."
+      },
+      {
+        "isTrigger": false,
+        "text": "Oh! and if you don't defeat me before I run out of questions, you lose."
+      },
+      {
+        "isTrigger": false,
+        "text": "Hope you studied."
+      },
+      {
+        "isTrigger": true,
+        "type": "battle-start",
+        "action": {
+          "fighter": "Brett"
+        }
+      }
+    ]
   }
 }

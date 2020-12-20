@@ -70,7 +70,7 @@ body {
   left: -128px;
 }
 .enemy {
-  background-image: url('./assets/images/players/gym-leaders.png');
+  background-image: url('./assets/images/players/fighters.png');
   top: 64px;
   right: -128px;
 }
