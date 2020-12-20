@@ -61,12 +61,12 @@ export class Dialogue extends Observer {
       this._currentWritingText = []
       return
     }
-    const { text, isTrigger, type } = this._currentDialogue.shift()
+    const { text, isTrigger, type, action } = this._currentDialogue.shift()
     if(isTrigger) {
       this._taskQueue.addTask(
         new Task(
           type,
-          null
+          action || null
         )
       )
       return

@@ -1,0 +1,378 @@
+{
+  "gymArena1PreBattle": [
+    {
+      "name": "Brett",
+      "openingMessage": "Get ready for some HTML questions good sir!",
+      "health": 100,
+      "level": 45,
+      "enemyBackgroundPosition": [0, 0],
+      "battleBackgroundPosition": [0, 0],
+      "losingMessage": "Sorry good sir, come back after some prep!",
+      "winningMessage": "Good sir, Cody is going to love you!",
+      "questions": [
+        {
+          "question": "What does HTML Stand for?",
+          "answers": [
+            "Home Tool Markup Language",
+            "Hyper Text Markup Language",
+            "Hyperlinks and Text Markup Language",
+            "Hyper Transfer Markup Language"
+          ],
+          "correct": 1
+        },
+        {
+          "question": "Who is making the Web standards?",
+          "answers": [
+            "The World Wide Web Consortium",
+            "Microsoft",
+            "Mozilla",
+            "Google"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "Choose the correct HTML element for the largest heading:",
+          "answers": [
+            "<h1>",
+            "<h6>",
+            "<head>",
+            "<heading>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "What is the correct HTML element for inserting a line break?",
+          "answers": [
+            "<lb>",
+            "<br>",
+            "<break>",
+            "<hr>"
+          ],
+          "correct": 1
+        },
+        {
+          "question": "What is the correct HTML for adding a background color?",
+          "answers": [
+            "<body bg=\"yellow\">",
+            "<body style=\"background-color:yellow;\">",
+            "<background>yellow</background>",
+            "<background=\"yellow\"></background>"
+          ],
+          "correct": 1
+        },
+        {
+          "question": "Choose the correct HTML element to define important text",
+          "answers": [
+            "<strong>",
+            "<i>",
+            "<b>",
+            "<important>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "Choose the correct HTML element to define emphasized text",
+          "answers": [
+            "<em>",
+            "<italic>",
+            "<i>",
+            "<emphasize>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "What is the correct HTML for creating a hyperlink?",
+          "answers": [
+            "<a href=\"url\">text</a>",
+            "<a>url</a>",
+            "<a name=\"url\">text.com</a>",
+            "<a url=\"url\">text.com</a>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "Which character is used to indicate an end tag?",
+          "answers": [
+            "<",
+            "^",
+            "*",
+            "/"
+          ],
+          "correct": 3
+        },
+        {
+          "question": "How can you open a link in a new tab/browser window?",
+          "answers": [
+            "<a href=\"url\" target=\"_blank\">",
+            "<a href=\"url\" new>",
+            "<a href=\"url\" target=\"new\">",
+            "<a href=\"url\" target=\"_page\">"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "How can you make a numbered list?",
+          "answers": [
+            "<ol>",
+            "<list>",
+            "<ul>",
+            "<dl>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "How can you make a bulleted list?",
+          "answers": [
+            "<dl>",
+            "<list>",
+            "<ol>",
+            "<ul>"
+          ],
+          "correct": 3
+        },
+        {
+          "question": "What is the correct HTML for making a checkbox?",
+          "answers": [
+            "<check>",
+            "<input type=\"checkbox\">",
+            "<input type=\"check\">",
+            "<checkbox>"
+          ],
+          "correct": 1
+        },
+        {
+          "question": "What is the correct HTML for making a text input field?",
+          "answers": [
+            "<input type=\"text\">",
+            "<textinput type=\"text\">",
+            "<textfield>",
+            "<input type=\"textfield\">"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "What is the correct HTML for making a drop-down list?",
+          "answers": [
+            "<select>",
+            "<input type=\"dropdown\">",
+            "<input type=\"list\">",
+            "<list>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "What is the correct HTML for making a text area?",
+          "answers": [
+            "<input type=\"textarea\">",
+            "<textarea>",
+            "<input type=\"textbox\">"
+          ],
+          "correct": 1
+        },
+        {
+          "question": "What is the correct HTML for inserting an image?",
+          "answers": [
+            "<image src=\"image.gif\" alt=\"MyImage\">",
+            "<img alt=\"MyImage\">image.gif</img>",
+            "<img href=\"image.gif\" alt=\"MyImage\">",
+            "<img src=\"image.gif\" alt=\"MyImage\">"
+          ],
+          "correct": 3
+        },
+        {
+          "question": "What is the correct HTML for inserting a background image?",
+          "answers": [
+            "<body style=\"background-image:url(background.gif)\">",
+            "<background img=\"background.gif\">",
+            "<body bg=\"background.gif\">"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "An <iframe> is used to display a web page within a web page.",
+          "answers": [
+            "False",
+            "There is no such thing as an <iframe>",
+            "True"
+          ],
+          "correct": 2
+        },
+        {
+          "question": "HTML comments start with <!-- and end with -->",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "Block elements are normally displayed without starting a new line.",
+          "answers": [
+            "False",
+            "True"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "Which HTML element defines the title of a document?",
+          "answers": [
+            "<head>",
+            "<meta>",
+            "<title>"
+          ],
+          "correct": 2
+        },
+        {
+          "question": "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",
+          "answers": [
+            "title",
+            "src",
+            "longdesc",
+            "alt"
+          ],
+          "correct": 3
+        },
+        {
+          "question": "Which doctype is correct for HTML5?",
+          "answers": [
+            "<!DOCTYPE html>",
+            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 5.0//EN\" \"http://www.w3.org/TR/html5/strict.dtd\">",
+            "<!DOCTYPE HTML5>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "Which HTML element is used to specify a footer for a document or section?",
+          "answers": [
+            "<footer>",
+            "<section>",
+            "<bottom>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "In HTML, you can embed SVG elements directly into an HTML page.",
+          "answers": [
+            "False",
+            "True"
+          ],
+          "correct": 1
+        },
+        {
+          "question": "What is the correct HTML element for playing video files?",
+          "answers": [
+            "<movie>",
+            "<video>",
+            "<media>"
+          ],
+          "correct": 1
+        },
+        {
+          "question": "What is the correct HTML element for playing audio files?",
+          "answers": [
+            "<sound>",
+            "<mp3>",
+            "<audio>"
+          ],
+          "correct": 2
+        },
+        {
+          "question": "The HTML global attribute, \"contenteditable\" is used to:",
+          "answers": [
+            "Specify whether the content of an element should be editable or not",
+            "Update content from the server",
+            "Specifies a context menu for an element. The menu appears when a user right-clicks on the element",
+            "Return the position of the first found occurrence of content inside a string"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "In HTML, onblur and onfocus are:",
+          "answers": [
+            "HTML elements",
+            "Style attributes",
+            "Event attributes"
+          ],
+          "correct": 2
+        },
+        {
+          "question": "Graphics defined by SVG is in which format?",
+          "answers": [
+            "XML",
+            "CSS",
+            "HTML"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "The HTML <canvas> element is used to:",
+          "answers": [
+            "draw graphics",
+            "manipulate data in MySQL",
+            "create draggable elements",
+            "display database records"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "In HTML, which attribute is used to specify that an input field must be filled out?",
+          "answers": [
+            "formvalidate",
+            "placeholder",
+            "required",
+            "validate"
+          ],
+          "correct": 2
+        },
+        {
+          "question": "Which input type defines a slider control?",
+          "answers": [
+            "search",
+            "slider",
+            "controls",
+            "range"
+          ],
+          "correct": 3
+        },
+        {
+          "question": "Which HTML element is used to display a scalar measurement within a range?",
+          "answers": [
+            "<meter>",
+            "<measure>",
+            "<gauge>",
+            "<range>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "Which HTML element defines navigation links?",
+          "answers": [
+            "<nav>",
+            "<navigation>",
+            "<navigate>"
+          ],
+          "correct": 0
+        },
+        {
+          "question": "In HTML, what does the <aside> element define?",
+          "answers": [
+            "A navigation list to be shown at the left side of the page",
+            "Content aside from the page content",
+            "The ASCII character-set; to send information between computers on the Internet"
+          ],
+          "correct": 1
+        },
+        {
+          "question": "Which HTML element is used to specify a header for a document or section?",
+          "answers": [
+            "<header>",
+            "<top>",
+            "<section>",
+            "<head>"
+          ],
+          "correct": 0
+        }
+      ]
+    }
+  ]
+}
