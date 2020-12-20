@@ -14,6 +14,20 @@ export abstract class Fighter extends BattleComponent {
     this._isShowing = false
     this._movingPosition = isPlayer ? ['left', '64px'] : ['right', '96px']
   }
+  async damage(): Promise<void> {
+    let blinks: number = 6
+    let intervalId: number = null
+    return new Promise(resolve => {
+      intervalId = window.setInterval(() => {
+        if(!blinks) {
+          clearInterval(intervalId)
+          return resolve()
+        }
+        this._characterContainer.style.opacity = (blinks % 2).toString()
+        blinks--
+      }, 100)
+    })
+  }
   get isShowing(): boolean {
     return this._isShowing
   }

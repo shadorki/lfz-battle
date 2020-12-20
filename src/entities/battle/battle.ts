@@ -65,7 +65,7 @@ export class Battle extends Observer {
       this._taskQueue.addTask(
         new Task('disable-input')
       )
-      const { playerUI, enemyUI, playerHP, enemyHP } = this._battleComponents
+      const { playerUI, enemyUI, playerHP, enemyHP, playerFighter, enemyFighter } = this._battleComponents
       const isCorrect = playerUI.selectedAnswer === this._currentQuestion.correct
       this._currentQuestion = this._currentQuestions.shift()
 
@@ -73,10 +73,13 @@ export class Battle extends Observer {
       ? playerUI.setCorrect()
       : playerUI.setWrong()
       await Delay.delay(500)
-
-      isCorrect
-      ? enemyHP.damage()
-      : playerHP.damage()
+      if(isCorrect) {
+        enemyHP.damage()
+        await enemyFighter.damage()
+      } else {
+        playerHP.damage()
+        await playerFighter.damage()
+      }
       await Delay.delay(500)
 
       playerUI.hide()

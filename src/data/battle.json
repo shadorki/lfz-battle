@@ -5,7 +5,7 @@
       "title": "INSTRUCTOR",
       "openingMessage": "Get ready for some HTML questions good sir!",
       "level": 45,
-      "arena": "normal",
+      "arena": "ice",
       "damageToEnemy": 10,
       "damageToPlayer": 10,
       "losingMessage": "Sorry good sir, come back after some prep!",
@@ -273,7 +273,8 @@
           "answers": [
             "<sound>",
             "<mp3>",
-            "<audio>"
+            "<audio>",
+            "<mov>"
           ],
           "correct": 2
         },
