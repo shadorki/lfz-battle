@@ -15,7 +15,10 @@ export class Input extends Observer {
       'npc-interaction-end',
       'scene-transition-start',
       'scene-transition-end',
-      'battle-start'
+      'battle-start',
+      'battle-navigate-answer',
+      'disable-input',
+      'enable-input'
     ])
     this._currentMode = 'walking'
     this._taskQueue = taskQueue
@@ -29,6 +32,11 @@ export class Input extends Observer {
       },
       dialogue: {
         ' ': ['dialogue', null]
+      },
+      battle: {
+        'w': ['battle', 'selectPreviousAnswer'],
+        's': ['battle', 'selectNextAnswer'],
+        ' ': ['battle', null]
       }
     }
   }
@@ -56,7 +64,26 @@ export class Input extends Observer {
       case 'battle-start':
         this.handleBattleStart()
       break
+      case 'battle-navigate-answer':
+        this.handleBattleNavigateAnswer()
+      break
+      case 'disable-input':
+        this.handleDisableInput()
+      break
+      case 'enable-input':
+        this.handleEnableInput()
+      break
     }
+  }
+  handleDisableInput() {
+    this.isDisabled = true
+  }
+  handleEnableInput() {
+    this.isDisabled = false
+  }
+  handleBattleNavigateAnswer(): void {
+    this.isDisabled = false
+    this._currentMode = 'battle'
   }
   handleBattleStart() {
     this.isDisabled = true

@@ -9,7 +9,14 @@ export class PlayerUI extends UI {
     this._answerElements = [...this._uiContainer.querySelectorAll('[data-answer]') as any]
     this._selectedAnswer = 0
   }
+  setCorrect() {
+    this._answerElements[this._selectedAnswer].classList.add('correct')
+  }
+  setWrong() {
+    this._answerElements[this._selectedAnswer].classList.add('wrong')
+  }
   resetSelection() {
+    this._answerElements.forEach(a => a.classList.remove('correct', 'wrong'))
     this.removeSelectedClass()
     this._selectedAnswer = 0
     this.addSelectedClass()

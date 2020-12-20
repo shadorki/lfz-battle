@@ -26,7 +26,7 @@ export class Battle extends Observer {
   private _battleComponents: BattleComponents
   constructor(taskQueue: TaskQueue, currentLevel: keyof Levels) {
     super()
-    this._acceptedTasks = new Set(['scene-transition-start','battle-start'])
+    this._acceptedTasks = new Set(['scene-transition-start','battle-start', 'battle'])
     this._currentLevel = currentLevel
     this._taskQueue = taskQueue
     this._battleData = battleData
@@ -55,6 +55,44 @@ export class Battle extends Observer {
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)
         break;
+      case 'battle':
+        this.handleBattle(action)
+        break;
+    }
+  }
+  async handleBattle(action: any): Promise<void> {
+    if(!action) {
+      this._taskQueue.addTask(
+        new Task('disable-input')
+      )
+      const { playerUI, enemyUI, playerHP, enemyHP } = this._battleComponents
+      const isCorrect = playerUI.selectedAnswer === this._currentQuestion.correct
+      this._currentQuestion = this._currentQuestions.shift()
+
+      isCorrect
+      ? playerUI.setCorrect()
+      : playerUI.setWrong()
+      await Delay.delay(500)
+
+      isCorrect
+      ? enemyHP.damage()
+      : playerHP.damage()
+      await Delay.delay(500)
+
+      playerUI.hide()
+      await Delay.delay(500)
+      playerUI.resetSelection()
+      playerUI.setAnswers(this._currentQuestion.answers)
+      await enemyUI.writeText(this._currentQuestion.question)
+      await Delay.delay(500)
+      playerUI.show()
+      this._taskQueue.addTask(
+        new Task(
+          'enable-input'
+        )
+      )
+    } else {
+      this._battleComponents.playerUI[action]()
     }
   }
   handleSceneTransitionStart({ level }: any): void {
@@ -110,7 +148,12 @@ export class Battle extends Observer {
     await enemyUI.writeText(this._currentQuestion.question)
     await Delay.delay(500)
     playerUI.show()
-    console.log('continue')
+    this._taskQueue.addTask(
+      new Task(
+        'battle-navigate-answer',
+        null
+      )
+    )
   }
   handlePlayerDeath(): void { }
   handleEnemyDeath(): void {}
