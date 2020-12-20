@@ -44,6 +44,8 @@ body {
   background-color: black;
   display: flex;
   align-items: center;
+  opacity: 0;
+  transition: opacity 500ms;
 }
 .battle-arena-container {
   background-image: url('./assets/images/maps/battle-backgrounds.png');
@@ -51,6 +53,11 @@ body {
   width: 640px;
   height: 299px;
   position: relative;
+  opacity: 0;
+  transition: opacity 500ms;
+}
+.battle-arena-container > * {
+  transition: right 500ms, left 500ms;
 }
 .enemy, .player {
   height: 128px;
@@ -77,11 +84,20 @@ body {
 }
 .player-ui {
   bottom: 2px;
-  right: 2px;
+  right: -360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .enemy-ui {
   top: 2px;
-  left: 2px;
+  left: -360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.enemy-ui > .content {
+  text-align: center;
 }
 .space {
   height: 64px;
@@ -105,13 +121,26 @@ body {
   right: 2px;
   top: 2px;
 }
+.enemy-health,
+.player-health {
+  height: 100%;
+  transition: height 500ms;
+  font-size: .7rem;
+  text-align: center;
+}
 .enemy-health {
   background-color: red;
-  height: 100%;
 }
 .player-health {
   background-color: green;
-  height: 100%;
+}
+[data-answer] {
+  padding: 2px;
+  font-size: .8rem;
+}
+[data-answer].selected {
+  border: 1px solid gold;
+  border-radius: 3px;
 }
 .hidden {
   display: none;

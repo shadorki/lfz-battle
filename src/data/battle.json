@@ -3,10 +3,11 @@
     {
       "name": "Brett",
       "openingMessage": "Get ready for some HTML questions good sir!",
-      "health": 100,
       "level": 45,
       "enemyBackgroundPosition": [0, 0],
       "battleBackgroundPosition": [0, 0],
+      "damageToEnemy": 10,
+      "damageToPlayer": 10,
       "losingMessage": "Sorry good sir, come back after some prep!",
       "winningMessage": "Good sir, Cody is going to love you!",
       "questions": [

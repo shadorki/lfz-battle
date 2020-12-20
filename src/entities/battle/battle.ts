@@ -1,7 +1,8 @@
-import { Task, TaskQueue } from '../helpers'
-import { Observer } from './'
-import { battleData } from '../data'
-import { BattleData, Levels, Question, QuestionData } from '../interfaces'
+import { Task, TaskQueue } from '../../helpers'
+import { Observer } from '../'
+import { battleData } from '../../data'
+import { BattleData, Levels, Question, QuestionData } from '../../interfaces'
+import { HP } from '.'
 
 export class Battle extends Observer {
   private _acceptedTasks: Set<string>
@@ -11,6 +12,19 @@ export class Battle extends Observer {
   private _currentQuestionData: QuestionData
   private _battleData: BattleData
   private _startingBattleLifeCycle: string[]
+  private _playerHP: HP
+  private _enemyHP: HP
+  private _playerUI: UI
+  private _battleBackDrop: HTMLElement
+  private _battleAreaContainer: HTMLElement
+  private _enemyCharacter: HTMLElement
+  private _enemyHealthBarContainer: HTMLElement
+  private _enemyHealthbar: HTMLElement
+  private _playerCharacter: HTMLElement
+  private _playerHealthBarContainer: HTMLElement
+  private _playerHealthBar: HTMLElement
+  private _enemyUIContainer: HTMLElement
+  private _playerUIContainer: HTMLElement
   constructor(taskQueue: TaskQueue, currentLevel: keyof Levels) {
     super()
     this._acceptedTasks = new Set(['battle-start'])
