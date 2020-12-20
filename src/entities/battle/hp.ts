@@ -1,4 +1,6 @@
-export class HP {
+import { BattleComponent } from "."
+
+export class HP extends BattleComponent{
   private _health: number
   private _damage: number
   private _classBase: string
@@ -9,17 +11,20 @@ export class HP {
   private _healthToZeroCB: Function
   constructor(
     isPlayer: boolean,
-    damage: number,
     healthToZeroCB: Function
   ) {
+    super()
     this._health = 100
     this._healthToZeroCB = healthToZeroCB
-    this._damage = damage
+    this._damage = null
     this._classBase = isPlayer ? 'player' : 'enemy'
     this._movingPosition = isPlayer ? 'left' : 'right'
     this._healthBarContainer = document.querySelector(`.${this._classBase}-health-bar-container`)
     this._healthBar = <HTMLElement>this._healthBarContainer.firstElementChild
     this._isShowing = false
+  }
+  setDamageCounter(damage: number) {
+    this._damage = damage
   }
   damage(): void {
     if(this._health - this._damage < 0) {

@@ -22,5 +22,17 @@
       "positionOnDOM": [-64, -128],
       "facingPosition": "right"
     }
+  ],
+  "gymArena1PreBattle": [
+    {
+      "name": "Brett",
+      "path": "./assets/images/players/npc-nerd.png",
+      "startingPosition": {
+        "x": 0,
+        "y": 3
+      },
+      "positionOnDOM": [-64, -128],
+      "facingPosition": "down"
+    }
   ]
 }

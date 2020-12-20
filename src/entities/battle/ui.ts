@@ -1,9 +1,12 @@
-export abstract class UI {
+import { BattleComponent } from "."
+
+export abstract class UI extends BattleComponent {
   private _classBase: string
   public _uiContainer: HTMLElement
   private _movingPosition: string
   private _isShowing: boolean
   constructor(isPlayer: boolean) {
+    super()
     this._classBase = isPlayer ? 'player' : 'enemy'
     this._movingPosition = isPlayer ? 'right' : 'left'
     this._uiContainer = document.querySelector(`.${this._classBase}-ui`)

@@ -23,7 +23,23 @@
   "4/0": {
     "x": 4,
     "y": 0,
-    "isWalkable": true
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "gymArena1PreBattle",
+      "playerPosition": {
+        "x": 6,
+        "y": 6
+      },
+      "playerPositionOnDOM": [
+        288,
+        320
+      ],
+      "backgroundPositionOnDOM": [
+        96,
+        -64
+      ],
+      "playerFacingPosition": "up"
+    }
   },
   "5/0": {
     "x": 5,

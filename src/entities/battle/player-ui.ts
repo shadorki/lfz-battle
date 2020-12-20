@@ -1,12 +1,12 @@
 import { UI } from ".";
 
 export class PlayerUI extends UI {
-  private _answerElements: Element[]
+  private _answerElements: HTMLElement[]
   private _selectedAnswer: number
 
   constructor(isPlayer: boolean) {
     super(isPlayer)
-    this._answerElements = [...this._uiContainer.querySelectorAll('[data-answer]')]
+    this._answerElements = [...this._uiContainer.querySelectorAll('[data-answer]') as any]
     this._selectedAnswer = 0
   }
   resetSelection() {

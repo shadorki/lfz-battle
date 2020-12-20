@@ -1,19 +1,16 @@
 import { UI } from ".";
 
 export class EnemyUI extends UI {
-  private _message: string
   private _writingIntervalId: number
   private _currentWritingText: string[]
   private _content: HTMLElement
   constructor(isPlayer: boolean) {
     super(isPlayer)
-    this._message = null
     this._currentWritingText = null
     this._writingIntervalId = null
     this._content = this._uiContainer.querySelector('.content')
   }
   setMessage(text: string) {
-    this._message = text
     this._currentWritingText = text.split('')
   }
   writeText(onTextComplete: Function, delayToCB: number): void {

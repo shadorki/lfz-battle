@@ -67,12 +67,12 @@ body {
 .player {
   background-image: url('./assets/images/players/player-back.png');
   bottom: 0;
-  left: 64px;
+  left: -128px;
 }
 .enemy {
   background-image: url('./assets/images/players/gym-leaders.png');
   top: 64px;
-  right: 96px;
+  right: -128px;
 }
 .ui {
   position: absolute;
@@ -114,11 +114,11 @@ body {
   border: 2px solid black;
 }
 .player-health-bar-container {
-  left: 2px;
+  left: -26px;
   bottom: 2px;
 }
 .enemy-health-bar-container {
-  right: 2px;
+  right: -26px;
   top: 2px;
 }
 .enemy-health,
