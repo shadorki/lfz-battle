@@ -122,6 +122,7 @@ export class Battle extends Observer {
           this._taskQueue.addTask(new Task(name, action))
         }
         this._taskQueue.addTask(new Task('battle-end'))
+        if(playerHP.isDead) this._taskQueue.addTask(new Task('battle-loss'))
         return
       }
       playerUI.resetSelection()

@@ -32,20 +32,20 @@
       "onLoss": {
         "name": "scene-transition-start",
         "action": {
-          "level": "pokemonCenter",
+          "level": "home",
           "playerPosition": {
-            "x": 6,
-            "y": 4
+            "x": 11,
+            "y": 15
           },
           "playerPositionOnDOM": [
             288,
-            320
-          ],
-          "backgroundPositionOnDOM": [
-            96,
             64
           ],
-          "playerFacingPosition": "up"
+          "backgroundPositionOnDOM": [
+            -64,
+            -896
+          ],
+          "playerFacingPosition": "down"
         }
       },
       "questions": [
