@@ -19,6 +19,26 @@
       }
     ]
   },
+  "pokemonCenter": {
+    "Monique": [
+      {
+        "isTrigger": false,
+        "text": "Hello! I am responsible for healing the programmers."
+      },
+      {
+        "isTrigger": false,
+        "text": "They usually end up here after they learn about how this works in JavaScript."
+      },
+      {
+        "isTrigger": false,
+        "text": "Whatever that means, anyway take care!"
+      },
+      {
+        "isTrigger": true,
+        "type": "npc-interaction-end"
+      }
+    ]
+  },
   "gymEntrance": {
     "Cassandra": [
       {

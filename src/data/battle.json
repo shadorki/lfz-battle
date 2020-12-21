@@ -7,7 +7,7 @@
       "level": 45,
       "arena": "ice",
       "damageToEnemy": 50,
-      "damageToPlayer": 10,
+      "damageToPlayer": 50,
       "losingMessage": "Sorry good sir, come back after some prep!",
       "winningMessage": "Good sir, Cody is going to love you!",
       "onWin": {
@@ -35,7 +35,7 @@
           "level": "pokemonCenter",
           "playerPosition": {
             "x": 6,
-            "y": 6
+            "y": 4
           },
           "playerPositionOnDOM": [
             288,
@@ -43,7 +43,7 @@
           ],
           "backgroundPositionOnDOM": [
             96,
-            -64
+            64
           ],
           "playerFacingPosition": "up"
         }

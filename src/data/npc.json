@@ -11,6 +11,21 @@
       "facingPosition": "up"
     }
   ],
+  "pokemonCenter": [
+    {
+      "name": "Monique",
+      "path": "./assets/images/players/npc-blonde-girl.png",
+      "startingPosition": {
+        "x": 7,
+        "y": 1
+      },
+      "positionOnDOM": [
+        320,
+        128
+      ],
+      "facingPosition": "down"
+    }
+  ],
   "gymEntrance": [
     {
       "name": "Cassandra",

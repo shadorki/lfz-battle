@@ -4397,7 +4397,23 @@
   "48/5": {
     "x": 48,
     "y": 5,
-    "isWalkable": true
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "pokemonCenter",
+        "playerPosition": {
+          "x": 9,
+          "y": 4
+        },
+        "playerPositionOnDOM": [
+          320,
+          320
+        ],
+        "backgroundPositionOnDOM": [
+          96,
+          64
+        ],
+        "playerFacingPosition": "up"
+      }
   },
   "47/6": {
     "x": 47,

@@ -1,4 +1,5 @@
 {
+  "path": "./assets/images/maps/pokemon-center.png",
   "0/0": {
     "x": 0,
     "y": 0,
@@ -117,7 +118,11 @@
   "9/1": {
     "x": 9,
     "y": 1,
-    "isWalkable": false
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Monique"
+    }
   },
   "10/1": {
     "x": 10,
@@ -317,17 +322,49 @@
   "7/4": {
     "x": 7,
     "y": 4,
-    "isWalkable": true
+    "isWalkable": false
   },
   "8/4": {
     "x": 8,
     "y": 4,
-    "isWalkable": false
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "home",
+      "playerPosition": {
+        "x": 48,
+        "y": 5
+      },
+      "playerPositionOnDOM": [
+        288,
+        64
+      ],
+      "backgroundPositionOnDOM": [
+        -1536,
+        -384
+      ],
+      "playerFacingPosition": "down"
+    }
   },
   "9/4": {
     "x": 9,
     "y": 4,
-    "isWalkable": false
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "home",
+      "playerPosition": {
+        "x": 48,
+        "y": 5
+      },
+      "playerPositionOnDOM": [
+        288,
+        64
+      ],
+      "backgroundPositionOnDOM": [
+        -1536,
+        -384
+      ],
+      "playerFacingPosition": "down"
+    }
   },
   "10/4": {
     "x": 10,
