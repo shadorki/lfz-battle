@@ -34,5 +34,29 @@
       "positionOnDOM": [288, 64],
       "facingPosition": "down"
     }
+  ],
+  "gymArena2PreBattle": [
+    {
+      "name": "Cody",
+      "path": "./assets/images/players/npc-professor.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 2
+      },
+      "positionOnDOM": [288, 64],
+      "facingPosition": "down"
+    }
+  ],
+    "gymArena1PostBattle": [
+    {
+      "name": "Brett",
+      "path": "./assets/images/players/npc-nerd.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 2
+      },
+      "positionOnDOM": [288, 128],
+      "facingPosition": "down"
+    }
   ]
 }

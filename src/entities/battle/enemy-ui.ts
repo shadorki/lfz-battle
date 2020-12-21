@@ -28,4 +28,7 @@ export class EnemyUI extends UI {
   set content(text: string) {
     this._content.textContent = text
   }
+  reset(): void {
+    this.content = ''
+  }
 }

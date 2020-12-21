@@ -1,3 +1,4 @@
+import { Task } from "../helpers";
 import { Question } from "./";
 
 export interface QuestionData {
@@ -11,4 +12,6 @@ export interface QuestionData {
   questions: Question[]
   damageToEnemy: number
   damageToPlayer: number
+  onWin: Task
+  onLoss: Task
 }

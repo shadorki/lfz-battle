@@ -1,5 +1,5 @@
 {
-  "path": "./assets/images/maps/gym-arena-2-pre-battle.png",
+  "path": "./assets/images/maps/gym-arena-1-post-battle.png",
   "0/0": {
     "x": 0,
     "y": 0,
@@ -33,7 +33,23 @@
   "6/0": {
     "x": 6,
     "y": 0,
-    "isWalkable": false
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "gymArena2PreBattle",
+      "playerPosition": {
+        "x": 6,
+        "y": 6
+      },
+      "playerPositionOnDOM": [
+        288,
+        320
+      ],
+      "backgroundPositionOnDOM": [
+        96,
+        -64
+      ],
+      "playerFacingPosition": "up"
+    }
   },
   "7/0": {
     "x": 7,
@@ -166,7 +182,7 @@
     "isWalkable": false,
     "interaction": {
       "type": "npc",
-      "name": "Cody"
+      "name": "Brett"
     }
   },
   "7/2": {

@@ -7,14 +7,11 @@ export class HP extends BattleComponent{
   private _movingPosition: string
   private _isShowing: boolean
   private _healthBar: HTMLElement
-  private _healthToZeroCB: Function
   constructor(
-    isPlayer: boolean,
-    healthToZeroCB: Function
+    isPlayer: boolean
   ) {
     super()
     this._health = 100
-    this._healthToZeroCB = healthToZeroCB
     this._damage = null
     this._classBase = isPlayer ? 'player' : 'enemy'
     this._movingPosition = isPlayer ? 'left' : 'right'
@@ -29,11 +26,13 @@ export class HP extends BattleComponent{
     if(this._health - this._damage < 0) {
       this._health = 0
       this._healthBar.style.height = this._health + '%'
-      this._healthToZeroCB()
     } else {
       this._health -= this._damage
       this._healthBar.style.height = this._health + '%'
     }
+  }
+  get isDead(): boolean {
+    return !this._health
   }
   get isShowing(): boolean {
     return this._isShowing
@@ -51,5 +50,9 @@ export class HP extends BattleComponent{
   }
   hide() {
     this.isShowing = false
+  }
+  reset(): void {
+    this._health = 100
+    this._healthBar.style.height = this._health + '%'
   }
 }

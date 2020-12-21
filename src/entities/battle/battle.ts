@@ -26,15 +26,13 @@ export class Battle extends Observer {
   private _battleComponents: BattleComponents
   constructor(taskQueue: TaskQueue, currentLevel: keyof Levels) {
     super()
-    this._acceptedTasks = new Set(['scene-transition-start','battle-start', 'battle'])
+    this._acceptedTasks = new Set(['scene-transition-start', 'battle-start', 'battle-end', 'battle'])
     this._currentLevel = currentLevel
     this._taskQueue = taskQueue
     this._battleData = battleData
     this._currentLevelQuestionData = battleData[currentLevel]
     this._currentQuestions = null
     this._selectedQuestionData = null
-    this.handlePlayerDeath = this.handlePlayerDeath.bind(this)
-    this.handleEnemyDeath = this.handleEnemyDeath.bind(this)
     this._battleComponents = {
       arena: new Arena(),
       backdrop: new BackDrop(),
@@ -42,8 +40,8 @@ export class Battle extends Observer {
       enemyUI: new EnemyUI(false),
       playerFighter: new PlayerFighter(true),
       playerUI: new PlayerUI(true),
-      playerHP: new HP(true, this.handlePlayerDeath),
-      enemyHP: new HP(false, this.handleEnemyDeath)
+      playerHP: new HP(true),
+      enemyHP: new HP(false)
     }
   }
   handleUpdate({ name, action }: Task): void {
@@ -52,6 +50,9 @@ export class Battle extends Observer {
       case 'battle-start':
         this.handleBattleStart(action)
         break
+      case 'battle-end':
+        this.handleBattleEnd()
+        break
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)
         break;
@@ -59,6 +60,24 @@ export class Battle extends Observer {
         this.handleBattle(action)
         break;
     }
+  }
+  async handleBattleEnd(): Promise<void> {
+    await Delay.delay(500)
+    for (const component in this._battleComponents) {
+      this._battleComponents[component].hide()
+    }
+    await Delay.delay(500)
+    const { playerUI, enemyUI, playerHP, enemyHP } = this._battleComponents
+    playerUI.resetSelection()
+    enemyUI.reset()
+    playerHP.reset()
+    enemyHP.reset()
+    this._taskQueue.addTask(
+      new Task('npc-interaction-end')
+    )
+    this._taskQueue.addTask(
+      new Task('enable-input')
+    )
   }
   async handleBattle(action: any): Promise<void> {
     if(!action) {
@@ -81,9 +100,30 @@ export class Battle extends Observer {
         await playerFighter.damage()
       }
       await Delay.delay(500)
-
       playerUI.hide()
       await Delay.delay(500)
+      if(playerHP.isDead || enemyHP.isDead) {
+        const {
+        winningMessage,
+        losingMessage,
+        onWin,
+        onLoss
+        } = this._selectedQuestionData
+        const message = playerHP.isDead
+        ? losingMessage
+        : winningMessage
+        await enemyUI.writeText(message)
+        await Delay.delay(500)
+        if(playerHP.isDead) {
+          const { name, action } = onLoss
+          this._taskQueue.addTask(new Task(name, action))
+        } else {
+          const { name, action } = onWin
+          this._taskQueue.addTask(new Task(name, action))
+        }
+        this._taskQueue.addTask(new Task('battle-end'))
+        return
+      }
       playerUI.resetSelection()
       playerUI.setAnswers(this._currentQuestion.answers)
       await enemyUI.writeText(this._currentQuestion.question)
@@ -158,8 +198,6 @@ export class Battle extends Observer {
       )
     )
   }
-  handlePlayerDeath(): void { }
-  handleEnemyDeath(): void {}
   shuffleQuestions(): void {
     for(let i = 0; i < this._currentQuestions.length; i++) {
       const randomNum = Math.floor(Math.random() * this._currentQuestions.length)

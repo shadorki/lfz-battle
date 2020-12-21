@@ -81,5 +81,64 @@
         }
       }
     ]
+  },
+  "gymArena1PostBattle": {
+    "Brett": [
+      {
+        "isTrigger": false,
+        "text": "Your fundamentals on HTML are great!"
+      },
+      {
+        "isTrigger": false,
+        "text": "Of course theres more to HTML than just trivia."
+      },
+      {
+        "isTrigger": false,
+        "text": "Cody is waiting for you in the next room."
+      },
+      {
+        "isTrigger": false,
+        "text": "Give him hell."
+      },
+      {
+        "isTrigger": true,
+        "type": "npc-interaction-end"
+      }
+    ]
+  },
+  "gymArena2PreBattle": {
+    "Cody": [
+      {
+        "isTrigger": false,
+        "text": "-sips coffee-.."
+      },
+      {
+        "isTrigger": false,
+        "text": "Hey there!"
+      },
+      {
+        "isTrigger": false,
+        "text": "I am the second leader at LFZ"
+      },
+      {
+        "isTrigger": false,
+        "text": "I'm here to melt your brain with some CSS."
+      },
+      {
+        "isTrigger": false,
+        "text": "Don't think you can get past me easily!"
+      },
+      {
+        "isTrigger": false,
+        "text": "-SETH ROGAN LAUGH-"
+      },
+      {
+        "isTrigger": true,
+        "type": "battle-start",
+        "action": {
+          "fighter": "Cody"
+        }
+      }
+    ]
   }
 }
