@@ -160,5 +160,179 @@
         }
       }
     ]
+  },
+  "gymArena2PostBattle": {
+    "Cody": [
+      {
+        "isTrigger": false,
+        "text": "-sips coffee again-.."
+      },
+      {
+        "isTrigger": false,
+        "text": "You handled the CSS questions very well!"
+      },
+      {
+        "isTrigger": false,
+        "text": "Always remember the most important part of knowing CSS."
+      },
+      {
+        "isTrigger": false,
+        "text": "Is knowing how to center a div."
+      },
+      {
+        "isTrigger": false,
+        "text": "Good luck with Scott, I've heard he can be a Tsundere."
+      },
+      {
+        "isTrigger": false,
+        "text": "Whatever that means."
+      },
+      {
+        "isTrigger": true,
+        "type": "npc-interaction-end"
+      }
+    ]
+  },
+  "gymArena3PreBattle": {
+    "Scott": [
+      {
+        "isTrigger": false,
+        "text": "-hits vape-.."
+      },
+      {
+        "isTrigger": false,
+        "text": "Sup kid"
+      },
+      {
+        "isTrigger": false,
+        "text": "I am the third leader at LFZ"
+      },
+      {
+        "isTrigger": false,
+        "text": "I'll be bringing you some JavaScript fundamentals."
+      },
+      {
+        "isTrigger": false,
+        "text": "Don't worry, we're saving the harder stuff for later."
+      },
+      {
+        "isTrigger": false,
+        "text": "Bring it!"
+      },
+      {
+        "isTrigger": true,
+        "type": "battle-start",
+        "action": {
+          "fighter": "Scott"
+        }
+      }
+    ]
+  },
+  "gymArena3PostBattle": {
+    "Scott": [
+      {
+        "isTrigger": false,
+        "text": "Your fundamentals in JavaScript seems well."
+      },
+      {
+        "isTrigger": false,
+        "text": "Study up before you meet Tim H."
+      },
+      {
+        "isTrigger": false,
+        "text": "Advanced concepts are coming up."
+      },
+      {
+        "isTrigger": false,
+        "text": "Good luck!"
+      },
+      {
+        "isTrigger": false,
+        "text": "-sips diet coke-.."
+      },
+      {
+        "isTrigger": false,
+        "text": "..."
+      },
+      {
+        "isTrigger": false,
+        "text": "..."
+      },
+      {
+        "isTrigger": false,
+        "text": "..."
+      },
+      {
+        "isTrigger": false,
+        "text": "You're still here?"
+      },
+      {
+        "isTrigger": true,
+        "type": "npc-interaction-end"
+      }
+    ]
+  },
+  "gymArena4PreBattle": {
+    "TimH": [
+      {
+        "isTrigger": false,
+        "text": "Well, hello there"
+      },
+      {
+        "isTrigger": false,
+        "text": "..."
+      },
+      {
+        "isTrigger": false,
+        "text": "I am the fourth leader at LFZ"
+      },
+      {
+        "isTrigger": false,
+        "text": "I specialize in data structures and algorithms."
+      },
+      {
+        "isTrigger": false,
+        "text": "..."
+      },
+      {
+        "isTrigger": false,
+        "text": "Lets begin."
+      },
+      {
+        "isTrigger": true,
+        "type": "battle-start",
+        "action": {
+          "fighter": "TimH"
+        }
+      }
+    ]
+  },
+  "gymArena4PostBattle": {
+    "TimH": [
+      {
+        "isTrigger": false,
+        "text": "ERROR"
+      },
+      {
+        "isTrigger": false,
+        "text": "Just kidding, well done."
+      },
+      {
+        "isTrigger": false,
+        "text": "Be careful in the next room."
+      },
+      {
+        "isTrigger": false,
+        "text": "The final leader is a perfectionist."
+      },
+      {
+        "isTrigger": false,
+        "text": "..."
+      },
+      {
+        "isTrigger": true,
+        "type": "npc-interaction-end"
+      }
+    ]
   }
 }

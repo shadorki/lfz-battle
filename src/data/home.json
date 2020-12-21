@@ -4401,7 +4401,7 @@
     "sceneTransition": {
       "level": "pokemonCenter",
         "playerPosition": {
-          "x": 9,
+          "x": 7,
           "y": 4
         },
         "playerPositionOnDOM": [

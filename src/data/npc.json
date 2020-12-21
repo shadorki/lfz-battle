@@ -62,6 +62,51 @@
       "facingPosition": "down"
     }
   ],
+  "gymArena3PreBattle": [
+    {
+      "name": "Scott",
+      "path": "./assets/images/players/npc-professor.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 2
+      },
+      "positionOnDOM": [
+        288,
+        64
+      ],
+      "facingPosition": "down"
+    }
+  ],
+  "gymArena4PreBattle": [
+    {
+      "name": "TimH",
+      "path": "./assets/images/players/npc-professor.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 4
+      },
+      "positionOnDOM": [
+        -256,
+        64
+      ],
+      "facingPosition": "down"
+    }
+  ],
+  "gymArena5PreBattle": [
+    {
+      "name": "TimD",
+      "path": "./assets/images/players/npc-professor.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 2
+      },
+      "positionOnDOM": [
+        288,
+        64
+      ],
+      "facingPosition": "down"
+    }
+  ],
     "gymArena1PostBattle": [
     {
       "name": "Brett",
@@ -71,6 +116,51 @@
         "y": 2
       },
       "positionOnDOM": [288, 128],
+      "facingPosition": "down"
+    }
+  ],
+  "gymArena2PostBattle": [
+    {
+      "name": "Cody",
+      "path": "./assets/images/players/npc-professor.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 2
+      },
+      "positionOnDOM": [
+        288,
+        128
+      ],
+      "facingPosition": "down"
+    }
+  ],
+  "gymArena3PostBattle": [
+    {
+      "name": "Scott",
+      "path": "./assets/images/players/npc-professor.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 2
+      },
+      "positionOnDOM": [
+        288,
+        128
+      ],
+      "facingPosition": "down"
+    }
+  ],
+  "gymArena4PostBattle": [
+    {
+      "name": "TimH",
+      "path": "./assets/images/players/npc-professor.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 4
+      },
+      "positionOnDOM": [
+        288,
+        128
+      ],
       "facingPosition": "down"
     }
   ]
