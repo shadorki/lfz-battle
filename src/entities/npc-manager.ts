@@ -18,7 +18,7 @@ export class NPCManager extends Observer {
     this._currentLevel = currentLevel
     this._npcs = {}
     this.npcData = npcData[currentLevel]
-    this._acceptedTasks = new Set(['npc-movement', 'npc-interaction-start', 'scene-transition-start', 'battle-loss'])
+    this._acceptedTasks = new Set(['npc-movement', 'npc-interaction-start', 'scene-transition-start'])
   }
   get npcs(): NPC[] {
     return this._npcs[this._currentLevel]
@@ -38,12 +38,9 @@ export class NPCManager extends Observer {
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)
       break
-      case 'battle-loss':
-        this.handleBattleLoss()
-        break
     }
   }
-  handleBattleLoss(): void {
+  resetGym(): void {
     [
       'gymEntrance',
       'gymArena1PreBattle',
@@ -56,6 +53,7 @@ export class NPCManager extends Observer {
       'gymArena3PostBattle',
       'gymArena4PostBattle',
       'gymArena5PostBattle',
+      'gymArena6'
     ].forEach(l => delete this._npcs[l])
   }
   handleNPCInteractionStart(action: any): void {
@@ -76,6 +74,8 @@ export class NPCManager extends Observer {
       npcElements = this.npcs.map(npc => npc.domElement)
     }
     this._root.append(...npcElements)
+    if (level === 'home') this.resetGym()
+
   }
   switchLevel(newLevel: string) {
     this.npcData = npcData[newLevel]

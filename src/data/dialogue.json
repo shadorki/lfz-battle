@@ -445,5 +445,137 @@
       ],
       "postBattle": null
     }
+  },
+  "gymArena6": {
+    "Uzair": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "AHH!"
+        },
+        {
+          "isTrigger": false,
+          "text": "You spooked me."
+        },
+        {
+          "isTrigger": false,
+          "text": "How did you get here? I thought Timmy D was unbeatable."
+        },
+        {
+          "isTrigger": false,
+          "text": "Right."
+        },
+        {
+          "isTrigger": false,
+          "text": "Well congratulations, you have made it to the end."
+        },
+        {
+          "isTrigger": false,
+          "text": "My name is Uzair, and I created this game."
+        },
+        {
+          "isTrigger": false,
+          "text": "I also am an instructor here at LearningFuze."
+        },
+        {
+          "isTrigger": false,
+          "text": "What you experienced coming here is what I went through when I was in the program."
+        },
+        {
+          "isTrigger": false,
+          "text": "Probably a little less dramatic, but you get the idea."
+        },
+        {
+          "isTrigger": false,
+          "text": "Anyway, the code is open source on GitHub so feel free to check it out."
+        },
+        {
+          "isTrigger": false,
+          "text": "You know those Japanese games where you think its the end?"
+        },
+        {
+          "isTrigger": false,
+          "text": "And out of nowhere theres another final boss you didn't expect?"
+        },
+        {
+          "isTrigger": false,
+          "text": "AHH HAA!"
+        },
+        {
+          "isTrigger": false,
+          "text": "No I'm kidding I wouldn't do that."
+        },
+        {
+          "isTrigger": false,
+          "text": "Or would I?"
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "Uzair"
+          }
+        }
+      ],
+      "postBattle": [
+        {
+          "isTrigger": false,
+          "text": "Congratulations you've done it!"
+        },
+        {
+          "isTrigger": false,
+          "text": "There is much more to do in this world though."
+        },
+        {
+          "isTrigger": false,
+          "text": "At least I think there is, I'm still thinking of it as I go'."
+        },
+        {
+          "isTrigger": false,
+          "text": "I'll be teleporting you back out to town."
+        },
+        {
+          "isTrigger": false,
+          "text": "Come to the gym and try battling the team again."
+        },
+        {
+          "isTrigger": false,
+          "text": "Or come out to LearningFuze in Irvine, CA if you want to meet them in person."
+        },
+        {
+          "isTrigger": false,
+          "text": "And give the repo a star if you liked the game!"
+        },
+        {
+          "isTrigger": false,
+          "text": "Seriously I measure my self worth in GitHub stars."
+        },
+        {
+          "isTrigger": false,
+          "text": "Bye now!."
+        },
+        {
+          "isTrigger": true,
+          "type": ["npc-interaction-end", "scene-transition-start", "scene-transition-end"],
+          "action": [null, {
+              "level": "home",
+              "playerPosition": {
+                "x": 11,
+                "y": 15
+              },
+              "playerPositionOnDOM": [
+                288,
+                64
+              ],
+              "backgroundPositionOnDOM": [
+                -64,
+                -896
+              ],
+              "playerFacingPosition": "down"
+            }, null]
+        }
+      ]
+    }
   }
 }

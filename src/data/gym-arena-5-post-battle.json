@@ -35,18 +35,18 @@
     "y": 0,
     "isWalkable": true,
     "sceneTransition": {
-      "level": "gymArena6PreBattle",
+      "level": "gymArena6",
       "playerPosition": {
-        "x": 6,
-        "y": 9
+        "x": 5,
+        "y": 6
       },
       "playerPositionOnDOM": [
         320,
         192
       ],
       "backgroundPositionOnDOM": [
-        128,
-        -384
+        160,
+        -192
       ],
       "playerFacingPosition": "up"
     }

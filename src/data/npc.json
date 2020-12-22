@@ -189,9 +189,9 @@
       },
       "positionOnDOM": [
         320,
-        128
+        -64
       ],
-      "facingPosition": "down"
+      "facingPosition": "up"
     }
   ]
 }

@@ -41,7 +41,7 @@ export class Player extends Observer {
     this._taskQueue = taskQueue
     this._currentLevel = currentLevel
     this._storedBackgroundPositions = {}
-    this._acceptedTasks = new Set(['movement', 'scene-transition-start', 'interaction', 'battle-loss'])
+    this._acceptedTasks = new Set(['movement', 'scene-transition-start', 'interaction'])
     this._position = null
     this._playerFacingPositions = null
     this._currentFacingPosition = 'down'
@@ -63,12 +63,9 @@ export class Player extends Observer {
       case 'interaction':
         this.handleInteraction()
       break
-      case 'battle-loss':
-        this.handleBattleLoss()
-      break
     }
   }
-  handleBattleLoss(): void {
+  resetGym(): void {
     [
       'gymEntrance',
       'gymArena1PreBattle',
@@ -81,6 +78,7 @@ export class Player extends Observer {
       'gymArena3PostBattle',
       'gymArena4PostBattle',
       'gymArena5PostBattle',
+      'gymArena6'
     ].forEach(l => delete this._storedBackgroundPositions[l])
   }
   getTargetedPosition(direction: keyof Movements): Position {
@@ -133,6 +131,7 @@ export class Player extends Observer {
     this.setFacingPosition(playerFacingPosition)
     this._position = playerPosition
     this.setPlayerPositionOnDom(x, y)
+    if(level === 'home') this.resetGym()
   }
   handleInteraction(): void {
     const { x, y } = this.getTargetedPosition(this._currentFacingPosition)

@@ -30,7 +30,7 @@ export class Camera extends Observer {
     this._taskQueue = taskQueue
     this._storedBackgroundPositions = {}
     this._currentLevel = currentLevel
-    this._acceptedTasks = new Set(['movement', 'scene-transition-start', 'battle-loss'])
+    this._acceptedTasks = new Set(['movement', 'scene-transition-start'])
     this._visibleWidth = width
     this._visibleHeight = height
     this._collisionWidth = width / 10 * 8
@@ -51,12 +51,9 @@ export class Camera extends Observer {
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)
       break
-      case 'battle-loss':
-        this.handleBattleLoss()
-      break
     }
   }
-  handleBattleLoss(): void {
+  resetGym(): void {
     [
       'gymEntrance',
       'gymArena1PreBattle',
@@ -69,6 +66,7 @@ export class Camera extends Observer {
       'gymArena3PostBattle',
       'gymArena4PostBattle',
       'gymArena5PostBattle',
+      'gymArena6',
     ].forEach(l => delete this._storedBackgroundPositions[l])
   }
   handleMovement(): void {
@@ -102,6 +100,7 @@ export class Camera extends Observer {
                             || backgroundPositionOnDOM
     console.log(this._cameraPosition)
     this.updatePositionOnDOM()
+    if(level === 'home') this.resetGym()
   }
   moveCamera(direction: keyof Movements): void {
     const { width, height } = this._player

@@ -74,12 +74,23 @@ export class Dialogue extends Observer {
     }
     const { text, isTrigger, type, action } = this._currentDialogue.shift()
     if(isTrigger) {
-      this._taskQueue.addTask(
-        new Task(
-          type,
-          action || null
+      if(Array.isArray(type) || Array.isArray(action)) {
+        action.forEach((a: any, i: number) => {
+          this._taskQueue.addTask(
+            new Task(
+              type[i],
+              a
+            )
+          )
+        })
+      } else {
+        this._taskQueue.addTask(
+          new Task(
+            type,
+            action || null
+          )
         )
-      )
+      }
       return
     }
     this._currentWritingText = text.split('')
@@ -109,6 +120,8 @@ export class Dialogue extends Observer {
   handleSceneTransitionStart({ level }: SceneTransition): void{
     this._dialogues = dialogueData[level]
     this._currentLevel = level
+    // Edge case, in too deep, need bandaid :(
+    if (level === 'home') dialogueData.gymArena6.Uzair.hasBattled = false
   }
   show(): void {
     this.isShowing = true
