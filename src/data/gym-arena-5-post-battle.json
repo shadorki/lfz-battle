@@ -1,5 +1,5 @@
 {
-  "path": "./assets/images/maps/gym-arena-5-pre-battle.png",
+  "path": "./assets/images/maps/gym-arena-5-post-battle.png",
   "0/0": {
     "x": 0,
     "y": 0,
@@ -33,7 +33,23 @@
   "6/0": {
     "x": 6,
     "y": 0,
-    "isWalkable": false
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "gymArena6PreBattle",
+      "playerPosition": {
+        "x": 6,
+        "y": 9
+      },
+      "playerPositionOnDOM": [
+        320,
+        192
+      ],
+      "backgroundPositionOnDOM": [
+        128,
+        -384
+      ],
+      "playerFacingPosition": "up"
+    }
   },
   "7/0": {
     "x": 7,

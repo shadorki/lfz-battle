@@ -1,4 +1,5 @@
 {
+  "path": "./assets/images/maps/gym-arena-6.png",
   "0/0": {
     "x": 0,
     "y": 0,
@@ -137,7 +138,11 @@
   "5/2": {
     "x": 5,
     "y": 2,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Uzair"
+    }
   },
   "6/2": {
     "x": 6,

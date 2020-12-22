@@ -1,338 +1,449 @@
 {
   "home": {
-    "Kevin": [
-      {
-        "isTrigger": false,
-        "text": "Ssssh, they're teaching JavaScript in there."
-      },
-      {
-        "isTrigger": false,
-        "text": "The instructor laughs like Seth Rogan and it's really interesting to watch."
-      },
-      {
-        "isTrigger": false,
-        "text": "I'm hoping I can learn enough about programming so I can take on the gym leaders."
-      },
-      {
-        "isTrigger": true,
-        "type": "npc-interaction-end"
-      }
-    ]
+    "Kevin": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Ssssh, they're teaching JavaScript in there."
+        },
+        {
+          "isTrigger": false,
+          "text": "The instructor laughs like Seth Rogan and it's really interesting to watch."
+        },
+        {
+          "isTrigger": false,
+          "text": "I'm hoping I can learn enough about programming so I can take on the gym leaders."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
   },
   "pokemonCenter": {
-    "Monique": [
-      {
-        "isTrigger": false,
-        "text": "Hello! I am responsible for healing the programmers."
-      },
-      {
-        "isTrigger": false,
-        "text": "They usually end up here after they learn about how this works in JavaScript."
-      },
-      {
-        "isTrigger": false,
-        "text": "Whatever that means, anyway take care!"
-      },
-      {
-        "isTrigger": true,
-        "type": "npc-interaction-end"
-      }
-    ]
+    "Monique": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Hello! I am responsible for healing the programmers."
+        },
+        {
+          "isTrigger": false,
+          "text": "They usually end up here after they learn about how this works in JavaScript."
+        },
+        {
+          "isTrigger": false,
+          "text": "Whatever that means, anyway take care!"
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
   },
   "gymEntrance": {
-    "Cassandra": [
-      {
-        "isTrigger": false,
-        "text": "Hullloooo!"
-      },
-      {
-        "isTrigger": false,
-        "text": "Welcome to the LFZ Gym."
-      },
-      {
-        "isTrigger": false,
-        "text": "You can battle the leaders of LFZ and see what it takes to become a programming master."
-      },
-      {
-        "isTrigger": false,
-        "text": "Just walk through the door above to start the challenge."
-      },
-      {
-        "isTrigger": true,
-        "type": "npc-interaction-end"
-      }
-    ]
+    "Cassandra": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Hullloooo!"
+        },
+        {
+          "isTrigger": false,
+          "text": "Welcome to the LFZ Gym."
+        },
+        {
+          "isTrigger": false,
+          "text": "You can battle the leaders of LFZ and see what it takes to become a programming master."
+        },
+        {
+          "isTrigger": false,
+          "text": "Just walk through the door above to start the challenge."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
   },
   "gymArena1PreBattle": {
-    "Brett": [
-      {
-        "isTrigger": false,
-        "text": "Hello Good sir!"
-      },
-      {
-        "isTrigger": false,
-        "text": "I am the first leader of LFZ."
-      },
-      {
-        "isTrigger": false,
-        "text": "I will be asking several questions related to HTML."
-      },
-      {
-        "isTrigger": false,
-        "text": "Every question you answer incorrectly you will take damage."
-      },
-      {
-        "isTrigger": false,
-        "text": "And of course every question your answer correctly I will take damage."
-      },
-      {
-        "isTrigger": false,
-        "text": "Oh! and if you don't defeat me before I run out of questions, you lose."
-      },
-      {
-        "isTrigger": false,
-        "text": "Hope you studied."
-      },
-      {
-        "isTrigger": true,
-        "type": "battle-start",
-        "action": {
-          "fighter": "Brett"
+    "Brett": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Hello Good sir!"
+        },
+        {
+          "isTrigger": false,
+          "text": "I am the first leader of LFZ."
+        },
+        {
+          "isTrigger": false,
+          "text": "I will be asking several questions related to HTML."
+        },
+        {
+          "isTrigger": false,
+          "text": "Every question you answer incorrectly you will take damage."
+        },
+        {
+          "isTrigger": false,
+          "text": "And of course every question your answer correctly I will take damage."
+        },
+        {
+          "isTrigger": false,
+          "text": "Oh! and if you don't defeat me before I run out of questions, you lose."
+        },
+        {
+          "isTrigger": false,
+          "text": "Hope you studied."
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "Brett"
+          }
         }
-      }
-    ]
+      ],
+      "postBattle": null
+    }
   },
   "gymArena1PostBattle": {
-    "Brett": [
-      {
-        "isTrigger": false,
-        "text": "Your fundamentals on HTML are great!"
-      },
-      {
-        "isTrigger": false,
-        "text": "Of course theres more to HTML than just trivia."
-      },
-      {
-        "isTrigger": false,
-        "text": "Cody is waiting for you in the next room."
-      },
-      {
-        "isTrigger": false,
-        "text": "Give him hell."
-      },
-      {
-        "isTrigger": true,
-        "type": "npc-interaction-end"
-      }
-    ]
+    "Brett": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Your fundamentals on HTML are great!"
+        },
+        {
+          "isTrigger": false,
+          "text": "Of course theres more to HTML than just trivia."
+        },
+        {
+          "isTrigger": false,
+          "text": "Cody is waiting for you in the next room."
+        },
+        {
+          "isTrigger": false,
+          "text": "Give him hell."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
   },
   "gymArena2PreBattle": {
-    "Cody": [
-      {
-        "isTrigger": false,
-        "text": "-sips coffee-.."
-      },
-      {
-        "isTrigger": false,
-        "text": "Hey there!"
-      },
-      {
-        "isTrigger": false,
-        "text": "I am the second leader at LFZ"
-      },
-      {
-        "isTrigger": false,
-        "text": "I'm here to melt your brain with some CSS."
-      },
-      {
-        "isTrigger": false,
-        "text": "Don't think you can get past me easily!"
-      },
-      {
-        "isTrigger": false,
-        "text": "-SETH ROGAN LAUGH-"
-      },
-      {
-        "isTrigger": true,
-        "type": "battle-start",
-        "action": {
-          "fighter": "Cody"
+    "Cody": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "-sips coffee-.."
+        },
+        {
+          "isTrigger": false,
+          "text": "Hey there!"
+        },
+        {
+          "isTrigger": false,
+          "text": "I am the second leader at LFZ"
+        },
+        {
+          "isTrigger": false,
+          "text": "I'm here to melt your brain with some CSS."
+        },
+        {
+          "isTrigger": false,
+          "text": "Don't think you can get past me easily!"
+        },
+        {
+          "isTrigger": false,
+          "text": "-SETH ROGAN LAUGH-"
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "Cody"
+          }
         }
-      }
-    ]
+      ],
+      "postBattle": null
+    }
   },
   "gymArena2PostBattle": {
-    "Cody": [
-      {
-        "isTrigger": false,
-        "text": "-sips coffee again-.."
-      },
-      {
-        "isTrigger": false,
-        "text": "You handled the CSS questions very well!"
-      },
-      {
-        "isTrigger": false,
-        "text": "Always remember the most important part of knowing CSS."
-      },
-      {
-        "isTrigger": false,
-        "text": "Is knowing how to center a div."
-      },
-      {
-        "isTrigger": false,
-        "text": "Good luck with Scott, I've heard he can be a Tsundere."
-      },
-      {
-        "isTrigger": false,
-        "text": "Whatever that means."
-      },
-      {
-        "isTrigger": true,
-        "type": "npc-interaction-end"
-      }
-    ]
+    "Cody": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "-sips coffee again-.."
+        },
+        {
+          "isTrigger": false,
+          "text": "You handled the CSS questions very well!"
+        },
+        {
+          "isTrigger": false,
+          "text": "Always remember the most important part of knowing CSS."
+        },
+        {
+          "isTrigger": false,
+          "text": "Is knowing how to center a div."
+        },
+        {
+          "isTrigger": false,
+          "text": "Good luck with Scott, I've heard he can be a Tsundere."
+        },
+        {
+          "isTrigger": false,
+          "text": "Whatever that means."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
   },
   "gymArena3PreBattle": {
-    "Scott": [
-      {
-        "isTrigger": false,
-        "text": "-hits vape-.."
-      },
-      {
-        "isTrigger": false,
-        "text": "Sup kid"
-      },
-      {
-        "isTrigger": false,
-        "text": "I am the third leader at LFZ"
-      },
-      {
-        "isTrigger": false,
-        "text": "I'll be bringing you some JavaScript fundamentals."
-      },
-      {
-        "isTrigger": false,
-        "text": "Don't worry, we're saving the harder stuff for later."
-      },
-      {
-        "isTrigger": false,
-        "text": "Bring it!"
-      },
-      {
-        "isTrigger": true,
-        "type": "battle-start",
-        "action": {
-          "fighter": "Scott"
+    "Scott": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "-hits vape-.."
+        },
+        {
+          "isTrigger": false,
+          "text": "Sup kid"
+        },
+        {
+          "isTrigger": false,
+          "text": "I am the third leader at LFZ"
+        },
+        {
+          "isTrigger": false,
+          "text": "I'll be bringing you some JavaScript fundamentals."
+        },
+        {
+          "isTrigger": false,
+          "text": "Don't worry, we're saving the harder stuff for later."
+        },
+        {
+          "isTrigger": false,
+          "text": "Bring it!"
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "Scott"
+          }
         }
-      }
-    ]
+      ],
+      "postBattle": null
+    }
   },
   "gymArena3PostBattle": {
-    "Scott": [
-      {
-        "isTrigger": false,
-        "text": "Your fundamentals in JavaScript seems well."
-      },
-      {
-        "isTrigger": false,
-        "text": "Study up before you meet Tim H."
-      },
-      {
-        "isTrigger": false,
-        "text": "Advanced concepts are coming up."
-      },
-      {
-        "isTrigger": false,
-        "text": "Good luck!"
-      },
-      {
-        "isTrigger": false,
-        "text": "-sips diet coke-.."
-      },
-      {
-        "isTrigger": false,
-        "text": "..."
-      },
-      {
-        "isTrigger": false,
-        "text": "..."
-      },
-      {
-        "isTrigger": false,
-        "text": "..."
-      },
-      {
-        "isTrigger": false,
-        "text": "You're still here?"
-      },
-      {
-        "isTrigger": true,
-        "type": "npc-interaction-end"
-      }
-    ]
+    "Scott": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Your fundamentals in JavaScript seems well."
+        },
+        {
+          "isTrigger": false,
+          "text": "Study up before you meet Tim H."
+        },
+        {
+          "isTrigger": false,
+          "text": "Advanced concepts are coming up."
+        },
+        {
+          "isTrigger": false,
+          "text": "Good luck!"
+        },
+        {
+          "isTrigger": false,
+          "text": "-sips diet coke-.."
+        },
+        {
+          "isTrigger": false,
+          "text": "..."
+        },
+        {
+          "isTrigger": false,
+          "text": "..."
+        },
+        {
+          "isTrigger": false,
+          "text": "..."
+        },
+        {
+          "isTrigger": false,
+          "text": "You're still here?"
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
   },
   "gymArena4PreBattle": {
-    "TimH": [
-      {
-        "isTrigger": false,
-        "text": "Well, hello there"
-      },
-      {
-        "isTrigger": false,
-        "text": "..."
-      },
-      {
-        "isTrigger": false,
-        "text": "I am the fourth leader at LFZ"
-      },
-      {
-        "isTrigger": false,
-        "text": "I specialize in data structures and algorithms."
-      },
-      {
-        "isTrigger": false,
-        "text": "..."
-      },
-      {
-        "isTrigger": false,
-        "text": "Lets begin."
-      },
-      {
-        "isTrigger": true,
-        "type": "battle-start",
-        "action": {
-          "fighter": "TimH"
+    "TimH": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Well, hello there"
+        },
+        {
+          "isTrigger": false,
+          "text": "..."
+        },
+        {
+          "isTrigger": false,
+          "text": "I am the fourth leader at LFZ"
+        },
+        {
+          "isTrigger": false,
+          "text": "I specialize in data structures and algorithms."
+        },
+        {
+          "isTrigger": false,
+          "text": "..."
+        },
+        {
+          "isTrigger": false,
+          "text": "Lets begin."
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "TimH"
+          }
         }
-      }
-    ]
+      ],
+      "postBattle": null
+    }
   },
   "gymArena4PostBattle": {
-    "TimH": [
-      {
-        "isTrigger": false,
-        "text": "ERROR"
-      },
-      {
-        "isTrigger": false,
-        "text": "Just kidding, well done."
-      },
-      {
-        "isTrigger": false,
-        "text": "Be careful in the next room."
-      },
-      {
-        "isTrigger": false,
-        "text": "The final leader is a perfectionist."
-      },
-      {
-        "isTrigger": false,
-        "text": "..."
-      },
-      {
-        "isTrigger": true,
-        "type": "npc-interaction-end"
-      }
-    ]
+    "TimH": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "ERROR"
+        },
+        {
+          "isTrigger": false,
+          "text": "Just kidding, well done."
+        },
+        {
+          "isTrigger": false,
+          "text": "Be careful in the next room."
+        },
+        {
+          "isTrigger": false,
+          "text": "The final leader is a perfectionist."
+        },
+        {
+          "isTrigger": false,
+          "text": "..."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
+  },
+  "gymArena5PreBattle": {
+    "TimD": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Congratulations on making it this far."
+        },
+        {
+          "isTrigger": false,
+          "text": "My name is Tim Davis."
+        },
+        {
+          "isTrigger": false,
+          "text": "I am the last leader at LFZ."
+        },
+        {
+          "isTrigger": false,
+          "text": "I am self taught, and specialize in plenty."
+        },
+        {
+          "isTrigger": false,
+          "text": "I hope you read the docs."
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "TimD"
+          }
+        }
+      ],
+      "postBattle": null
+    }
+  },
+  "gymArena5PostBattle": {
+    "TimD": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Nice work."
+        },
+        {
+          "isTrigger": false,
+          "text": "You really know development."
+        },
+        {
+          "isTrigger": false,
+          "text": "My protege is in the last room."
+        },
+        {
+          "isTrigger": false,
+          "text": "He will congratulate you appropriately."
+        },
+        {
+          "isTrigger": false,
+          "text": "See you around."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
   }
 }

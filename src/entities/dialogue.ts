@@ -7,7 +7,9 @@ export class Dialogue extends Observer {
   private _acceptedTasks: Set<string>
   private _currentLevel: keyof Levels
   private _dialogues: {
-    [key: string]: DialogueData[]
+    hasBattled?: boolean
+    preBattle?: DialogueData[]
+    postBattle?: DialogueData[]
   }
   private _currentDialogue: DialogueData[]
   private _taskQueue: TaskQueue
@@ -19,7 +21,7 @@ export class Dialogue extends Observer {
   private _isShowing: boolean
   constructor(taskQueue: TaskQueue, currentLevel: keyof Levels) {
     super()
-    this._acceptedTasks = new Set(['npc-interaction-start', 'scene-transition-start', 'dialogue', 'npc-interaction-end', 'battle-start'])
+    this._acceptedTasks = new Set(['npc-interaction-start', 'scene-transition-start', 'dialogue', 'npc-interaction-end', 'battle-start', 'npc-battle-end'])
     this._currentLevel = currentLevel
     this._currentDialogue = []
     this._writingIntervalId = null
@@ -49,7 +51,13 @@ export class Dialogue extends Observer {
       case 'battle-start':
         this.handleNPCInteractionEnd()
       break
+      case 'npc-battle-end':
+        this.handleNPCBattleEnd(action)
+      break
     }
+  }
+  handleNPCBattleEnd({ name, level}: any): void {
+    dialogueData[level][name].hasBattled = true
   }
   handleNPCInteractionEnd() {
     this.hide()
@@ -79,7 +87,8 @@ export class Dialogue extends Observer {
   }
   handleNPCInteractionStart(action: Interaction) {
     const { name } = action
-    this._currentDialogue = [...this._dialogues[name]]
+    const dialogue = this._dialogues[name]
+    this._currentDialogue = [...dialogue.hasBattled ? dialogue.postBattle : dialogue.preBattle]
     const { text } = this._currentDialogue.shift()
     this.heading = name
     this._currentWritingText = text.split('')

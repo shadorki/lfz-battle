@@ -98,11 +98,11 @@
       "path": "./assets/images/players/npc-professor.png",
       "startingPosition": {
         "x": 6,
-        "y": 2
+        "y": 3
       },
       "positionOnDOM": [
-        288,
-        64
+        320,
+        -192
       ],
       "facingPosition": "down"
     }
@@ -159,6 +159,36 @@
       },
       "positionOnDOM": [
         288,
+        128
+      ],
+      "facingPosition": "down"
+    }
+  ],
+  "gymArena5PostBattle": [
+    {
+      "name": "TimD",
+      "path": "./assets/images/players/npc-professor.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 3
+      },
+      "positionOnDOM": [
+        320,
+        128
+      ],
+      "facingPosition": "down"
+    }
+  ],
+  "gymArena6": [
+    {
+      "name": "Uzair",
+      "path": "./assets/images/players/npc-uzair.png",
+      "startingPosition": {
+        "x": 5,
+        "y": 2
+      },
+      "positionOnDOM": [
+        320,
         128
       ],
       "facingPosition": "down"

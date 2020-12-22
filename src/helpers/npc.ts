@@ -7,6 +7,7 @@ export class NPC {
   public domElement: HTMLElement
   public width: number
   public height: number
+  private hasBattled: boolean
   private _position: Position
   private _npcFacingPositions: PlayerFacingPositions
   private _currentFacingPosition: keyof PlayerFacingPositions
@@ -21,6 +22,7 @@ export class NPC {
     this.domElement = null
     this.width = null
     this.height = null
+    this.hasBattled = false
   }
   handleMovement(direction: keyof Movements): void {
     let [left, top] = this.npcPositionOnDOM

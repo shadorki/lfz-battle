@@ -29,7 +29,8 @@ export class EnemyFighter extends Fighter {
       const [
         Brett,
         Scott,,,
-        TimD,,,,
+        TimD,
+        Uzair,,,
         TimH,,,,
         Cody
       ] = sheet
@@ -37,6 +38,7 @@ export class EnemyFighter extends Fighter {
         Brett,
         Scott,
         TimD,
+        Uzair,
         TimH,
         Cody
       }
