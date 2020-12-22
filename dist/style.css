@@ -10,6 +10,10 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('./assets/fonts/PressStart2P-Regular.ttf');
+}
 
 body {
   font-family: 'Poke\'mon FireRed & LeafGreen Font Recreation';
@@ -135,6 +139,7 @@ body {
   background-color: green;
 }
 [data-answer] {
+  font-family: 'sans-serif';
   padding: 2px;
   font-size: .8rem;
 }

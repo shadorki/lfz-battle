@@ -1,0 +1,431 @@
+[
+  {
+    "question": "What does HTML Stand for?",
+    "answers": [
+      "Home Tool Markup Language",
+      "Hyper Text Markup Language",
+      "Hyperlinks and Text Markup Language",
+      "Hyper Transfer Markup Language"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Who is making the Web standards?",
+    "answers": [
+      "The World Wide Web Consortium",
+      "Microsoft",
+      "Mozilla",
+      "Google"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Choose the correct HTML element for the largest heading:",
+    "answers": [
+      "<h1>",
+      "<h6>",
+      "<head>",
+      "<heading>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "What is the correct HTML element for inserting a line break?",
+    "answers": [
+      "<lb>",
+      "<br>",
+      "<break>",
+      "<hr>"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "What is the correct HTML for adding a background color?",
+    "answers": [
+      "<body bg=\"yellow\">",
+      "<body style=\"background-color:yellow;\">",
+      "<background>yellow</background>",
+      "<background=\"yellow\"></background>"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Choose the correct HTML element to define important text",
+    "answers": [
+      "<strong>",
+      "<i>",
+      "<b>",
+      "<important>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Choose the correct HTML element to define emphasized text",
+    "answers": [
+      "<em>",
+      "<italic>",
+      "<i>",
+      "<emphasize>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "What is the correct HTML for creating a hyperlink?",
+    "answers": [
+      "<a href=\"url\">text</a>",
+      "<a>url</a>",
+      "<a name=\"url\">text.com</a>",
+      "<a url=\"url\">text.com</a>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Which character is used to indicate an end tag?",
+    "answers": [
+      "<",
+      "^",
+      "*",
+      "/"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "How can you open a link in a new tab/browser window?",
+    "answers": [
+      "<a href=\"url\" target=\"_blank\">",
+      "<a href=\"url\" new>",
+      "<a href=\"url\" target=\"new\">",
+      "<a href=\"url\" target=\"_page\">"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "How can you make a numbered list?",
+    "answers": [
+      "<ol>",
+      "<list>",
+      "<ul>",
+      "<dl>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "How can you make a bulleted list?",
+    "answers": [
+      "<dl>",
+      "<list>",
+      "<ol>",
+      "<ul>"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "What is the correct HTML for making a checkbox?",
+    "answers": [
+      "<check>",
+      "<input type=\"checkbox\">",
+      "<input type=\"check\">",
+      "<checkbox>"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "What is the correct HTML for making a text input field?",
+    "answers": [
+      "<input type=\"text\">",
+      "<textinput type=\"text\">",
+      "<textfield>",
+      "<input type=\"textfield\">"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "What is the correct HTML for making a drop-down list?",
+    "answers": [
+      "<select>",
+      "<input type=\"dropdown\">",
+      "<input type=\"list\">",
+      "<list>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "What is the correct HTML for making a text area?",
+    "answers": [
+      "<input type=\"textarea\">",
+      "<textarea>",
+      "<textbox>",
+      "<input type=\"textbox\">"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "What is the correct HTML for inserting an image?",
+    "answers": [
+      "<image src=\"image.gif\" alt=\"MyImage\">",
+      "<img alt=\"MyImage\">image.gif</img>",
+      "<img href=\"image.gif\" alt=\"MyImage\">",
+      "<img src=\"image.gif\" alt=\"MyImage\">"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "HTML comments start with <!-- and end with -->",
+    "answers": [
+      "True",
+      "False",
+      "I don't know",
+      "No they start with //"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "What does CSS stand for?",
+    "answers": [
+      "Creative Style Sheets",
+      "Colorful Style Sheets",
+      "Cascading Style Sheets",
+      "Computer Style Sheets"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "What is the correct HTML for referring to an external style sheet?",
+    "answers": [
+      "<stylesheet>mystyle.css</stylesheet>",
+      "<style src=\"mystyle.css\">",
+      "<link rel=\"stylesheet\" href=\"mystyle.css\">",
+      "<link ref=\"stylesheet\" href=\"mystyle.css\">"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Where in an HTML document is the correct place to refer to an external style sheet?",
+    "answers": [
+      "At the end of the document",
+      "In the <head> section",
+      "In the <body> section",
+      "In the <style> section"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Which HTML tag is used to define an internal style sheet?",
+    "answers": [
+      "<css>",
+      "<script>",
+      "<style>",
+      "<styles>"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Which HTML attribute is used to define inline styles?",
+    "answers": [
+      "styles",
+      "style",
+      "class",
+      "font"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Which is the correct CSS selector?",
+    "answers": [
+      "body:color=black;",
+      "{body;color:black;}",
+      "{body:color=black;}",
+      "body {color: black;}"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "How do you insert a comment in a CSS file?",
+    "answers": [
+      "// this is a comment //",
+      "' this is a comment",
+      "// this is a comment",
+      "/* this is a comment */"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Which property is used to change the background color?",
+    "answers": [
+      "bgcolor",
+      "background-color",
+      "color",
+      "bg"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "How do you add a background color for all <h1> elements?",
+    "answers": [
+      "h1 {background-color:#FFFFFF;}",
+      "all.h1 {background-color:#FFFFFF;}",
+      "h1.all {background-color:#FFFFFF;}",
+      "h1#all {background-color:#FFFFFF;}"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Which CSS property is used to change the text color of an element?",
+    "answers": [
+      "text-color",
+      "fgcolor",
+      "color",
+      "color-text"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Which CSS property controls the text size?",
+    "answers": [
+      "font-size",
+      "font-style",
+      "text-size",
+      "text-style"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "What is the correct CSS syntax for making all the <p> elements bold?",
+    "answers": [
+      "p {font-weight:bold;}",
+      "p {text-size:bold;}",
+      "<p style=\"text-size:bold;\">",
+      "<p style=\"font-size:bold;\">"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "How do you display hyperlinks without an underline?",
+    "answers": [
+      "a {decoration:no-underline;}",
+      "a {underline:none;}",
+      "a {text-decoration:none;}",
+      "a {text-decoration:no-underline;}"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Inside which HTML element do we write JavaScript?",
+    "answers": [
+      "<scripting>",
+      "<js>",
+      "<javascript>",
+      "<script>"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "How do you write \"Hello World\" in an alert box?",
+    "answers": [
+      "msgBox(\"Hello World\");",
+      "alert(\"Hello World\");",
+      "alertBox(\"Hello World\");",
+      "msg(\"Hello World\");"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "How to write an IF statement in JavaScript?",
+    "answers": [
+      "if i == 5 then",
+      "if i = 5 then",
+      "if (i === 5)",
+      "if i = 5"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "How can you add a comment in a JavaScript?",
+    "answers": [
+      "<!--This is a comment-->",
+      "'This is a comment",
+      "//This is a comment",
+      "/*** This is a comment ***/"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "How to insert a comment that has more than one line?",
+    "answers": [
+      "<!-- comment -->",
+      "/* comment */",
+      "// comment //",
+      "/*** comment ***/"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "How do you round the number 7.25, to the nearest integer?",
+    "answers": [
+      "round(7.25)",
+      "Math.round(7.25)",
+      "Math.rnd(7.25)",
+      "rnd(7.25)"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "How do you find the number with the highest value of x and y?",
+    "answers": [
+      "top(x, y)",
+      "ceil(x, y)",
+      "Math.ceil(x, y)",
+      "Math.max(x, y)"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "How can you detect the client's browser name?",
+    "answers": [
+      "browser.name",
+      "navigator.appName",
+      "client.navName"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "How do you declare a JavaScript variable in ES5?",
+    "answers": [
+      "v carName",
+      "variable carName",
+      "var carName",
+      "carName"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Which operator is the assignment operator?",
+    "answers": [
+      "-",
+      "x",
+      "*",
+      "="
+    ],
+    "correct": 0
+  },
+  {
+    "question": "What will the following code return: Boolean(10 > 9)",
+    "answers": [
+      "true",
+      "NaN",
+      "false",
+      "null"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Is JavaScript case-sensitive?",
+    "answers": [
+      "No",
+      "Yes",
+      "Sometimes",
+      "I don't know"
+    ],
+    "correct": 1
+  }
+]

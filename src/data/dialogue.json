@@ -235,19 +235,19 @@
         },
         {
           "isTrigger": false,
-          "text": "I am the third leader at LFZ"
+          "text": "I am the third leader at LFZ."
         },
         {
           "isTrigger": false,
-          "text": "I'll be bringing you some JavaScript fundamentals."
+          "text": "I'll be bringing you some JavaScript questions."
         },
         {
           "isTrigger": false,
-          "text": "Don't worry, we're saving the harder stuff for later."
+          "text": "Don't worry, I'll go easy on you."
         },
         {
           "isTrigger": false,
-          "text": "Bring it!"
+          "text": "Psyche."
         },
         {
           "isTrigger": true,
@@ -266,7 +266,7 @@
       "preBattle": [
         {
           "isTrigger": false,
-          "text": "Your fundamentals in JavaScript seems well."
+          "text": "Your JavaScript seems well."
         },
         {
           "isTrigger": false,
@@ -274,7 +274,7 @@
         },
         {
           "isTrigger": false,
-          "text": "Advanced concepts are coming up."
+          "text": "SQL is next."
         },
         {
           "isTrigger": false,
@@ -326,7 +326,7 @@
         },
         {
           "isTrigger": false,
-          "text": "I specialize in data structures and algorithms."
+          "text": "I specialize in databases."
         },
         {
           "isTrigger": false,
