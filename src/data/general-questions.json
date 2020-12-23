@@ -380,15 +380,6 @@
     "correct": 3
   },
   {
-    "question": "How can you detect the client's browser name?",
-    "answers": [
-      "browser.name",
-      "navigator.appName",
-      "client.navName"
-    ],
-    "correct": 0
-  },
-  {
     "question": "How do you declare a JavaScript variable in ES5?",
     "answers": [
       "v carName",
@@ -406,7 +397,7 @@
       "*",
       "="
     ],
-    "correct": 0
+    "correct": 3
   },
   {
     "question": "What will the following code return: Boolean(10 > 9)",
@@ -416,7 +407,7 @@
       "false",
       "null"
     ],
-    "correct": 2
+    "correct": 0
   },
   {
     "question": "Is JavaScript case-sensitive?",
@@ -427,5 +418,85 @@
       "I don't know"
     ],
     "correct": 1
+  },
+  {
+    "question": "Which of the following is NOT a falsy value in JavaScript?",
+    "answers": [
+      "0",
+      "-0",
+      "''",
+      "-10"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "What does SQL stand for?",
+    "answers": [
+      "Strong Question Language",
+      "Structured Question Language",
+      "Structured Query Language",
+      "Super Qool Language"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Which SQL statement is used to extract data from a database?",
+    "answers": [
+      "SELECT",
+      "OPEN",
+      "EXTRACT",
+      "GET"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Which SQL statement is used to update data in a database?",
+    "answers": [
+      "SAVE",
+      "UPDATE",
+      "MODIFY",
+      "SAVE AS"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Which SQL statement is used to delete data from a database?",
+    "answers": [
+      "REMOVE",
+      "COLLAPSE",
+      "DELETE",
+      "PATCH"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Which SQL statement is used to insert new data in a database?",
+    "answers": [
+      "ADD NEW",
+      "INSERT INTO",
+      "ADD RECORD",
+      "UPDATE SET"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "With SQL, how do you select a column named \"FirstName\" from a table named \"Persons\"?",
+    "answers": [
+      "SELECT FirstName FROM Persons",
+      "EXTRACT FirstName FROM Persons",
+      "SELECT Persons.FirstName",
+      "INSERT FirstName FROM Persons"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "With SQL, how do you select all the columns from a table named \"Persons\"?",
+    "answers": [
+      "SELECT * FROM Persons",
+      "SELECT Persons",
+      "SELECT [all] FROM Persons",
+      "SELECT *.Persons"
+    ],
+    "correct": 0
   }
 ]

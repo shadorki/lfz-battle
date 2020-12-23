@@ -78,6 +78,7 @@ export class Battle extends Observer {
     this._taskQueue.addTask(
       new Task('enable-input')
     )
+    this._taskQueue.addTask(new Task('simulate-input', ' '))
   }
   async handleBattle(action: any): Promise<void> {
     if(!action) {
@@ -162,13 +163,14 @@ export class Battle extends Observer {
     const {
       arena: background,
       name,
+      sprite,
       damageToEnemy,
       damageToPlayer,
       title,
       openingMessage,
     } = this._selectedQuestionData
     arena.set(background)
-    enemyFighter.set(name)
+    enemyFighter.set(sprite)
     enemyHP.setDamageCounter(damageToEnemy)
     playerHP.setDamageCounter(damageToPlayer)
     playerUI.setAnswers(this._currentQuestion.answers)

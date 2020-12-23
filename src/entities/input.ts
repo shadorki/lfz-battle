@@ -18,7 +18,8 @@ export class Input extends Observer {
       'battle-start',
       'battle-navigate-answer',
       'disable-input',
-      'enable-input'
+      'enable-input',
+      'simulate-input'
     ])
     this._currentMode = 'walking'
     this._taskQueue = taskQueue
@@ -46,7 +47,7 @@ export class Input extends Observer {
   set isDisabled(bool: boolean) {
     this._isDisabled = bool
   }
-  handleUpdate({ name }: Task): void {
+  handleUpdate({ name, action }: Task): void {
     if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'scene-transition-start':
@@ -73,7 +74,14 @@ export class Input extends Observer {
       case 'enable-input':
         this.handleEnableInput()
       break
+      case 'simulate-input':
+        this.handleSimulateInput(action)
+        break
     }
+  }
+  handleSimulateInput(key: string) {
+    console.log(key)
+    this.handleInput({ key } as KeyboardEvent)
   }
   handleDisableInput() {
     this.isDisabled = true
@@ -109,6 +117,12 @@ export class Input extends Observer {
   }
   init(): void {
     window.addEventListener('keydown', this.handleInput.bind(this))
+    // player.addEventListener('transitionstart', () => {
+    //   this.isDisabled = true
+    // })
+    // player.addEventListener('transitionend', () => {
+    //   this.isDisabled = false
+    // })
     this.isDisabled = false
   }
 }

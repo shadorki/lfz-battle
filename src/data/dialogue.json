@@ -309,7 +309,7 @@
     }
   },
   "gymArena4PreBattle": {
-    "TimH": {
+    "Tim H": {
       "hasBattled": false,
       "preBattle": [
         {
@@ -340,7 +340,7 @@
           "isTrigger": true,
           "type": "battle-start",
           "action": {
-            "fighter": "TimH"
+            "fighter": "Tim H"
           }
         }
       ],
@@ -348,7 +348,7 @@
     }
   },
   "gymArena4PostBattle": {
-    "TimH": {
+    "Tim H": {
       "hasBattled": false,
       "preBattle": [
         {
@@ -380,7 +380,7 @@
     }
   },
   "gymArena5PreBattle": {
-    "TimD": {
+    "Tim D": {
       "hasBattled": false,
       "preBattle": [
         {
@@ -407,7 +407,7 @@
           "isTrigger": true,
           "type": "battle-start",
           "action": {
-            "fighter": "TimD"
+            "fighter": "Tim D"
           }
         }
       ],
@@ -415,7 +415,7 @@
     }
   },
   "gymArena5PostBattle": {
-    "TimD": {
+    "Tim D": {
       "hasBattled": false,
       "preBattle": [
         {
@@ -529,7 +529,7 @@
         },
         {
           "isTrigger": false,
-          "text": "At least I think there is, I'm still thinking of it as I go'."
+          "text": "At least I think there is, I'm still thinking of it as I go."
         },
         {
           "isTrigger": false,
@@ -549,11 +549,11 @@
         },
         {
           "isTrigger": false,
-          "text": "Seriously I measure my self worth in GitHub stars."
+          "text": "Seriously, I measure my self worth in GitHub stars."
         },
         {
           "isTrigger": false,
-          "text": "Bye now!."
+          "text": "Bye now!"
         },
         {
           "isTrigger": true,

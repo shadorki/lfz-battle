@@ -79,7 +79,7 @@
   ],
   "gymArena4PreBattle": [
     {
-      "name": "TimH",
+      "name": "Tim H",
       "path": "./assets/images/players/npc-professor.png",
       "startingPosition": {
         "x": 6,
@@ -94,7 +94,7 @@
   ],
   "gymArena5PreBattle": [
     {
-      "name": "TimD",
+      "name": "Tim D",
       "path": "./assets/images/players/npc-professor.png",
       "startingPosition": {
         "x": 6,
@@ -151,7 +151,7 @@
   ],
   "gymArena4PostBattle": [
     {
-      "name": "TimH",
+      "name": "Tim H",
       "path": "./assets/images/players/npc-professor.png",
       "startingPosition": {
         "x": 6,
@@ -166,7 +166,7 @@
   ],
   "gymArena5PostBattle": [
     {
-      "name": "TimD",
+      "name": "Tim D",
       "path": "./assets/images/players/npc-professor.png",
       "startingPosition": {
         "x": 6,

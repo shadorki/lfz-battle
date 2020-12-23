@@ -3,6 +3,7 @@ import { Question } from "./";
 
 export interface QuestionData {
   name: string
+  sprite: string
   title: string
   openingMessage: string
   level: number
