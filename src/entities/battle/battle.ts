@@ -13,7 +13,6 @@ import {
 } from '.'
 
 export class Battle extends Observer {
-  private _acceptedTasks: Set<string>
   private _taskQueue: TaskQueue
   private _currentLevel: keyof Levels
   private _currentQuestions: Question[]

@@ -4,7 +4,6 @@ import { Task } from '../helpers'
 import { Interaction, Position, SceneTransition, Tile } from '../interfaces'
 
 export class Level extends Observer {
-  public _acceptedTasks: Set<string>
   public root: HTMLElement
   public name: string
   public grid: any

@@ -8,7 +8,6 @@ export class NPCManager extends Observer {
   private _root: HTMLElement
   private _npcs: NPCList
   private npcData: any
-  private _acceptedTasks: Set<string>
   constructor(
     currentLevel: string,
     root: HTMLElement

@@ -4,7 +4,6 @@ import { Levels, Movements, Position, StoredBackgroundPositions } from '../inter
 import { Player } from './player'
 
 export class Camera extends Observer {
-  private _acceptedTasks: Set<string>
   private _visibleWidth: number
   private _visibleHeight: number
   private _collisionWidth: number

@@ -1,5 +1,5 @@
 import Engine from './engine'
-import { Camera, Player, Level, Input, NPCManager, Dialogue } from './entities'
+import { Camera, Player, Level, Input, NPCManager, Dialogue, Transition } from './entities'
 import Battle from './entities/battle'
 import { TaskQueue } from './helpers'
 
@@ -14,6 +14,7 @@ export default class Game {
   camera: Camera
   player: Player
   battle: Battle
+  transition: Transition
   constructor() {
     this.$root = document.getElementById('root')
     this.taskQueue = new TaskQueue()
@@ -36,6 +37,7 @@ export default class Game {
       this.level.isSpaceWalkable.bind(this.level)
     )
     this.input = new Input(this.taskQueue)
+    this.transition = new Transition(this.taskQueue)
   }
   setupDOM(...args: Array<HTMLElement>) {
     this.$root.append(...args)
@@ -48,6 +50,7 @@ export default class Game {
     const dialogueElement = this.dialogue.init()
     this.setupDOM(playerElement, cameraElement, dialogueElement,...npcElements)
     this.input.init()
+    this.engine.addObserver(this.transition)
     this.engine.addObserver(this.camera)
     this.engine.addObserver(this.battle)
     this.engine.addObserver(this.player)
@@ -56,5 +59,6 @@ export default class Game {
     this.engine.addObserver(this.level)
     this.engine.addObserver(this.input)
     this.engine.start()
+    this.transition.hide()
   }
 }

@@ -11,6 +11,32 @@
       "facingPosition": "up"
     },
     {
+      "name": "Tarun",
+      "path": "./assets/images/players/npc-tarun.png",
+      "startingPosition": {
+        "x": 43,
+        "y": 6
+      },
+      "positionOnDOM": [
+        1376,
+        384
+      ],
+      "facingPosition": "right"
+    },
+    {
+      "name": "Adison",
+      "path": "./assets/images/players/npc-adison.png",
+      "startingPosition": {
+        "x": 44,
+        "y": 6
+      },
+      "positionOnDOM": [
+        1408,
+        384
+      ],
+      "facingPosition": "left"
+    },
+    {
       "name": "Sarah",
       "path": "./assets/images/players/npc-sarah.png",
       "startingPosition": {

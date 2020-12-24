@@ -14,7 +14,6 @@ export class Player extends Observer {
   public isInteraction: Function
   public getInteraction: Function
   private _taskQueue: TaskQueue
-  private _acceptedTasks: Set<string>
   private _position: Position
   private _playerFacingPositions: PlayerFacingPositions
   private _currentLevel: keyof Levels
@@ -105,12 +104,6 @@ export class Player extends Observer {
         new Task(
           'scene-transition-start',
           this.getSceneTransition(x, y)
-        )
-      )
-      this._taskQueue.addTask(
-        new Task(
-          'scene-transition-end',
-          null
         )
       )
     }

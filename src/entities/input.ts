@@ -4,7 +4,6 @@ import { Observer } from "./";
 export class Input extends Observer {
   private _isDisabled: boolean
   private _currentMode: keyof KeyTable
-  private _acceptedTasks: Set<string>
   private _movementKeys: Set<string>
   private _taskQueue: TaskQueue
   private _keyTable: KeyTable
@@ -130,6 +129,7 @@ export class Input extends Observer {
   startWalkingLoop(name: any, action: any) {
     this._isWalking = true
     this._walkingInterval = window.setInterval(() => {
+      if(this.isDisabled) return this.stopWalkingLoop()
       this._taskQueue.addTask(new Task(name, action))
     }, 200)
   }
@@ -140,12 +140,6 @@ export class Input extends Observer {
   init(): void {
     window.addEventListener('keydown', this.handleInput.bind(this))
     window.addEventListener('keyup', this.handleWalkingLogic.bind(this))
-    // player.addEventListener('transitionstart', () => {
-    //   this.isDisabled = true
-    // })
-    // player.addEventListener('transitionend', () => {
-    //   this.isDisabled = false
-    // })
     this.isDisabled = false
   }
 }

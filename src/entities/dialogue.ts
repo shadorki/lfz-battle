@@ -4,7 +4,6 @@ import { Observer } from './'
 import { dialogueData } from '../data'
 
 export class Dialogue extends Observer {
-  private _acceptedTasks: Set<string>
   private _currentLevel: keyof Levels
   private _dialogues: {
     hasBattled?: boolean

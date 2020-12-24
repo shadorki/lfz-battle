@@ -4010,7 +4010,11 @@
   "43/6": {
     "x": 43,
     "y": 6,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Tarun"
+    }
   },
   "42/7": {
     "x": 42,
@@ -4110,7 +4114,11 @@
   "44/6": {
     "x": 44,
     "y": 6,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Adison"
+    }
   },
   "43/7": {
     "x": 43,

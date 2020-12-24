@@ -22,6 +22,34 @@
       ],
       "postBattle": null
     },
+    "Adison": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "COSTCO PIZZA IS BETTER!"
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Tarun": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "NO! COSTCO HOT DOGS ARE BETTER!"
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
     "Sarah": {
       "hasBattled": false,
       "preBattle": [
@@ -665,7 +693,7 @@
         },
         {
           "isTrigger": true,
-          "type": ["npc-interaction-end", "scene-transition-start", "scene-transition-end"],
+          "type": ["npc-interaction-end", "scene-transition-start"],
           "action": [null, {
               "level": "home",
               "playerPosition": {
@@ -681,7 +709,7 @@
                 -896
               ],
               "playerFacingPosition": "down"
-            }, null]
+            }]
         }
       ]
     }
