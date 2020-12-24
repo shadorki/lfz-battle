@@ -1,2 +1,3 @@
-# lfz-battle
-I'm not sure yet to be honest
+# LFZ Battle
+
+A browser game built with TypeScript
