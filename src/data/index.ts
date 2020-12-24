@@ -14,6 +14,7 @@ import * as  gymArena5PostBattle from './gym-arena-5-post-battle.json'
 import * as  gymArena6 from './gym-arena-6.json'
 import * as  npcData from './npc.json'
 import * as  dialogueData from './dialogue.json'
+import * as  generalQuestions from './general-questions.json'
 import * as  battleData from './battle.json'
 
 const levels = {
@@ -37,5 +38,6 @@ export {
   levels,
   npcData,
   dialogueData,
-  battleData
+  battleData,
+  generalQuestions
 }

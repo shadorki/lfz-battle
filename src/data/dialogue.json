@@ -21,6 +21,114 @@
         }
       ],
       "postBattle": null
+    },
+    "Sarah": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Oh hello."
+        },
+        {
+          "isTrigger": false,
+          "text": "I am a TA in the part time program."
+        },
+        {
+          "isTrigger": false,
+          "text": "The students are in the middle of a Q and A so I'm out getting some air."
+        },
+        {
+          "isTrigger": false,
+          "text": "Oh you're a programmer as well?"
+        },
+        {
+          "isTrigger": false,
+          "text": "Let's see what you've got!"
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "Sarah"
+          }
+        }
+      ],
+      "postBattle": [
+        {
+          "isTrigger": false,
+          "text": "Well- you seem to know your stuff."
+        },
+        {
+          "isTrigger": false,
+          "text": "..."
+        },
+        {
+          "isTrigger": false,
+          "text": "This is awkward now."
+        },
+        {
+          "isTrigger": false,
+          "text": "You should checkout the gym, its down there to and a little to the left."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ]
+    },
+    "Dane": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Oh man, why is this php function deprecated.."
+        },
+        {
+          "isTrigger": false,
+          "text": "Oh hey there."
+        },
+        {
+          "isTrigger": false,
+          "text": "What am I doing?"
+        },
+        {
+          "isTrigger": false,
+          "text": "I'm hiding out here because my boss is forcing me to use wordpress."
+        },
+        {
+          "isTrigger": false,
+          "text": "Maybe you can help fire me up with some programming questions?"
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "Dane"
+          }
+        }
+      ],
+      "postBattle": [
+        {
+          "isTrigger": false,
+          "text": "Thanks man that really fired me up."
+        },
+        {
+          "isTrigger": false,
+          "text": "I'm gonna hang out here a little longer."
+        },
+        {
+          "isTrigger": false,
+          "text": "I hear theres a gym down south with some smart developers."
+        },
+        {
+          "isTrigger": false,
+          "text": "I'll see you around."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ]
     }
   },
   "pokemonCenter": {

@@ -9,6 +9,32 @@
       },
       "positionOnDOM": [672, 384],
       "facingPosition": "up"
+    },
+    {
+      "name": "Sarah",
+      "path": "./assets/images/players/npc-sarah.png",
+      "startingPosition": {
+        "x": 16,
+        "y": 11
+      },
+      "positionOnDOM": [
+        512,
+        704
+      ],
+      "facingPosition": "right"
+    },
+    {
+      "name": "Dane",
+      "path": "./assets/images/players/npc-dane.png",
+      "startingPosition": {
+        "x": 34,
+        "y": 3
+      },
+      "positionOnDOM": [
+        1088,
+        192
+      ],
+      "facingPosition": "right"
     }
   ],
   "pokemonCenter": [

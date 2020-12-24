@@ -1,4 +1,54 @@
 {
+  "home": {
+      "Sarah": {
+        "name": "Sarah",
+        "sprite": "Sarah",
+        "title": "TA",
+        "openingMessage": "Wait till Steven hears about this!",
+        "level": 45,
+        "arena": "grass",
+        "damageToEnemy": 33,
+        "damageToPlayer": 33,
+        "losingMessage": "Ah man, I killed another student.",
+        "winningMessage": "W- HOW",
+        "onWin": {
+          "name": "npc-battle-end",
+          "action": {
+            "name": "Sarah",
+            "level": "home"
+          }
+        },
+        "onLoss": {
+          "name": null,
+          "action": null
+        },
+        "questions": null
+      },
+      "Dane": {
+        "name": "Dane",
+        "sprite": "Dane",
+        "title": "DEVELOPER",
+        "openingMessage": "Non blocking I/O is for losers.",
+        "level": 45,
+        "arena": "grass",
+        "damageToEnemy": 33,
+        "damageToPlayer": 33,
+        "losingMessage": "Oh dude, you gotta step up your game.",
+        "winningMessage": "That was awesome!",
+        "onWin": {
+          "name": "npc-battle-end",
+          "action": {
+            "name": "Dane",
+            "level": "home"
+          }
+        },
+        "onLoss": {
+          "name": null,
+          "action": null
+        },
+        "questions": null
+      }
+    },
   "gymArena1PreBattle": {
     "Brett": {
       "name": "Brett",

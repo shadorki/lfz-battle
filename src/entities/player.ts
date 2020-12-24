@@ -210,7 +210,7 @@ export class Player extends Observer {
         sheet[2],
         sheet[0],
       ],
-      100,
+      50,
     )
     this.animator.addAnimation(
       'up',
@@ -219,7 +219,7 @@ export class Player extends Observer {
         sheet[8],
         sheet[6],
       ],
-      100,
+      50,
     )
     this.animator.addAnimation(
       'left',
@@ -228,7 +228,7 @@ export class Player extends Observer {
         sheet[14],
         sheet[12],
       ],
-      100,
+      50,
     )
     this.animator.addAnimation(
       'right',
@@ -237,7 +237,7 @@ export class Player extends Observer {
         sheet[20],
         sheet[18],
       ],
-      100,
+      50,
     )
   }
   setFacingPositions() {

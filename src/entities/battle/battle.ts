@@ -1,6 +1,6 @@
 import { Delay, Task, TaskQueue } from '../../helpers'
 import { Observer } from '../'
-import { battleData } from '../../data'
+import { battleData, generalQuestions } from '../../data'
 import { BattleComponents, BattleData, Levels, Question, QuestionData } from '../../interfaces'
 import {
   Arena,
@@ -51,7 +51,7 @@ export class Battle extends Observer {
         this.handleBattleStart(action)
         break
       case 'battle-end':
-        this.handleBattleEnd()
+        this.handleBattleEnd(action)
         break
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)
@@ -61,7 +61,7 @@ export class Battle extends Observer {
         break;
     }
   }
-  async handleBattleEnd(): Promise<void> {
+  async handleBattleEnd(wasLoss: boolean): Promise<void> {
     await Delay.delay(500)
     for (const component in this._battleComponents) {
       this._battleComponents[component].hide()
@@ -78,7 +78,9 @@ export class Battle extends Observer {
     this._taskQueue.addTask(
       new Task('enable-input')
     )
-    this._taskQueue.addTask(new Task('simulate-input', ' '))
+    if(!wasLoss) {
+      this._taskQueue.addTask(new Task('simulate-input', ' '))
+    }
   }
   async handleBattle(action: any): Promise<void> {
     if(!action) {
@@ -117,12 +119,12 @@ export class Battle extends Observer {
         await Delay.delay(500)
         if(playerHP.isDead) {
           const { name, action } = onLoss
-          this._taskQueue.addTask(new Task(name, action))
+          if(name || action) this._taskQueue.addTask(new Task(name, action))
         } else {
           const { name, action } = onWin
           this._taskQueue.addTask(new Task(name, action))
         }
-        this._taskQueue.addTask(new Task('battle-end'))
+        this._taskQueue.addTask(new Task('battle-end', playerHP.isDead))
         return
       }
       playerUI.resetSelection()
@@ -147,7 +149,7 @@ export class Battle extends Observer {
     if (!this._currentLevelQuestionData) throw new Error('Missing questions for this map.')
     this._selectedQuestionData = this._currentLevelQuestionData[fighter]
     if (!this._selectedQuestionData) throw new Error('Missing questions for this fighter.')
-    this._currentQuestions = [...this._selectedQuestionData.questions]
+    this._currentQuestions = [...this._selectedQuestionData.questions || generalQuestions]
     this.shuffleQuestions()
     this._currentQuestion = this._currentQuestions.shift()
     const  {

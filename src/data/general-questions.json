@@ -257,7 +257,7 @@
       "color",
       "bg"
     ],
-    "correct": 2
+    "correct": 1
   },
   {
     "question": "How do you add a background color for all <h1> elements?",

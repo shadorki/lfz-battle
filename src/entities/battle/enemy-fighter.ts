@@ -28,10 +28,12 @@ export class EnemyFighter extends Fighter {
       const { sheet } = this._sprite
       const [
         Brett,
-        Scott,,,
+        Scott,
+        Dane,,
         TimD,
         Uzair,,,
-        TimH,,,,
+        TimH,
+        Sarah,,,
         Cody
       ] = sheet
       this._fighterBackgrounds = {
@@ -40,7 +42,9 @@ export class EnemyFighter extends Fighter {
         TimD,
         Uzair,
         TimH,
-        Cody
+        Cody,
+        Sarah,
+        Dane
       }
     })
   }

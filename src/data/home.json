@@ -1827,7 +1827,11 @@
   "16/11": {
     "x": 16,
     "y": 11,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Sarah"
+    }
   },
   "15/12": {
     "x": 15,
@@ -2787,7 +2791,11 @@
   "34/3": {
     "x": 34,
     "y": 3,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Dane"
+    }
   },
   "33/4": {
     "x": 33,

@@ -5,11 +5,15 @@ export class Input extends Observer {
   private _isDisabled: boolean
   private _currentMode: keyof KeyTable
   private _acceptedTasks: Set<string>
+  private _movementKeys: Set<string>
   private _taskQueue: TaskQueue
   private _keyTable: KeyTable
+  private _walkingInterval: number
+  private _isWalking: boolean
   constructor(taskQueue: TaskQueue) {
     super()
     this._isDisabled = true
+    this._isWalking = false
     this._acceptedTasks = new Set([
       'npc-interaction-start',
       'npc-interaction-end',
@@ -23,6 +27,7 @@ export class Input extends Observer {
     ])
     this._currentMode = 'walking'
     this._taskQueue = taskQueue
+    this._movementKeys = new Set(['w', 'a', 's', 'd'])
     this._keyTable = {
       walking: {
         'w': ['movement', 'up'],
@@ -113,10 +118,28 @@ export class Input extends Observer {
     const keyTable = this._keyTable[this._currentMode]
     if(!keyTable[key]) return
     const [ name, action ] = keyTable[key]
+    if(name === 'movement' && this._isWalking) return
     this._taskQueue.addTask(new Task(name, action))
+    if (name === 'movement') this.startWalkingLoop(name, action)
+  }
+  handleWalkingLogic({ key }: KeyboardEvent) {
+    if(this._movementKeys.has(key)) {
+      this.stopWalkingLoop()
+    }
+  }
+  startWalkingLoop(name: any, action: any) {
+    this._isWalking = true
+    this._walkingInterval = window.setInterval(() => {
+      this._taskQueue.addTask(new Task(name, action))
+    }, 200)
+  }
+  stopWalkingLoop() {
+    clearInterval(this._walkingInterval)
+    this._isWalking = false
   }
   init(): void {
     window.addEventListener('keydown', this.handleInput.bind(this))
+    window.addEventListener('keyup', this.handleWalkingLogic.bind(this))
     // player.addEventListener('transitionstart', () => {
     //   this.isDisabled = true
     // })
