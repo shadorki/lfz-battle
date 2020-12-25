@@ -6,7 +6,7 @@ export class Transition extends Observer {
   private _taskQueue: TaskQueue
   constructor(taskQueue: TaskQueue) {
     super()
-    this._acceptedTasks = new Set(['scene-transition-start', 'scene-transition-end'])
+    this._acceptedTasks = new Set(['scene-transition-start', 'scene-transition-end', 'start-game'])
     this._domElement = document.getElementById('transition')
     this._taskQueue = taskQueue
   }
@@ -18,7 +18,13 @@ export class Transition extends Observer {
       case 'scene-transition-end':
         this.handleSceneTransitionEnd()
       break;
+      case 'start-game':
+        this.handleStartGame()
+      break;
     }
+  }
+  handleStartGame() {
+    this.hide()
   }
   async handleSceneTransitionStart() {
     this.show()

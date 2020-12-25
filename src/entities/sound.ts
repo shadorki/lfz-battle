@@ -13,6 +13,7 @@ export class Sound extends Observer {
     super()
     this._acceptedTasks = new Set([
       'toggle-sound',
+      'start-game',
       'scene-transition-start',
       'battle-health-low',
       'battle-damage',
@@ -34,7 +35,7 @@ export class Sound extends Observer {
   set isMuted(bool: boolean) {
     this._isMuted = bool
     for (const key in this._sounds) {
-      this._sounds[key].volume = this._isMuted ? 0 : .3
+      this._sounds[key].volume = this._isMuted ? 0 : .2
     }
     console.log(this._isMuted)
   }
@@ -46,6 +47,9 @@ export class Sound extends Observer {
   }
   handleUpdate({ name, action }: Task): void {
     switch (name) {
+      case 'start-game':
+        this.handleStartGame()
+      break;
       case 'toggle-sound':
         this.handleToggleSound()
       break;
@@ -74,6 +78,9 @@ export class Sound extends Observer {
       break;
       }
     }
+  handleStartGame(): void {
+    this.playMapSound(this._currentLevel)
+  }
   handleWallBump(): void {
     this._sounds.wall.play()
   }
@@ -186,6 +193,5 @@ export class Sound extends Observer {
      this.loadSound(`${this._path}${file}`, key, isLooping)
    )))
    this._sounds = sounds.reduce((all, sound) => ({ ...all, ...sound }))
-   this.playMapSound(this._currentLevel)
   }
 }

@@ -1,5 +1,5 @@
 import Engine from './engine'
-import { Camera, Player, Level, Input, NPCManager, Dialogue, Transition, Sound } from './entities'
+import { Camera, Player, Level, Input, NPCManager, Dialogue, Transition, Sound, LoadingScreen } from './entities'
 import Battle from './entities/battle'
 import { TaskQueue } from './helpers'
 
@@ -8,6 +8,7 @@ export default class Game {
   engine: Engine
   input: Input
   taskQueue: TaskQueue
+  loadingScreen: LoadingScreen
   level: Level
   npcManager: NPCManager
   dialogue: Dialogue
@@ -19,6 +20,7 @@ export default class Game {
   constructor() {
     this.$root = document.getElementById('root')
     this.taskQueue = new TaskQueue()
+    this.loadingScreen = new LoadingScreen()
     this.engine = new Engine(this.taskQueue)
     this.level = new Level('home', this.$root)
     this.npcManager = new NPCManager('home', this.$root)
@@ -45,10 +47,14 @@ export default class Game {
     this.$root.append(...args)
   }
   async start(): Promise<void> {
+    this.loadingScreen.message = 'Loading Player...'
     const playerSpawnPoint = this.level.init()
     const playerElement = await this.player.init(playerSpawnPoint)
+    this.loadingScreen.message = 'Loading NPCs...'
     const npcElements = await this.npcManager.init()
+    this.loadingScreen.message = 'Loading Sounds...'
     await this.sound.init()
+    this.loadingScreen.message = 'Loading Game...'
     const cameraElement = this.camera.init(this.player)
     const dialogueElement = this.dialogue.init()
     this.setupDOM(playerElement, cameraElement, dialogueElement,...npcElements)
@@ -61,8 +67,9 @@ export default class Game {
     this.engine.addObserver(this.npcManager)
     this.engine.addObserver(this.level)
     this.engine.addObserver(this.input)
+    this.engine.addObserver(this.loadingScreen)
     this.engine.start()
     this.input.init()
-    this.transition.hide()
+    this.loadingScreen.message = 'Press Space to Start'
   }
 }

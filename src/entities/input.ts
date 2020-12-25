@@ -22,12 +22,16 @@ export class Input extends Observer {
       'battle-navigate-answer',
       'disable-input',
       'enable-input',
-      'simulate-input'
+      'simulate-input',
+      'start-game'
     ])
-    this._currentMode = 'walking'
+    this._currentMode = 'loading'
     this._taskQueue = taskQueue
     this._movementKeys = new Set(['w', 'a', 's', 'd'])
     this._keyTable = {
+      loading: {
+        ' ': ['start-game', null]
+      },
       walking: {
         'w': ['movement', 'up'],
         'a': ['movement', 'left'],
@@ -83,7 +87,13 @@ export class Input extends Observer {
       case 'simulate-input':
         this.handleSimulateInput(action)
         break
+      case 'start-game':
+        this.handleStartGame()
+        break
     }
+  }
+  handleStartGame(): void {
+    this._currentMode = 'walking'
   }
   handleSimulateInput(key: string) {
     this.handleInput({ key } as KeyboardEvent)

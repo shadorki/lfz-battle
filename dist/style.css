@@ -38,8 +38,8 @@ body {
   image-rendering: pixelated;
   transition-duration: 500ms;
 }
-#transition, .battle-arena-backdrop {
-  z-index: 100;
+#transition, .battle-arena-backdrop, #loading-screen {
+  z-index: 101;
   position: absolute;
   top: 0;
   left: 0;
@@ -48,6 +48,24 @@ body {
   background-color: black;
   opacity: 1;
   transition: opacity 500ms;
+}
+#loading-screen {
+  background-image: url('./assets/images/loading-screen.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.loading-text {
+  font-family: 'Press Start 2P';
+  color: white;
+  bottom: 60px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+#transition {
+  z-index: 100;
 }
 .battle-arena-backdrop {
   z-index: 99;

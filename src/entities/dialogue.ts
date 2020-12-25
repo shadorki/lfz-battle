@@ -160,6 +160,7 @@ export class Dialogue extends Observer {
     container.style.borderRadius = '6px'
     container.style.backgroundColor = 'beige'
     container.style.transition = 'bottom 300ms, opacity 300ms'
+    container.style.zIndex = '2'
     const heading = document.createElement('div')
     heading.style.fontSize = '18px'
     heading.style.paddingLeft = '8px'
