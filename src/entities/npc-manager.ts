@@ -76,7 +76,7 @@ export class NPCManager extends Observer {
 
   }
   switchLevel(newLevel: string) {
-    this.npcData = npcData[newLevel]
+    this.npcData = npcData[newLevel] || []
     this._currentLevel = newLevel
   }
   async init(): Promise<Array<HTMLElement>> {

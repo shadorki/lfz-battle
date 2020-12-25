@@ -2601,7 +2601,17 @@
   "30/5": {
     "x": 30,
     "y": 5,
-    "isWalkable": true
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "battleTower",
+      "playerPosition": {
+        "x": 9,
+        "y": 8
+      },
+      "playerPositionOnDOM": [288, 192],
+      "backgroundPositionOnDOM": [0, -320],
+      "playerFacingPosition": "up"
+    }
   },
   "29/6": {
     "x": 29,
