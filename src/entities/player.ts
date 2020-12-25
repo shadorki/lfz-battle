@@ -95,17 +95,20 @@ export class Player extends Observer {
     const position = this.getTargetedPosition(direction)
     const { x, y } = position
     this.setFacingPosition(direction)
-    if(!this.isSpaceWalkable(x, y)) return
-    this.animator.play(direction)
-    this._position = position
-    this.updatePositionOnDOM(direction)
-    if(this.isSceneTransition(x, y)) {
-      this._taskQueue.addTask(
-        new Task(
-          'scene-transition-start',
-          this.getSceneTransition(x, y)
+    if(this.isSpaceWalkable(x, y)) {
+      this.animator.play(direction)
+      this._position = position
+      this.updatePositionOnDOM(direction)
+      if(this.isSceneTransition(x, y)) {
+        this._taskQueue.addTask(
+          new Task(
+            'scene-transition-start',
+            this.getSceneTransition(x, y)
+          )
         )
-      )
+      }
+    } else {
+      this._taskQueue.addTask(new Task('wall-bump'))
     }
   }
   handleSceneTransitionStart(action: any) {

@@ -11,7 +11,6 @@ export class Transition extends Observer {
     this._taskQueue = taskQueue
   }
   handleUpdate({ name }: Task): void {
-    if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'scene-transition-start':
         this.handleSceneTransitionStart()

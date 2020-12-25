@@ -26,7 +26,6 @@ export class NPCManager extends Observer {
     this._npcs[this._currentLevel] = npcs
   }
   handleUpdate({name, action}: Task): void {
-    if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'npc-movement':
         this.handleNPCMovement(action as keyof Movements)

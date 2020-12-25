@@ -5,6 +5,7 @@ export abstract class Observer {
   abstract handleUpdate (task: Task): void
 
   update(task: Task): void {
+    if (!this._acceptedTasks.has(task.name)) return
     this.handleUpdate(task)
   }
 }

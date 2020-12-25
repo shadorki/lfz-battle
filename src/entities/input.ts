@@ -33,15 +33,18 @@ export class Input extends Observer {
         'a': ['movement', 'left'],
         's': ['movement', 'down'],
         'd': ['movement', 'right'],
-        ' ': ['interaction', null]
+        ' ': ['interaction', null],
+        'm': ['toggle-sound', null]
       },
       dialogue: {
-        ' ': ['dialogue', null]
+        ' ': ['dialogue', null],
+        'm': ['toggle-sound', null]
       },
       battle: {
         'w': ['battle', 'selectPreviousAnswer'],
         's': ['battle', 'selectNextAnswer'],
-        ' ': ['battle', null]
+        ' ': ['battle', null],
+        'm': ['toggle-sound', null]
       }
     }
   }
@@ -52,7 +55,6 @@ export class Input extends Observer {
     this._isDisabled = bool
   }
   handleUpdate({ name, action }: Task): void {
-    if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'scene-transition-start':
         this.handleSceneTransitionStart()
@@ -84,7 +86,6 @@ export class Input extends Observer {
     }
   }
   handleSimulateInput(key: string) {
-    console.log(key)
     this.handleInput({ key } as KeyboardEvent)
   }
   handleDisableInput() {

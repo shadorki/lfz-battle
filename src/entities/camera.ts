@@ -42,7 +42,6 @@ export class Camera extends Observer {
     this.domElement = null
   }
   handleUpdate({ name, action }: Task): void {
-    if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'movement':
         this.handleMovement()

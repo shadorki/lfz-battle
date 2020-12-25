@@ -18,7 +18,6 @@ export class Level extends Observer {
     }
   }
   handleUpdate({ name, action}: Task): void {
-    if (!this._acceptedTasks.has(name)) return
     switch(name) {
       case 'scene-transition-start':
         this.handleSceneTransitionStart(action)

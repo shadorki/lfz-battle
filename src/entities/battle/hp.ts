@@ -34,6 +34,9 @@ export class HP extends BattleComponent{
   get isDead(): boolean {
     return !this._health
   }
+  get isLow(): boolean {
+    return this._health <= 10
+  }
   get isShowing(): boolean {
     return this._isShowing
   }

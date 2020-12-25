@@ -33,7 +33,6 @@ export class Dialogue extends Observer {
     this.contentElement = null
   }
   handleUpdate({ name, action }: Task): void {
-    if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'npc-interaction-start':
         this.handleNPCInteractionStart(action)

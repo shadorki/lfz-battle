@@ -207,7 +207,7 @@
       "In the <body> section",
       "In the <style> section"
     ],
-    "correct": 2
+    "correct": 1
   },
   {
     "question": "Which HTML tag is used to define an internal style sheet?",

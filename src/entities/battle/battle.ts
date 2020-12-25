@@ -44,7 +44,6 @@ export class Battle extends Observer {
     }
   }
   handleUpdate({ name, action }: Task): void {
-    if (!this._acceptedTasks.has(name)) return
     switch (name) {
       case 'battle-start':
         this.handleBattleStart(action)
@@ -94,6 +93,7 @@ export class Battle extends Observer {
       ? playerUI.setCorrect()
       : playerUI.setWrong()
       await Delay.delay(500)
+      this._taskQueue.addTask(new Task('battle-damage'))
       if(isCorrect) {
         enemyHP.damage()
         await enemyFighter.damage()
@@ -125,6 +125,9 @@ export class Battle extends Observer {
         }
         this._taskQueue.addTask(new Task('battle-end', playerHP.isDead))
         return
+      }
+      if(playerHP.isLow || enemyHP.isLow) {
+        this._taskQueue.addTask(new Task('battle-health-low'))
       }
       playerUI.resetSelection()
       playerUI.setAnswers(this._currentQuestion.answers)
