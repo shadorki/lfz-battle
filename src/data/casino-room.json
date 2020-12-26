@@ -1,6 +1,47 @@
 {
+  "path": "./assets/images/maps/casino-room.png",
   "0/0": {
     "x": 0,
+    "y": 0,
+    "isWalkable": false
+  },
+  "1/0": {
+    "x": 1,
+    "y": 0,
+    "isWalkable": false
+  },
+  "2/0": {
+    "x": 2,
+    "y": 0,
+    "isWalkable": false
+  },
+  "3/0": {
+    "x": 3,
+    "y": 0,
+    "isWalkable": false
+  },
+  "4/0": {
+    "x": 4,
+    "y": 0,
+    "isWalkable": false
+  },
+  "5/0": {
+    "x": 5,
+    "y": 0,
+    "isWalkable": false
+  },
+  "6/0": {
+    "x": 6,
+    "y": 0,
+    "isWalkable": false
+  },
+  "7/0": {
+    "x": 7,
+    "y": 0,
+    "isWalkable": false
+  },
+  "8/0": {
+    "x": 8,
     "y": 0,
     "isWalkable": false
   },
@@ -9,13 +50,133 @@
     "y": 1,
     "isWalkable": false
   },
+  "1/1": {
+    "x": 1,
+    "y": 1,
+    "isWalkable": false
+  },
+  "2/1": {
+    "x": 2,
+    "y": 1,
+    "isWalkable": false
+  },
+  "3/1": {
+    "x": 3,
+    "y": 1,
+    "isWalkable": false
+  },
+  "4/1": {
+    "x": 4,
+    "y": 1,
+    "isWalkable": false
+  },
+  "5/1": {
+    "x": 5,
+    "y": 1,
+    "isWalkable": false
+  },
+  "6/1": {
+    "x": 6,
+    "y": 1,
+    "isWalkable": false
+  },
+  "7/1": {
+    "x": 7,
+    "y": 1,
+    "isWalkable": false
+  },
+  "8/1": {
+    "x": 8,
+    "y": 1,
+    "isWalkable": false
+  },
   "0/2": {
     "x": 0,
     "y": 2,
-    "isWalkable": false
+    "isWalkable": true
+  },
+  "1/2": {
+    "x": 1,
+    "y": 2,
+    "isWalkable": true
+  },
+  "2/2": {
+    "x": 2,
+    "y": 2,
+    "isWalkable": true
+  },
+  "3/2": {
+    "x": 3,
+    "y": 2,
+    "isWalkable": true
+  },
+  "4/2": {
+    "x": 4,
+    "y": 2,
+    "isWalkable": true
+  },
+  "5/2": {
+    "x": 5,
+    "y": 2,
+    "isWalkable": true
+  },
+  "6/2": {
+    "x": 6,
+    "y": 2,
+    "isWalkable": true
+  },
+  "7/2": {
+    "x": 7,
+    "y": 2,
+    "isWalkable": true
+  },
+  "8/2": {
+    "x": 8,
+    "y": 2,
+    "isWalkable": true
   },
   "0/3": {
     "x": 0,
+    "y": 3,
+    "isWalkable": false
+  },
+  "1/3": {
+    "x": 1,
+    "y": 3,
+    "isWalkable": false
+  },
+  "2/3": {
+    "x": 2,
+    "y": 3,
+    "isWalkable": true
+  },
+  "3/3": {
+    "x": 3,
+    "y": 3,
+    "isWalkable": true
+  },
+  "4/3": {
+    "x": 4,
+    "y": 3,
+    "isWalkable": true
+  },
+  "5/3": {
+    "x": 5,
+    "y": 3,
+    "isWalkable": true
+  },
+  "6/3": {
+    "x": 6,
+    "y": 3,
+    "isWalkable": true
+  },
+  "7/3": {
+    "x": 7,
+    "y": 3,
+    "isWalkable": false
+  },
+  "8/3": {
+    "x": 8,
     "y": 3,
     "isWalkable": false
   },
@@ -24,209 +185,52 @@
     "y": 4,
     "isWalkable": false
   },
-  "0/5": {
-    "x": 0,
-    "y": 5,
-    "isWalkable": false
-  },
-  "0/6": {
-    "x": 0,
-    "y": 6,
-    "isWalkable": false
-  },
-  "0/7": {
-    "x": 0,
-    "y": 7,
-    "isWalkable": false
-  },
-  "0/8": {
-    "x": 0,
-    "y": 8,
-    "isWalkable": false
-  },
-  "1/0": {
-    "x": 1,
-    "y": 0,
-    "isWalkable": false
-  },
-  "1/1": {
-    "x": 1,
-    "y": 1,
-    "isWalkable": false
-  },
-  "1/2": {
-    "x": 1,
-    "y": 2,
-    "isWalkable": false
-  },
-  "1/3": {
-    "x": 1,
-    "y": 3,
-    "isWalkable": false
-  },
   "1/4": {
     "x": 1,
     "y": 4,
-    "isWalkable": false,
-    "interaction": {
-      "type": "npc",
-      "name": "John"
-    }
-  },
-  "1/5": {
-    "x": 1,
-    "y": 5,
     "isWalkable": false
-  },
-  "1/6": {
-    "x": 1,
-    "y": 6,
-    "isWalkable": false
-  },
-  "1/7": {
-    "x": 1,
-    "y": 7,
-    "isWalkable": false
-  },
-  "1/8": {
-    "x": 1,
-    "y": 8,
-    "isWalkable": false
-  },
-  "2/0": {
-    "x": 2,
-    "y": 0,
-    "isWalkable": true
-  },
-  "2/1": {
-    "x": 2,
-    "y": 1,
-    "isWalkable": true
-  },
-  "2/2": {
-    "x": 2,
-    "y": 2,
-    "isWalkable": true
-  },
-  "2/3": {
-    "x": 2,
-    "y": 3,
-    "isWalkable": true
   },
   "2/4": {
     "x": 2,
     "y": 4,
-    "isWalkable": true
-  },
-  "2/5": {
-    "x": 2,
-    "y": 5,
-    "isWalkable": true
-  },
-  "2/6": {
-    "x": 2,
-    "y": 6,
-    "isWalkable": true
-  },
-  "2/7": {
-    "x": 2,
-    "y": 7,
-    "isWalkable": true
-  },
-  "2/8": {
-    "x": 2,
-    "y": 8,
-    "isWalkable": true
-  },
-  "3/0": {
-    "x": 3,
-    "y": 0,
     "isWalkable": false
-  },
-  "3/1": {
-    "x": 3,
-    "y": 1,
-    "isWalkable": false
-  },
-  "3/2": {
-    "x": 3,
-    "y": 2,
-    "isWalkable": true
-  },
-  "3/3": {
-    "x": 3,
-    "y": 3,
-    "isWalkable": true
   },
   "3/4": {
     "x": 3,
     "y": 4,
-    "isWalkable": true
-  },
-  "3/5": {
-    "x": 3,
-    "y": 5,
-    "isWalkable": true
-  },
-  "3/6": {
-    "x": 3,
-    "y": 6,
-    "isWalkable": true
-  },
-  "3/7": {
-    "x": 3,
-    "y": 7,
-    "isWalkable": false
-  },
-  "3/8": {
-    "x": 3,
-    "y": 8,
-    "isWalkable": false
-  },
-  "4/0": {
-    "x": 4,
-    "y": 0,
-    "isWalkable": false
-  },
-  "4/1": {
-    "x": 4,
-    "y": 1,
-    "isWalkable": false
-  },
-  "4/2": {
-    "x": 4,
-    "y": 2,
-    "isWalkable": false
-  },
-  "4/3": {
-    "x": 4,
-    "y": 3,
     "isWalkable": false
   },
   "4/4": {
     "x": 4,
     "y": 4,
     "isWalkable": true,
-    "sceneTransition": "here"
+    "sceneTransition": {
+      "level": "home",
+      "playerPosition": {
+        "x": 39,
+        "y": 10
+      },
+      "playerFacingPosition": "down"
+    }
   },
-  "4/5": {
-    "x": 4,
-    "y": 5,
+  "5/4": {
+    "x": 5,
+    "y": 4,
     "isWalkable": false
   },
-  "4/6": {
-    "x": 4,
-    "y": 6,
+  "6/4": {
+    "x": 6,
+    "y": 4,
     "isWalkable": false
   },
-  "4/7": {
-    "x": 4,
-    "y": 7,
+  "7/4": {
+    "x": 7,
+    "y": 4,
     "isWalkable": false
   },
-  "4/8": {
-    "x": 4,
-    "y": 8,
+  "8/4": {
+    "x": 8,
+    "y": 4,
     "isWalkable": false
   }
 }

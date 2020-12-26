@@ -3550,7 +3550,17 @@
   "34/10": {
     "x": 34,
     "y": 10,
-    "isWalkable": true
+    "isWalkable": true,
+    "sceneTransition": {
+    "level": "casino",
+    "playerPosition": {
+      "x": 9,
+      "y": 7
+    },
+    "playerPositionOnDOM": [320, 192],
+    "backgroundPositionOnDOM": [32, -256],
+    "playerFacingPosition": "up"
+  }
   },
   "33/11": {
     "x": 33,
@@ -4054,7 +4064,17 @@
   "39/10": {
     "x": 39,
     "y": 10,
-    "isWalkable": true
+    "isWalkable": true,
+    "sceneTransition": {
+    "level": "casinoRoom",
+    "playerPosition": {
+      "x": 4,
+      "y": 4
+    },
+    "playerPositionOnDOM": [320, 192],
+    "backgroundPositionOnDOM": [192, -64],
+    "playerFacingPosition": "up"
+  }
   },
   "38/11": {
     "x": 38,
