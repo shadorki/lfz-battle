@@ -4066,15 +4066,15 @@
     "y": 10,
     "isWalkable": true,
     "sceneTransition": {
-    "level": "casinoRoom",
-    "playerPosition": {
-      "x": 4,
-      "y": 4
-    },
-    "playerPositionOnDOM": [320, 192],
-    "backgroundPositionOnDOM": [192, -64],
-    "playerFacingPosition": "up"
-  }
+      "level": "casinoRoom",
+      "playerPosition": {
+        "x": 4,
+        "y": 4
+      },
+      "playerPositionOnDOM": [320, 192],
+      "backgroundPositionOnDOM": [192, -64],
+      "playerFacingPosition": "up"
+    }
   },
   "38/11": {
     "x": 38,
@@ -4298,7 +4298,17 @@
   "37/14": {
     "x": 37,
     "y": 14,
-    "isWalkable": true
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "homeHouse1",
+      "playerPosition": {
+        "x": 4,
+        "y": 4
+      },
+      "playerPositionOnDOM": [320, 192],
+      "backgroundPositionOnDOM": [192, -64],
+      "playerFacingPosition": "up"
+    }
   },
   "36/15": {
     "x": 36,

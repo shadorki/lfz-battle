@@ -5,6 +5,7 @@ import * as  battleTower from './battle-tower.json'
 import * as  lfzEntrance from './lfz-entrance.json'
 import * as  casino from './casino.json'
 import * as  casinoRoom from './casino-room.json'
+import * as  homeHouse1 from './home-house-1.json'
 import * as  gymArena1PreBattle from './gym-arena-1-pre-battle.json'
 import * as  gymArena2PreBattle from './gym-arena-2-pre-battle.json'
 import * as  gymArena3PreBattle from './gym-arena-3-pre-battle.json'
@@ -29,6 +30,7 @@ const levels = {
   lfzEntrance,
   casino,
   casinoRoom,
+  homeHouse1,
   gymArena1PreBattle,
   gymArena2PreBattle,
   gymArena3PreBattle,
