@@ -1,0 +1,286 @@
+{
+  "path": "./assets/images/maps/home-house.png",
+  "0/0": {
+    "x": 0,
+    "y": 0,
+    "isWalkable": false
+  },
+  "1/0": {
+    "x": 1,
+    "y": 0,
+    "isWalkable": false
+  },
+  "2/0": {
+    "x": 2,
+    "y": 0,
+    "isWalkable": false
+  },
+  "3/0": {
+    "x": 3,
+    "y": 0,
+    "isWalkable": false
+  },
+  "4/0": {
+    "x": 4,
+    "y": 0,
+    "isWalkable": false
+  },
+  "5/0": {
+    "x": 5,
+    "y": 0,
+    "isWalkable": false
+  },
+  "6/0": {
+    "x": 6,
+    "y": 0,
+    "isWalkable": false
+  },
+  "7/0": {
+    "x": 7,
+    "y": 0,
+    "isWalkable": false
+  },
+  "8/0": {
+    "x": 8,
+    "y": 0,
+    "isWalkable": false
+  },
+  "9/0": {
+    "x": 9,
+    "y": 0,
+    "isWalkable": false
+  },
+  "10/0": {
+    "x": 10,
+    "y": 0,
+    "isWalkable": false
+  },
+  "0/1": {
+    "x": 0,
+    "y": 1,
+    "isWalkable": true
+  },
+  "1/1": {
+    "x": 1,
+    "y": 1,
+    "isWalkable": true
+  },
+  "2/1": {
+    "x": 2,
+    "y": 1,
+    "isWalkable": true
+  },
+  "3/1": {
+    "x": 3,
+    "y": 1,
+    "isWalkable": true
+  },
+  "4/1": {
+    "x": 4,
+    "y": 1,
+    "isWalkable": true
+  },
+  "5/1": {
+    "x": 5,
+    "y": 1,
+    "isWalkable": true
+  },
+  "6/1": {
+    "x": 6,
+    "y": 1,
+    "isWalkable": true
+  },
+  "7/1": {
+    "x": 7,
+    "y": 1,
+    "isWalkable": true
+  },
+  "8/1": {
+    "x": 8,
+    "y": 1,
+    "isWalkable": true
+  },
+  "9/1": {
+    "x": 9,
+    "y": 1,
+    "isWalkable": true
+  },
+  "10/1": {
+    "x": 10,
+    "y": 1,
+    "isWalkable": true
+  },
+  "0/2": {
+    "x": 0,
+    "y": 2,
+    "isWalkable": true
+  },
+  "1/2": {
+    "x": 1,
+    "y": 2,
+    "isWalkable": true
+  },
+  "2/2": {
+    "x": 2,
+    "y": 2,
+    "isWalkable": true
+  },
+  "3/2": {
+    "x": 3,
+    "y": 2,
+    "isWalkable": true
+  },
+  "4/2": {
+    "x": 4,
+    "y": 2,
+    "isWalkable": true
+  },
+  "5/2": {
+    "x": 5,
+    "y": 2,
+    "isWalkable": false
+  },
+  "6/2": {
+    "x": 6,
+    "y": 2,
+    "isWalkable": false
+  },
+  "7/2": {
+    "x": 7,
+    "y": 2,
+    "isWalkable": true
+  },
+  "8/2": {
+    "x": 8,
+    "y": 2,
+    "isWalkable": true
+  },
+  "9/2": {
+    "x": 9,
+    "y": 2,
+    "isWalkable": true
+  },
+  "10/2": {
+    "x": 10,
+    "y": 2,
+    "isWalkable": true
+  },
+  "0/3": {
+    "x": 0,
+    "y": 3,
+    "isWalkable": false
+  },
+  "1/3": {
+    "x": 1,
+    "y": 3,
+    "isWalkable": true
+  },
+  "2/3": {
+    "x": 2,
+    "y": 3,
+    "isWalkable": true
+  },
+  "3/3": {
+    "x": 3,
+    "y": 3,
+    "isWalkable": true
+  },
+  "4/3": {
+    "x": 4,
+    "y": 3,
+    "isWalkable": true
+  },
+  "5/3": {
+    "x": 5,
+    "y": 3,
+    "isWalkable": true
+  },
+  "6/3": {
+    "x": 6,
+    "y": 3,
+    "isWalkable": true
+  },
+  "7/3": {
+    "x": 7,
+    "y": 3,
+    "isWalkable": true
+  },
+  "8/3": {
+    "x": 8,
+    "y": 3,
+    "isWalkable": true
+  },
+  "9/3": {
+    "x": 9,
+    "y": 3,
+    "isWalkable": true
+  },
+  "10/3": {
+    "x": 10,
+    "y": 3,
+    "isWalkable": false
+  },
+  "0/4": {
+    "x": 0,
+    "y": 4,
+    "isWalkable": false
+  },
+  "1/4": {
+    "x": 1,
+    "y": 4,
+    "isWalkable": false
+  },
+  "2/4": {
+    "x": 2,
+    "y": 4,
+    "isWalkable": false
+  },
+  "3/4": {
+    "x": 3,
+    "y": 4,
+    "isWalkable": false
+  },
+  "4/4": {
+    "x": 4,
+    "y": 4,
+    "isWalkable": true,
+    "sceneTransition": {
+      "level": "home",
+      "playerPosition": {
+        "x": 49,
+        "y": 14
+      },
+      "playerFacingPosition": "down"
+    }
+  },
+  "5/4": {
+    "x": 5,
+    "y": 4,
+    "isWalkable": false
+  },
+  "6/4": {
+    "x": 6,
+    "y": 4,
+    "isWalkable": false
+  },
+  "7/4": {
+    "x": 7,
+    "y": 4,
+    "isWalkable": false
+  },
+  "8/4": {
+    "x": 8,
+    "y": 4,
+    "isWalkable": false
+  },
+  "9/4": {
+    "x": 9,
+    "y": 4,
+    "isWalkable": false
+  },
+  "10/4": {
+    "x": 10,
+    "y": 4,
+    "isWalkable": false
+  }
+}
