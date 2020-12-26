@@ -2,6 +2,7 @@ import * as  home from './home.json'
 import * as  pokemonCenter from './pokemon-center.json'
 import * as  gymEntrance from './gym-entrance.json'
 import * as  battleTower from './battle-tower.json'
+import * as  lfzEntrance from './lfz-entrance.json'
 import * as  gymArena1PreBattle from './gym-arena-1-pre-battle.json'
 import * as  gymArena2PreBattle from './gym-arena-2-pre-battle.json'
 import * as  gymArena3PreBattle from './gym-arena-3-pre-battle.json'
@@ -23,6 +24,7 @@ const levels = {
   pokemonCenter,
   gymEntrance,
   battleTower,
+  lfzEntrance,
   gymArena1PreBattle,
   gymArena2PreBattle,
   gymArena3PreBattle,

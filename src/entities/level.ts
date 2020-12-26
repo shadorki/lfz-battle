@@ -46,11 +46,11 @@ export class Level extends Observer {
     return this.getTile(x, y).isWalkable
   }
   isSceneTransition(x: number, y: number): boolean {
-    if (!this.getTile(x, y).sceneTransition) return false
+    if (!this.getTile(x, y)) return false
     return !!this.getTile(x, y).sceneTransition
   }
   isInteraction(x: number, y: number): boolean {
-    if (!this.getTile(x, y).interaction) return false
+    if (!this.getTile(x, y)) return false
     return !!this.getTile(x, y).interaction
   }
   triggerDebugView(): void {

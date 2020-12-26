@@ -1293,7 +1293,17 @@
   "15/7": {
     "x": 15,
     "y": 7,
-    "isWalkable": true
+    "isWalkable": true,
+      "sceneTransition": {
+      "level": "lfzEntrance",
+      "playerPosition": {
+        "x": 8,
+        "y": 10
+      },
+      "playerPositionOnDOM": [288, 192],
+      "backgroundPositionOnDOM": [32, -448],
+      "playerFacingPosition": "up"
+    }
   },
   "14/8": {
     "x": 14,

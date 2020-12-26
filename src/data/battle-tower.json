@@ -815,14 +815,6 @@
         "x": 30,
         "y": 5
       },
-      "playerPositionOnDOM": [
-        288,
-        192
-      ],
-      "backgroundPositionOnDOM": [
-        -64,
-        -320
-      ],
       "playerFacingPosition": "down"
     }
   },
