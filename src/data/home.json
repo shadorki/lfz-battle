@@ -5488,11 +5488,11 @@
     "sceneTransition": {
       "level": "homeHouse3",
       "playerPosition": {
-        "x": 4,
-        "y": 4
+        "x": 5,
+        "y": 3
       },
-      "playerPositionOnDOM": [320, 192],
-      "backgroundPositionOnDOM": [192, -64],
+      "playerPositionOnDOM": [320, 256],
+      "backgroundPositionOnDOM": [160, 32],
       "playerFacingPosition": "up"
     }
   },
