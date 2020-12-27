@@ -93,7 +93,7 @@
   "gymArena1PreBattle": [
     {
       "name": "Brett",
-      "path": "./assets/images/players/npc-nerd.png",
+      "path": "./assets/images/players/npc-brett.png",
       "startingPosition": {
         "x": 6,
         "y": 2
@@ -105,7 +105,7 @@
   "gymArena2PreBattle": [
     {
       "name": "Cody",
-      "path": "./assets/images/players/npc-professor.png",
+      "path": "./assets/images/players/npc-cody.png",
       "startingPosition": {
         "x": 6,
         "y": 2
@@ -117,7 +117,7 @@
   "gymArena3PreBattle": [
     {
       "name": "Scott",
-      "path": "./assets/images/players/npc-professor.png",
+      "path": "./assets/images/players/npc-scott.png",
       "startingPosition": {
         "x": 6,
         "y": 2
@@ -132,7 +132,7 @@
   "gymArena4PreBattle": [
     {
       "name": "Tim H",
-      "path": "./assets/images/players/npc-professor.png",
+      "path": "./assets/images/players/npc-timh.png",
       "startingPosition": {
         "x": 6,
         "y": 4
@@ -147,7 +147,7 @@
   "gymArena5PreBattle": [
     {
       "name": "Tim D",
-      "path": "./assets/images/players/npc-professor.png",
+      "path": "./assets/images/players/npc-timd.png",
       "startingPosition": {
         "x": 6,
         "y": 3
@@ -162,7 +162,7 @@
     "gymArena1PostBattle": [
     {
       "name": "Brett",
-      "path": "./assets/images/players/npc-nerd.png",
+      "path": "./assets/images/players/npc-brett.png",
       "startingPosition": {
         "x": 6,
         "y": 2
@@ -174,7 +174,7 @@
   "gymArena2PostBattle": [
     {
       "name": "Cody",
-      "path": "./assets/images/players/npc-professor.png",
+      "path": "./assets/images/players/npc-cody.png",
       "startingPosition": {
         "x": 6,
         "y": 2
@@ -189,7 +189,7 @@
   "gymArena3PostBattle": [
     {
       "name": "Scott",
-      "path": "./assets/images/players/npc-professor.png",
+      "path": "./assets/images/players/npc-scott.png",
       "startingPosition": {
         "x": 6,
         "y": 2
@@ -204,7 +204,7 @@
   "gymArena4PostBattle": [
     {
       "name": "Tim H",
-      "path": "./assets/images/players/npc-professor.png",
+      "path": "./assets/images/players/npc-timh.png",
       "startingPosition": {
         "x": 6,
         "y": 4
@@ -219,7 +219,7 @@
   "gymArena5PostBattle": [
     {
       "name": "Tim D",
-      "path": "./assets/images/players/npc-professor.png",
+      "path": "./assets/images/players/npc-timd.png",
       "startingPosition": {
         "x": 6,
         "y": 3
