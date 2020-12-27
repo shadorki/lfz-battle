@@ -227,6 +227,30 @@
       ]
     }
   },
+  "casinoRoom": {
+    "John": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "I run security for the casino next door."
+        },
+        {
+          "isTrigger": false,
+          "text": "Well it used to be a casino, but after the tech companies moved in, it's now an Internet Cafe."
+        },
+        {
+          "isTrigger": false,
+          "text": "Feel free to check it out."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
+  },
   "lfzEntrance": {
     "TJ": {
       "hasBattled": false,

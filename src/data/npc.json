@@ -93,6 +93,21 @@
       "facingPosition": "down"
     }
   ],
+  "casinoRoom": [
+    {
+      "name": "John",
+      "path": "./assets/images/players/npc-nerd2.png",
+      "startingPosition": {
+        "x": 4,
+        "y": 1
+      },
+      "positionOnDOM": [
+        320,
+        0
+      ],
+      "facingPosition": "down"
+    }
+  ],
   "lfzEntrance": [
     {
       "name": "TJ",

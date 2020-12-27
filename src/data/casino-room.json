@@ -68,7 +68,11 @@
   "4/1": {
     "x": 4,
     "y": 1,
-    "isWalkable": false
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "John"
+    }
   },
   "5/1": {
     "x": 5,
