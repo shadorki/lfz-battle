@@ -49,6 +49,32 @@
         "questions": null
       }
     },
+  "battleTower": {
+    "Blake": {
+      "name": "Blake",
+      "sprite": "Blake",
+      "title": "DEVELOPER",
+      "openingMessage": "There's pineapple shrimp, lemon shrimp, coconut shrimp, pepper shr...",
+      "level": 45,
+      "arena": "ocean",
+      "damageToEnemy": 33,
+      "damageToPlayer": 33,
+      "losingMessage": "Uh oh, guess I fried your brain huh.",
+      "winningMessage": "...imp, shrimp soup, shrimp stew, shrimp salad...",
+      "onWin": {
+        "name": "npc-battle-end",
+        "action": {
+          "name": "Blake",
+          "level": "battleTower"
+        }
+      },
+      "onLoss": {
+        "name": null,
+        "action": null
+      },
+      "questions": null
+    }
+  },
   "gymArena1PreBattle": {
     "Brett": {
       "name": "Brett",

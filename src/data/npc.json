@@ -78,6 +78,21 @@
       "facingPosition": "down"
     }
   ],
+  "battleTower": [
+    {
+      "name": "Blake",
+      "path": "./assets/images/players/npc-blake.png",
+      "startingPosition": {
+        "x": 9,
+        "y": 3
+      },
+      "positionOnDOM": [
+        288,
+        -128
+      ],
+      "facingPosition": "down"
+    }
+  ],
   "gymEntrance": [
     {
       "name": "Cassandra",

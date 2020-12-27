@@ -333,7 +333,11 @@
   "9/3": {
     "x": 9,
     "y": 3,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Blake"
+    }
   },
   "10/3": {
     "x": 10,

@@ -34,7 +34,8 @@ export class EnemyFighter extends Fighter {
         Uzair,,,
         TimH,
         Sarah,,,
-        Cody
+        Cody,
+        Blake
       ] = sheet
       this._fighterBackgrounds = {
         Brett,
@@ -44,7 +45,8 @@ export class EnemyFighter extends Fighter {
         TimH,
         Cody,
         Sarah,
-        Dane
+        Dane,
+        Blake
       }
     })
   }

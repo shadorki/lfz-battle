@@ -183,6 +183,50 @@
       "postBattle": null
     }
   },
+  "battleTower": {
+    "Blake": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "How's it goin brother?"
+        },
+        {
+          "isTrigger": false,
+          "text": "I am a TA at LFZ, I am just here waiting for students to come in."
+        },
+        {
+          "isTrigger": false,
+          "text": "Care to talk programming?"
+        },
+        {
+          "isTrigger": true,
+          "type": "battle-start",
+          "action": {
+            "fighter": "Blake"
+          }
+        }
+      ],
+      "postBattle": [
+        {
+          "isTrigger": false,
+          "text": "That was a blast."
+        },
+        {
+          "isTrigger": false,
+          "text": "This building is a work in progress."
+        },
+        {
+          "isTrigger": false,
+          "text": "Come back someday to challenge some alumni in the future."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ]
+    }
+  },
   "gymEntrance": {
     "Cassandra": {
       "hasBattled": false,
