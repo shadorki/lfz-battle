@@ -93,6 +93,34 @@
       "facingPosition": "down"
     }
   ],
+  "lfzEntrance": [
+    {
+      "name": "TJ",
+      "path": "./assets/images/players/npc-tj.png",
+      "startingPosition": {
+        "x": 6,
+        "y": 3
+      },
+      "positionOnDOM": [
+        192,
+        -256
+      ],
+      "facingPosition": "right"
+    },
+    {
+      "name": "Bill",
+      "path": "./assets/images/players/npc-bill.png",
+      "startingPosition": {
+        "x": 31,
+        "y": 1
+      },
+      "positionOnDOM": [
+        1024,
+        -384
+      ],
+      "facingPosition": "down"
+    }
+  ],
   "gymEntrance": [
     {
       "name": "Cassandra",

@@ -227,6 +227,56 @@
       ]
     }
   },
+  "lfzEntrance": {
+    "TJ": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Hello! Welcome to LFZ!"
+        },
+        {
+          "isTrigger": false,
+          "text": "Are you here for an info session?"
+        },
+        {
+          "isTrigger": false,
+          "text": "No? Alrighty then, feel free to have a look around!"
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Bill": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "How's it going?"
+        },
+        {
+          "isTrigger": false,
+          "text": "There's a class currently in session and the rest of the instructors are at the LFZ Gym right now."
+        },
+        {
+          "isTrigger": false,
+          "text": "I'm just here keeping the greeting the students as they come in."
+        },
+        {
+          "isTrigger": false,
+          "text": "Can't run a school without structure right?"
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
+  },
   "gymEntrance": {
     "Cassandra": {
       "hasBattled": false,
