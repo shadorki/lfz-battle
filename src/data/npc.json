@@ -137,7 +137,7 @@
       "name": "Connor",
       "path": "./assets/images/players/npc-connor.png",
       "startingPosition": {
-        "x": 5,
+        "x": 4,
         "y": 4
       },
       "positionOnDOM": [
