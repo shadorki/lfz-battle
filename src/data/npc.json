@@ -216,6 +216,34 @@
       "facingPosition": "down"
     }
   ],
+  "homeHouse2": [
+    {
+      "name": "Ada",
+      "path": "./assets/images/players/npc-tims-cat.png",
+      "startingPosition": {
+        "x": 4,
+        "y": 2
+      },
+      "positionOnDOM": [
+        320,
+        64
+      ],
+      "facingPosition": "right"
+    },
+    {
+      "name": "Farah",
+      "path": "./assets/images/players/npc-tims-cat.png",
+      "startingPosition": {
+        "x": 7,
+        "y": 2
+      },
+      "positionOnDOM": [
+        416,
+        64
+      ],
+      "facingPosition": "left"
+    }
+  ],
   "lfzEntrance": [
     {
       "name": "TJ",

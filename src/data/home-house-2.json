@@ -133,7 +133,11 @@
   "4/2": {
     "x": 4,
     "y": 2,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Ada"
+    }
   },
   "5/2": {
     "x": 5,
@@ -148,7 +152,11 @@
   "7/2": {
     "x": 7,
     "y": 2,
-    "isWalkable": true
+    "isWalkable": false,
+    "interaction": {
+      "type": "npc",
+      "name": "Farah"
+    }
   },
   "8/2": {
     "x": 8,

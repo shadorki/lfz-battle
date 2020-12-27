@@ -297,6 +297,36 @@
       "postBattle": null
     }
   },
+  "homeHouse2": {
+    "Ada": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Nyaa."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Farah": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Maooow."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
+  },
   "casino": {
     "Evelyn": {
       "hasBattled": false,
