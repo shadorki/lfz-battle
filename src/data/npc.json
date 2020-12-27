@@ -188,6 +188,34 @@
       "facingPosition": "down"
     }
   ],
+  "homeHouse1": [
+    {
+      "name": "Annabelle",
+      "path": "./assets/images/players/npc-annabelle.png",
+      "startingPosition": {
+        "x": 4,
+        "y": 2
+      },
+      "positionOnDOM": [
+        320,
+        64
+      ],
+      "facingPosition": "right"
+    },
+    {
+      "name": "Google",
+      "path": "./assets/images/players/npc-google.png",
+      "startingPosition": {
+        "x": 0,
+        "y": 1
+      },
+      "positionOnDOM": [
+        192,
+        0
+      ],
+      "facingPosition": "down"
+    }
+  ],
   "lfzEntrance": [
     {
       "name": "TJ",
@@ -297,7 +325,7 @@
       "facingPosition": "down"
     }
   ],
-    "gymArena1PostBattle": [
+  "gymArena1PostBattle": [
     {
       "name": "Brett",
       "path": "./assets/images/players/npc-brett.png",

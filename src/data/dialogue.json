@@ -255,6 +255,48 @@
       "postBattle": null
     }
   },
+  "homeHouse1": {
+    "Annabelle": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Hi there!"
+        },
+        {
+          "isTrigger": false,
+          "text": "Cody is currently at LFZ Gym melting people's brains."
+        },
+        {
+          "isTrigger": false,
+          "text": "We get a lot of programmers randomly walking into our house, but we love the company!"
+        },
+        {
+          "isTrigger": false,
+          "text": "Tell him I said hi when you see him!"
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Google": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Maow."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
+  },
   "casino": {
     "Evelyn": {
       "hasBattled": false,
