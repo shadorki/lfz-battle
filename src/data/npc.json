@@ -93,6 +93,86 @@
       "facingPosition": "down"
     }
   ],
+  "casino": [
+    {
+      "name": "Evelyn",
+      "path": "./assets/images/players/npc-evelyn.png",
+      "startingPosition": {
+        "x": 10,
+        "y": 5
+      },
+      "positionOnDOM": [
+        352,
+        64
+      ],
+      "facingPosition": "right"
+    },
+    {
+      "name": "Mil",
+      "path": "./assets/images/players/npc-mil.png",
+      "startingPosition": {
+        "x": 7,
+        "y": 4
+      },
+      "positionOnDOM": [
+        256,
+        0
+      ],
+      "facingPosition": "left"
+    },
+    {
+      "name": "Matt",
+      "path": "./assets/images/players/npc-matt.png",
+      "startingPosition": {
+        "x": 10,
+        "y": 3
+      },
+      "positionOnDOM": [
+        352,
+        -64
+      ],
+      "facingPosition": "right"
+    },
+    {
+      "name": "Connor",
+      "path": "./assets/images/players/npc-connor.png",
+      "startingPosition": {
+        "x": 5,
+        "y": 4
+      },
+      "positionOnDOM": [
+        160,
+        0
+      ],
+      "facingPosition": "right"
+    },
+    {
+      "name": "Paul",
+      "path": "./assets/images/players/npc-paul.png",
+      "startingPosition": {
+        "x": 1,
+        "y": 3
+      },
+      "positionOnDOM": [
+        64,
+        -64
+      ],
+      "facingPosition": "left"
+    },
+    {
+      "name": "Noah",
+      "path": "./assets/images/players/npc-nerd.png",
+      "startingPosition": {
+        "x": 16,
+        "y": 3
+      },
+      "positionOnDOM": [
+        544,
+        -64
+      ],
+      "facingPosition": "right"
+    }
+  ],
   "casinoRoom": [
     {
       "name": "John",

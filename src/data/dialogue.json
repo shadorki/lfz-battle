@@ -237,11 +237,153 @@
         },
         {
           "isTrigger": false,
-          "text": "Well it used to be a casino, but after the tech companies moved in, it's now an Internet Cafe."
+          "text": "Well it used to be a casino, but after the coding school moved in, it's now an Internet Cafe."
+        },
+        {
+          "isTrigger": false,
+          "text": "Most of the customers are students looking for jobs."
         },
         {
           "isTrigger": false,
           "text": "Feel free to check it out."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    }
+  },
+  "casino": {
+    "Evelyn": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "I just recently got picked up as a Software Engineer."
+        },
+        {
+          "isTrigger": false,
+          "text": "Learning Angular and Typescript at the same time is frying my brain."
+        },
+        {
+          "isTrigger": false,
+          "text": "Please excuse me."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Mil": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "Ello governor."
+        },
+        {
+          "isTrigger": false,
+          "text": "Did you know that Shopify has an open source programming language called Liquid?"
+        },
+        {
+          "isTrigger": false,
+          "text": "Its brilliant!"
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Connor": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "I'm currently in the job search."
+        },
+        {
+          "isTrigger": false,
+          "text": "I've been spending alot of time on Linkedin and doing hackathons with Matt."
+        },
+        {
+          "isTrigger": false,
+          "text": "Gotta get back to it."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Matt": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "I'm also currently in the job search."
+        },
+        {
+          "isTrigger": false,
+          "text": "Connor and I are currently in the middle of a Mintbean hackathon."
+        },
+        {
+          "isTrigger": false,
+          "text": "I was just about to slack an instructor about using Socket.IO with React."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Paul": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "I have an interview coming up and I'm pretty nervous."
+        },
+        {
+          "isTrigger": false,
+          "text": "Whether or not I get hired, I'm looking forward to interviewing experience"
+        },
+        {
+          "isTrigger": false,
+          "text": "In the mean time I'll be reading up on the changes ES6 brings to JavaScript."
+        },
+        {
+          "isTrigger": true,
+          "type": "npc-interaction-end"
+        }
+      ],
+      "postBattle": null
+    },
+    "Noah": {
+      "hasBattled": false,
+      "preBattle": [
+        {
+          "isTrigger": false,
+          "text": "I'm not an alumni of that coding school."
+        },
+        {
+          "isTrigger": false,
+          "text": "But I am in college for tech."
+        },
+        {
+          "isTrigger": false,
+          "text": "I should be studying for my C++ final, but instead I'm in blender building a model for VRChat."
+        },
+        {
+          "isTrigger": false,
+          "text": "Please don't tell my parents."
         },
         {
           "isTrigger": true,
