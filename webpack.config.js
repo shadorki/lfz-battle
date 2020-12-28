@@ -11,7 +11,14 @@ module.exports = {
     rules: [
       {
         test: /\.ts?$/,
-        use: 'ts-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              "@babel/preset-typescript"
+            ]
+          }
+        },
         exclude: /node_modules/,
       },
       {
@@ -27,4 +34,5 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'docs'),
   },
+  devtool: 'source-map'
 };

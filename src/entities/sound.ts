@@ -157,7 +157,7 @@ export class Sound extends Observer {
         sound = 'casino'
       break
     }
-    this._sounds[sound]?.play()
+    this._sounds[sound] && this._sounds[sound].play()
   }
   async handleSceneTransitionStart({ level }: any): Promise<void> {
     this._currentLevel = level

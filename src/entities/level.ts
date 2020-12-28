@@ -12,7 +12,7 @@ export class Level extends Observer {
     this._acceptedTasks = new Set(['scene-transition-start'])
     this.root = root
     this.name = name
-    this.grid = levels[name].default
+    this.grid = levels[name]
     if(isDebugMode) {
       this.triggerDebugView()
     }
@@ -75,13 +75,13 @@ export class Level extends Observer {
     this.root.style.backgroundImage = `url('${path}')`
   }
   changeGrid(gridName: string): void {
-    this.grid = levels[gridName].default
+    this.grid = levels[gridName]
   }
   shiftBackgroundPosition(x: number, y:number) {
     this.root.style.backgroundPosition = `${x}px ${y}px`
   }
   async loadBackgroundImages(): Promise<void> {
-    const filePaths = Object.values(levels).map((l: any) => l.default.path)
+    const filePaths = Object.values(levels).map((l: any) => l.path)
     await Promise.all(filePaths.map(path => {
       return new Promise((resolve, reject) => {
         const image = new Image()

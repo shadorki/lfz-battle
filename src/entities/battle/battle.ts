@@ -151,7 +151,9 @@ export class Battle extends Observer {
     if (!this._currentLevelQuestionData) throw new Error('Missing questions for this map.')
     this._selectedQuestionData = this._currentLevelQuestionData[fighter]
     if (!this._selectedQuestionData) throw new Error('Missing questions for this fighter.')
-    this._currentQuestions = [...this._selectedQuestionData.questions || generalQuestions]
+    this._currentQuestions = this._selectedQuestionData.questions
+    ? [...this._selectedQuestionData.questions]
+    : [...generalQuestions]
     this.shuffleQuestions()
     this._currentQuestion = this._currentQuestions.shift()
     const  {
