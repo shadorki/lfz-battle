@@ -80,9 +80,12 @@ export class NPCManager extends Observer {
     this._currentLevel = newLevel
   }
   async loadNPCImages(): Promise<void> {
-    const filePaths = Object.values(npcData)
-                            .reduce((acc, curr) => [...acc, ...curr])
-                            .map(n => n.path)
+    const files = Object.values(npcData)
+    const filesCombined: {
+      path: string
+    }[] = []
+    files.forEach(f => filesCombined.push(...f))
+    const filePaths = filesCombined.map(n => n.path)
     await Promise.all(filePaths.map(path => {
       return new Promise((resolve, reject) => {
         const image = new Image()
