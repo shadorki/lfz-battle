@@ -37,7 +37,6 @@ export class Sound extends Observer {
     for (const key in this._sounds) {
       this._sounds[key].volume = this._isMuted ? 0 : .2
     }
-    console.log(this._isMuted)
   }
   stopAllSounds(): void {
     for(const key in this._sounds) {
@@ -100,7 +99,25 @@ export class Sound extends Observer {
   }
   handleBattleStart(): void {
     this.stopAllSounds()
-    this._sounds.battleStart.play()
+    let sound = null
+    switch (this._currentLevel) {
+      case 'gymArena1PreBattle':
+      case 'gymArena2PreBattle':
+      case 'gymArena3PreBattle':
+      case 'gymArena4PreBattle':
+        sound = 'gymBattle'
+      break
+      case 'gymArena5PreBattle':
+        sound = 'gymArena5Battle'
+      break
+      case 'gymArena6':
+        sound = 'gymArena6Battle'
+      break
+      default:
+        sound = 'battleStart'
+      break
+    }
+    this._sounds[sound].play()
   }
   handleToggleSound(): void {
     this.isMuted = !this.isMuted
@@ -111,11 +128,36 @@ export class Sound extends Observer {
       case 'pokemonCenter':
         sound = 'pokemonCenter'
       break
-      default:
-        sound = 'map'
+      case 'home':
+        sound = 'home'
+      break
+      case 'battleTower':
+        sound = 'battleTower'
+      break
+      case 'lfzEntrance':
+        sound = 'lfzEntrance'
+      break
+      case 'gymEntrance':
+      case 'gymArena1PreBattle':
+      case 'gymArena2PreBattle':
+      case 'gymArena3PreBattle':
+      case 'gymArena4PreBattle':
+      case 'gymArena1PostBattle':
+      case 'gymArena2PostBattle':
+      case 'gymArena3PostBattle':
+      case 'gymArena4PostBattle':
+        sound = 'gym'
+      break
+      case 'gymArena5PostBattle':
+      case 'gymArena6':
+        sound = 'gymArena6'
+      break
+      case 'casino':
+      case 'casinoRoom':
+        sound = 'casino'
       break
     }
-    this._sounds[sound].play()
+    this._sounds[sound]?.play()
   }
   async handleSceneTransitionStart({ level }: any): Promise<void> {
     this._currentLevel = level
@@ -184,8 +226,49 @@ export class Sound extends Observer {
         isLooping: false
       },
       {
-        key: 'map',
-        file: 'map.mp3',
+        key: 'home',
+        file: 'home.mp3',
+        isLooping: true
+      },
+      // HEER
+      {
+        key: 'battleTower',
+        file: 'battle-tower.mp3',
+        isLooping: true
+      },
+      {
+        key: 'casino',
+        file: 'casino.mp3',
+        isLooping: true
+      },
+      {
+        key: 'gymArena5Battle',
+        file: 'gym-arena-5-battle.mp3',
+        isLooping: true
+      },
+      {
+        key: 'gymArena6Battle',
+        file: 'gym-arena-6-battle.mp3',
+        isLooping: true
+      },
+      {
+        key: 'gymArena6',
+        file: 'gym-arena-6.mp3',
+        isLooping: true
+      },
+      {
+        key: 'gymBattle',
+        file: 'gym-battle.mp3',
+        isLooping: true
+      },
+      {
+        key: 'gym',
+        file: 'gym.mp3',
+        isLooping: true
+      },
+      {
+        key: 'lfzEntrance',
+        file: 'lfz-entrance.mp3',
         isLooping: true
       }
     ]

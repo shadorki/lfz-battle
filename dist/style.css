@@ -46,10 +46,11 @@ body {
   right: 0;
   bottom: 0;
   background-color: black;
-  opacity: 0;
   transition: opacity 500ms;
+  opacity: 0;
 }
 #loading-screen {
+  opacity: 1;
   background-image: url('./assets/images/loading-screen.png');
   background-position: center;
   background-size: contain;

@@ -53,7 +53,7 @@
     "Blake": {
       "name": "Blake",
       "sprite": "Blake",
-      "title": "DEVELOPER",
+      "title": "TA",
       "openingMessage": "There's pineapple shrimp, lemon shrimp, coconut shrimp, pepper shr...",
       "level": 45,
       "arena": "ocean",
@@ -1443,16 +1443,6 @@
             "There is no difference"
           ],
           "correct": 1
-        },
-        {
-          "question": "typeof null:",
-          "answers": [
-            "'object'",
-            "'null'",
-            "'undefined'",
-            "A syntax error"
-          ],
-          "correct": 0
         },
         {
           "question": "typeof null:",
