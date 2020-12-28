@@ -28,7 +28,7 @@ export class Transition extends Observer {
   }
   async handleSceneTransitionStart() {
     this.show()
-    await Delay.delay(500)
+    await Delay.delay(1000)
     this._taskQueue.addTask(
       new Task(
         'scene-transition-end',

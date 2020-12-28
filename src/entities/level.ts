@@ -80,7 +80,19 @@ export class Level extends Observer {
   shiftBackgroundPosition(x: number, y:number) {
     this.root.style.backgroundPosition = `${x}px ${y}px`
   }
-  init(): Position {
+  async loadBackgroundImages(): Promise<void> {
+    const filePaths = Object.values(levels).map((l: any) => l.default.path)
+    await Promise.all(filePaths.map(path => {
+      return new Promise((resolve, reject) => {
+        const image = new Image()
+        image.onload = resolve
+        image.onerror = reject
+        image.src = path
+      })
+    }))
+  }
+  async init(): Promise<Position> {
+    await this.loadBackgroundImages()
     const { path, playerSpawnPoint, backgroundSpawnPoint} = this.grid
     const [x, y] = backgroundSpawnPoint
     this.changeMap(path)

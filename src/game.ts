@@ -47,10 +47,12 @@ export default class Game {
     this.$root.append(...args)
   }
   async start(): Promise<void> {
+    this.loadingScreen.message = 'Loading Maps...'
+    const playerSpawnPoint = await this.level.init()
     this.loadingScreen.message = 'Loading Player...'
-    const playerSpawnPoint = this.level.init()
     const playerElement = await this.player.init(playerSpawnPoint)
     this.loadingScreen.message = 'Loading NPCs...'
+    await this.npcManager.loadNPCImages()
     const npcElements = await this.npcManager.init()
     this.loadingScreen.message = 'Loading Sounds...'
     await this.sound.init()

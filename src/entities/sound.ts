@@ -172,7 +172,6 @@ export class Sound extends Observer {
     this._sounds.doorEnter.play()
     await Delay.delay(500)
     this.playMapSound(level)
-    console.log('sound finished')
   }
   async loadSound(
     file: string,

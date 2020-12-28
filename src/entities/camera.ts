@@ -87,16 +87,13 @@ export class Camera extends Observer {
   }
   handleSceneTransitionStart(action: any) {
     this._storedBackgroundPositions[this._currentLevel] = this.currentBackgroundPosition
-    console.log(this._storedBackgroundPositions[this._currentLevel])
     const {
       backgroundPositionOnDOM,
       level
     } = action
-    console.log(backgroundPositionOnDOM)
     this._currentLevel = level
     this._cameraPosition = this._storedBackgroundPositions[this._currentLevel]
                             || backgroundPositionOnDOM
-    console.log(this._cameraPosition)
     this.updatePositionOnDOM()
     if(level === 'home') this.resetGym()
   }

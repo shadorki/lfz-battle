@@ -121,7 +121,6 @@ export class Player extends Observer {
       level
     } = action
     this._currentLevel = level
-    console.log(this._storedBackgroundPositions[this._currentLevel])
     const [x, y] = this._storedBackgroundPositions[this._currentLevel]
                     || playerPositionOnDOM
     this.setFacingPosition(playerFacingPosition)
