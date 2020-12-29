@@ -176,6 +176,34 @@ body {
 .wrong {
   border-color: red !important;
 }
+.movement-buttons, .interaction-buttons {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  display: none;
+  opacity: 0.5;
+}
+.movement-buttons {
+  background-image: url('./assets/images/movement-buttons.png');
+  left: 20px;
+  bottom: 3px;
+  width: 100px;
+  height: 100px;
+}
+.interaction-buttons {
+  background-image: url('./assets/images/interaction-buttons.png');
+  right: 20px;
+  bottom: 3px;
+  width: 100px;
+  height: 81px;
+}
 .hidden {
   display: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .movement-buttons, .interaction-buttons {
+    display: block;
+  }
 }

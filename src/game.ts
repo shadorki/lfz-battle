@@ -1,7 +1,7 @@
 import Engine from './engine'
 import { Camera, Player, Level, Input, NPCManager, Dialogue, Transition, Sound, LoadingScreen } from './entities'
 import Battle from './entities/battle'
-import { TaskQueue } from './helpers'
+import { TaskQueue, Screen } from './helpers'
 
 export default class Game {
   $root: HTMLElement
@@ -17,6 +17,7 @@ export default class Game {
   battle: Battle
   transition: Transition
   sound: Sound
+  screen: Screen
   constructor() {
     this.$root = document.getElementById('root')
     this.taskQueue = new TaskQueue()
@@ -42,11 +43,13 @@ export default class Game {
     this.input = new Input(this.taskQueue)
     this.transition = new Transition(this.taskQueue)
     this.sound = new Sound('home')
+    this.screen = new Screen(this.$root)
   }
   setupDOM(...args: Array<HTMLElement>) {
     this.$root.append(...args)
   }
   async start(): Promise<void> {
+    this.screen.init()
     this.loadingScreen.message = 'Loading Maps...'
     const playerSpawnPoint = await this.level.init()
     this.loadingScreen.message = 'Loading Player...'
