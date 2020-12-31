@@ -50,8 +50,8 @@
       "facingPosition": "right"
     },
     {
-      "name": "Dane",
-      "path": "./assets/images/players/npc-dane.png",
+      "name": "Christian",
+      "path": "./assets/images/players/npc-christian.png",
       "startingPosition": {
         "x": 34,
         "y": 3

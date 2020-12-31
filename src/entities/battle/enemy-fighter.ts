@@ -29,7 +29,7 @@ export class EnemyFighter extends Fighter {
       const [
         Brett,
         Scott,
-        Dane,,
+        Christian,,
         TimD,
         Uzair,,,
         TimH,
@@ -45,7 +45,7 @@ export class EnemyFighter extends Fighter {
         TimH,
         Cody,
         Sarah,
-        Dane,
+        Christian,
         Blake
       }
     })

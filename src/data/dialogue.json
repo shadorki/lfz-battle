@@ -104,7 +104,7 @@
         }
       ]
     },
-    "Dane": {
+    "Christian": {
       "hasBattled": false,
       "preBattle": [
         {
@@ -131,7 +131,7 @@
           "isTrigger": true,
           "type": "battle-start",
           "action": {
-            "fighter": "Dane"
+            "fighter": "Christian"
           }
         }
       ],

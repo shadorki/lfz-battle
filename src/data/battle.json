@@ -24,9 +24,9 @@
         },
         "questions": null
       },
-      "Dane": {
-        "name": "Dane",
-        "sprite": "Dane",
+      "Christian": {
+        "name": "Christian",
+        "sprite": "Christian",
         "title": "DEVELOPER",
         "openingMessage": "Non blocking I/O is for losers.",
         "level": 45,
@@ -38,7 +38,7 @@
         "onWin": {
           "name": "npc-battle-end",
           "action": {
-            "name": "Dane",
+            "name": "Christian",
             "level": "home"
           }
         },
