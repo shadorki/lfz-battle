@@ -69,7 +69,3 @@ Try the application live [here](https://lfz-battle.uzairashraf.dev/)
   <p align="center">
     <img src="./doc-images/battle.png">
   </p>
-
-  <p align="center">
-    <img src="./doc-images/battle.gif">
-  </p>
