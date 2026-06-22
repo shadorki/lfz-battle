@@ -17,10 +17,23 @@ export const TWEEN_FACTOR = 0.25
 /** Snap threshold (px) so eased positions settle exactly on target. */
 export const SNAP_EPSILON = 0.5
 
+/**
+ * Duration (ms) of one tile of movement. Matches the Input walk-repeat interval
+ * (200ms) so that holding a direction produces seamless constant-speed motion
+ * (each tile's glide finishes exactly as the next step begins) — the smooth
+ * grid-walk feel of the old Pokémon games, rather than move-pause-move.
+ */
+export const MOVE_DURATION_MS = 200
+
 /** Ease a current value toward a target by TWEEN_FACTOR, snapping when within `epsilon`. */
 export function easeToward(current: number, target: number, epsilon: number = SNAP_EPSILON): number {
   const next = current + (target - current) * TWEEN_FACTOR
   return Math.abs(target - next) < epsilon ? target : next
+}
+
+/** Linear interpolate from a to b by t (0..1). */
+export function lerp(a: number, b: number, t: number): number {
+  return a + (b - a) * t
 }
 
 export interface PlayerView {
@@ -81,4 +94,13 @@ export interface FadeView {
   hide(): void
   /** Advance the fade easing. Called each tick. */
   update(): void
+}
+
+export interface LoadingView {
+  /** Set the centered status message. */
+  setMessage(text: string): void
+  /** Show the loading overlay. */
+  show(): void
+  /** Hide the loading overlay. */
+  hide(): void
 }

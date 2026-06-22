@@ -8,16 +8,16 @@
     html, body {
       margin: 0;
       height: 100%;
-      background-color: rgb(27, 27, 27);
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
+      background-color: rgb(27, 27, 27);
     }
-    /* Crisp pixel scaling for the Pixi canvas (replaces old #root image-rendering). */
-    #app canvas {
-      image-rendering: pixelated;
-      box-shadow: 10px 10px 5px black;
+    /* The Pixi canvas fills the window; the game scene is scaled + letterboxed
+       inside it by PixiApp.fit(). Sprite crispness comes from nearest scaleMode,
+       text crispness from per-scale Text resolution — no CSS scaling needed. */
+    #app, #app canvas {
+      width: 100vw;
+      height: 100vh;
+      display: block;
     }
   </style>
 </head>

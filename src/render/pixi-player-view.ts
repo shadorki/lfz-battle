@@ -1,5 +1,5 @@
 import { AnimatedSprite } from 'pixi.js'
-import { PlayerView, Direction, easeToward } from './views'
+import { PlayerView, Direction, MOVE_DURATION_MS, lerp } from './views'
 import { PlayerTextures, IDLE_FRAME } from './player-textures'
 
 /** Per-frame walk duration (ms), matching the legacy Animator (50ms/frame). */
@@ -15,14 +15,18 @@ const RENDER_OFFSET_Y = -24
 /**
  * Real player sprite. One AnimatedSprite whose textures swap per facing
  * direction; a movement plays the 3-frame stride once and lands on idle.
- * Logical position lives in Player; `_eased` follows it each tick, and the
- * sprite is drawn at `_eased + render offset`.
+ *
+ * Position is interpolated at constant speed from the previous tile to the
+ * target over MOVE_DURATION_MS (synced to the walk-repeat interval), so holding
+ * a direction reads as one continuous glide. Logical position lives in Player.
  */
 export class PixiPlayerView implements PlayerView {
   readonly root: AnimatedSprite
   private readonly _walk: PlayerTextures['walk']
-  private readonly _target = { x: 0, y: 0 }
-  private readonly _eased = { x: 0, y: 0 }
+  private readonly _from = { x: 0, y: 0 }
+  private readonly _to = { x: 0, y: 0 }
+  private readonly _pos = { x: 0, y: 0 }
+  private _elapsed = MOVE_DURATION_MS
   private _placed = false
 
   constructor(textures: PlayerTextures) {
@@ -34,14 +38,20 @@ export class PixiPlayerView implements PlayerView {
   }
 
   setPosition(left: number, top: number, immediate = false): void {
-    this._target.x = left
-    this._target.y = top
     if (immediate || !this._placed) {
-      this._eased.x = left
-      this._eased.y = top
-      this.draw() // snap (first placement, spawn, or scene transition)
+      this._from.x = this._to.x = this._pos.x = left
+      this._from.y = this._to.y = this._pos.y = top
+      this._elapsed = MOVE_DURATION_MS
       this._placed = true
+      this.draw()
+      return
     }
+    // Start a new glide from where we currently are toward the new tile.
+    this._from.x = this._pos.x
+    this._from.y = this._pos.y
+    this._to.x = left
+    this._to.y = top
+    this._elapsed = 0
   }
 
   setFacing(direction: Direction): void {
@@ -55,14 +65,17 @@ export class PixiPlayerView implements PlayerView {
     this.root.gotoAndPlay(0)
   }
 
-  /** Ease the rendered position toward the logical target. Called each tick. */
-  update(): void {
-    this._eased.x = easeToward(this._eased.x, this._target.x)
-    this._eased.y = easeToward(this._eased.y, this._target.y)
+  /** Advance the constant-speed glide toward the target tile. Called each tick. */
+  update(deltaMS: number): void {
+    if (this._elapsed >= MOVE_DURATION_MS) return
+    this._elapsed = Math.min(this._elapsed + deltaMS, MOVE_DURATION_MS)
+    const t = this._elapsed / MOVE_DURATION_MS
+    this._pos.x = lerp(this._from.x, this._to.x, t)
+    this._pos.y = lerp(this._from.y, this._to.y, t)
     this.draw()
   }
 
   private draw(): void {
-    this.root.position.set(this._eased.x + RENDER_OFFSET_X, this._eased.y + RENDER_OFFSET_Y)
+    this.root.position.set(this._pos.x + RENDER_OFFSET_X, this._pos.y + RENDER_OFFSET_Y)
   }
 }

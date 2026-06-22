@@ -1,17 +1,16 @@
 import { Observer } from "."
 import { Task } from "../helpers"
+import { LoadingView } from "../render/views"
 
 export class LoadingScreen extends Observer {
-  private _container: HTMLElement
-  private _message: HTMLElement
-  constructor() {
+  private _view: LoadingView
+  constructor(view: LoadingView) {
     super()
     this._acceptedTasks = new Set(['start-game'])
-    this._container = document.getElementById('loading-screen')
-    this._message = <HTMLElement>this._container.firstElementChild
+    this._view = view
   }
   handleUpdate({ name }: Task): void {
-    switch(name) {
+    switch (name) {
       case 'start-game':
         this.handleStartGame()
       break;
@@ -20,16 +19,13 @@ export class LoadingScreen extends Observer {
   handleStartGame(): void {
     this.hide()
   }
-  get message (): string {
-    return this._message.textContent
-  }
   set message(text: string) {
-    this._message.textContent = text
+    this._view.setMessage(text)
   }
   show() {
-    this._container.style.opacity = '1'
+    this._view.show()
   }
   hide() {
-    this._container.style.opacity = '0'
+    this._view.hide()
   }
 }

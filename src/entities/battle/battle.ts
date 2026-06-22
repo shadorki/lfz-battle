@@ -1,16 +1,8 @@
 import { Delay, Task, TaskQueue } from '../../helpers'
 import { Observer } from '../'
 import { battleData, generalQuestions } from '../../data'
-import { BattleComponents, BattleData, Levels, Question, QuestionData } from '../../interfaces'
-import {
-  Arena,
-  BackDrop,
-  EnemyFighter,
-  EnemyUI,
-  PlayerFighter,
-  PlayerUI,
-  HP
-} from '.'
+import { BattleData, Levels, Question, QuestionData } from '../../interfaces'
+import { PixiBattleComponents } from '../../render/pixi-battle'
 
 export class Battle extends Observer {
   private _taskQueue: TaskQueue
@@ -22,8 +14,8 @@ export class Battle extends Observer {
   }
   private _selectedQuestionData: QuestionData
   private _battleData: BattleData
-  private _battleComponents: BattleComponents
-  constructor(taskQueue: TaskQueue, currentLevel: keyof Levels) {
+  private _battleComponents: PixiBattleComponents
+  constructor(taskQueue: TaskQueue, currentLevel: keyof Levels, components: PixiBattleComponents) {
     super()
     this._acceptedTasks = new Set(['scene-transition-start', 'battle-start', 'battle-end', 'battle'])
     this._currentLevel = currentLevel
@@ -32,16 +24,7 @@ export class Battle extends Observer {
     this._currentLevelQuestionData = battleData[currentLevel]
     this._currentQuestions = null
     this._selectedQuestionData = null
-    this._battleComponents = {
-      arena: new Arena(),
-      backdrop: new BackDrop(),
-      enemyFighter: new EnemyFighter(false),
-      enemyUI: new EnemyUI(false),
-      playerFighter: new PlayerFighter(true),
-      playerUI: new PlayerUI(true),
-      playerHP: new HP(true),
-      enemyHP: new HP(false)
-    }
+    this._battleComponents = components
   }
   handleUpdate({ name, action }: Task): void {
     switch (name) {

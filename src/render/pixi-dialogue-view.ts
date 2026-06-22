@@ -1,6 +1,7 @@
 import { Container, Graphics, Text } from 'pixi.js'
 import { DialogueView, easeToward } from './views'
 import { VIEW_WIDTH, VIEW_HEIGHT } from './pixi-app'
+import { FONT_FIRE_RED } from './assets'
 
 const BOX_WIDTH = 560
 const BOX_HEIGHT = 110
@@ -33,17 +34,17 @@ export class PixiDialogueView implements DialogueView {
 
     const heading = new Text({
       text: '',
-      style: { fontFamily: 'monospace', fontSize: 16, fontWeight: 'bold', fill: 0x000000 }
+      style: { fontFamily: FONT_FIRE_RED, fontSize: 18, fill: 0x000000 }
     })
     heading.position.set(12, 8)
 
-    const rule = new Graphics().rect(8, 30, BOX_WIDTH - 16, 2).fill(0x000000)
+    const rule = new Graphics().rect(8, 32, BOX_WIDTH - 16, 2).fill(0x000000)
 
     const content = new Text({
       text: '',
       style: {
-        fontFamily: 'monospace',
-        fontSize: 13,
+        fontFamily: FONT_FIRE_RED,
+        fontSize: 16,
         fill: 0x000000,
         wordWrap: true,
         wordWrapWidth: BOX_WIDTH - 24

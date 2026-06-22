@@ -3,13 +3,13 @@ import { Delay, Task, TaskQueue } from '../helpers'
 import { Levels, SoundFile } from '../interfaces'
 
 export class Sound extends Observer {
-  private _path: string
+  private _resolveUrl: (file: string) => string
   private _sounds : {
     [key: string]: HTMLAudioElement
   }
   private _isMuted: boolean
   private _currentLevel: string
-  constructor(currentLevel: string) {
+  constructor(currentLevel: string, resolveUrl: (file: string) => string) {
     super()
     this._acceptedTasks = new Set([
       'toggle-sound',
@@ -24,7 +24,7 @@ export class Sound extends Observer {
       'battle',
       'wall-bump'
     ])
-    this._path = './assets/audio/'
+    this._resolveUrl = resolveUrl
     this._sounds = null
     this._isMuted = true
     this._currentLevel = currentLevel
@@ -35,7 +35,7 @@ export class Sound extends Observer {
   set isMuted(bool: boolean) {
     this._isMuted = bool
     for (const key in this._sounds) {
-      this._sounds[key].volume = this._isMuted ? 0 : .2
+      this._sounds[key].volume = this._isMuted ? 0 : .05
     }
   }
   stopAllSounds(): void {
@@ -272,7 +272,7 @@ export class Sound extends Observer {
       }
     ]
    const sounds = await Promise.all(soundFiles.map(({key, file, isLooping}) => (
-     this.loadSound(`${this._path}${file}`, key, isLooping)
+     this.loadSound(this._resolveUrl(file), key, isLooping)
    )))
    this._sounds = sounds.reduce((all, sound) => ({ ...all, ...sound }))
   }
