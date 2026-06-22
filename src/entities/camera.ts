@@ -1,29 +1,25 @@
-import { Sprite, Task, TaskQueue } from '../helpers'
+import { Task, TaskQueue } from '../helpers'
 import { Observer } from './'
-import { Levels, Movements, Position, StoredBackgroundPositions } from '../interfaces'
+import { Levels, Movements, StoredBackgroundPositions } from '../interfaces'
 import { Player } from './player'
+import { CameraView } from '../render/views'
 
 export class Camera extends Observer {
   private _visibleWidth: number
   private _visibleHeight: number
-  private _collisionWidth: number
-  private _collisionHeight: number
   private _playerBoundaries: number[]
-  private _isDebugMode: boolean
   private _player: Player
-  private _backgroundElement: HTMLElement
+  private _view: CameraView
   private _cameraPosition: number[]
   private _taskQueue: TaskQueue
   private _currentLevel: keyof Levels
   private _storedBackgroundPositions: StoredBackgroundPositions
-  public domElement: HTMLElement
   constructor(
     taskQueue: TaskQueue,
     width: number,
     height: number,
-    backgroundElement: HTMLElement,
-    currentLevel: keyof Levels,
-    isDebugMode: boolean = false
+    view: CameraView,
+    currentLevel: keyof Levels
   ) {
     super()
     this._taskQueue = taskQueue
@@ -32,14 +28,10 @@ export class Camera extends Observer {
     this._acceptedTasks = new Set(['movement', 'scene-transition-start'])
     this._visibleWidth = width
     this._visibleHeight = height
-    this._collisionWidth = width / 10 * 8
-    this._collisionHeight = height / 10 * 6
     this._playerBoundaries = [512, 96, 256, 128]
-    this._isDebugMode = isDebugMode
     this._player = null
-    this._backgroundElement = backgroundElement
+    this._view = view
     this._cameraPosition = [0, 0]
-    this.domElement = null
   }
   handleUpdate({ name, action }: Task): void {
     switch (name) {
@@ -68,20 +60,20 @@ export class Camera extends Observer {
     ].forEach(l => delete this._storedBackgroundPositions[l])
   }
   handleMovement(): void {
-    const [ left, top ] = this._player.playerPositionOnDOM
+    const [ left, top ] = this._player.screenPos
     const [ maxLeft, maxRight, maxTop, maxBottom] = this._playerBoundaries
     let selectedMovement: keyof Movements = null
-    if(left > maxLeft) {
+    if (left > maxLeft) {
       selectedMovement = 'left'
-    } else if(left < maxRight) {
+    } else if (left < maxRight) {
       selectedMovement = 'right'
     } else if (top >= maxTop) {
       selectedMovement = 'up'
-    } else if( top < maxBottom) {
+    } else if (top < maxBottom) {
       selectedMovement = 'down'
     }
-    if(!selectedMovement) return
-    this._player.updatePositionOnDOM(selectedMovement)
+    if (!selectedMovement) return
+    this._player.updateScreenPos(selectedMovement)
     this.moveCamera(selectedMovement)
     this._taskQueue.addTask(new Task('npc-movement', selectedMovement))
   }
@@ -94,8 +86,8 @@ export class Camera extends Observer {
     this._currentLevel = level
     this._cameraPosition = this._storedBackgroundPositions[this._currentLevel]
                             || backgroundPositionOnDOM
-    this.updatePositionOnDOM()
-    if(level === 'home') this.resetGym()
+    this.updateScroll(true) // snap under the transition fade
+    if (level === 'home') this.resetGym()
   }
   moveCamera(direction: keyof Movements): void {
     const { width, height } = this._player
@@ -108,32 +100,17 @@ export class Camera extends Observer {
     }
     movements[direction]()
     this._cameraPosition = [ x, y ]
-    this.updatePositionOnDOM()
+    this.updateScroll()
   }
-  updatePositionOnDOM(): void {
+  updateScroll(immediate = false): void {
     const [x, y] = this._cameraPosition
-    this._backgroundElement.style.backgroundPosition = `${x}px ${y}px`
+    this._view.setScroll(x, y, immediate)
   }
   get currentBackgroundPosition(): number[] {
-    const { backgroundPositionX , backgroundPositionY } = this._backgroundElement.style
-    const x = Number(backgroundPositionX.substring(0, backgroundPositionX.length - 2))
-    const y = Number(backgroundPositionY.substring(0, backgroundPositionY.length - 2))
-    return [x, y]
+    return [...this._cameraPosition]
   }
-  createElement(): HTMLElement {
-    const element = document.createElement('div')
-    element.style.width = `${this._collisionWidth}px`
-    element.style.height = `${this._collisionHeight}px`
-    element.style.position = 'absolute'
-    if(this._isDebugMode) {
-      element.style.border = '2px solid red'
-      element.style.boxSizing = 'border-box'
-    }
-    return element
-  }
-  init(player: Player): HTMLElement {
+  init(player: Player): void {
     this._player = player
-    this.domElement = this.createElement()
-    return this.domElement
+    this.updateScroll(true)
   }
 }

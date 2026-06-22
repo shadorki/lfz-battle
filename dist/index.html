@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trickster (Pixi migration)</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background-color: rgb(27, 27, 27);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    /* Crisp pixel scaling for the Pixi canvas (replaces old #root image-rendering). */
+    #app canvas {
+      image-rendering: pixelated;
+      box-shadow: 10px 10px 5px black;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-DQBL5yDF.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>

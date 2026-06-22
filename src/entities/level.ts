@@ -25,12 +25,8 @@ export class Level extends Observer {
     }
   }
   handleSceneTransitionStart(action: any) {
-    const {
-      level,
-    } = action
-    this.changeGrid(level)
-    const { path } = this.grid
-    this.changeMap(path)
+    const { level } = action
+    this.changeGrid(level) // collision grid follows the new level; map art is swapped by MapRenderer
   }
   getTile(x: number, y:number): Tile {
     return this.grid[`${x}/${y}`]

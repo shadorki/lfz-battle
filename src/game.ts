@@ -1,80 +1,122 @@
 import Engine from './engine'
-import { Camera, Player, Level, Input, NPCManager, Dialogue, Transition, Sound, LoadingScreen } from './entities'
-import Battle from './entities/battle'
-import { TaskQueue, Screen } from './helpers'
+import { Camera, Player, Level, Input, Transition, MapRenderer, NPCManager, Dialogue } from './entities'
+import { Task, TaskQueue } from './helpers'
+import { levels } from './data'
+import { PixiApp, VIEW_WIDTH, VIEW_HEIGHT } from './render/pixi-app'
+import { PixiPlayerView } from './render/pixi-player-view'
+import { PixiCameraView } from './render/pixi-camera-view'
+import { PixiMapView, loadMapTexture, drawCollisionOverlay } from './render/pixi-map-view'
+import { PixiFadeView } from './render/pixi-fade-view'
+import { PixiNpcView } from './render/pixi-npc-view'
+import { PixiDialogueView } from './render/pixi-dialogue-view'
+import { loadPlayerTextures } from './render/player-textures'
+import { mapUrlForPath, spriteUrlForPath } from './render/assets'
 
+/** Toggle to overlay the collision grid on the map for alignment debugging. */
+const DEBUG_COLLISION = false
+
+/**
+ * Milestone 4a wiring: a Pixi canvas rendering real map art + player sprite,
+ * with working scene transitions (doors swap maps under a fade), driven by the
+ * existing Input -> TaskQueue -> Engine -> Observer pipeline. NPCs/dialogue/
+ * battle return in M4b+. Game logic is unchanged; only rendering is new.
+ */
 export default class Game {
-  $root: HTMLElement
+  pixi: PixiApp
   engine: Engine
   input: Input
   taskQueue: TaskQueue
-  loadingScreen: LoadingScreen
   level: Level
-  npcManager: NPCManager
-  dialogue: Dialogue
-  camera: Camera
-  player: Player
-  battle: Battle
-  transition: Transition
-  sound: Sound
-  screen: Screen
+  camera!: Camera
+  player!: Player
+
   constructor() {
-    this.$root = document.getElementById('root')
+    this.pixi = new PixiApp()
     this.taskQueue = new TaskQueue()
-    this.loadingScreen = new LoadingScreen()
     this.engine = new Engine(this.taskQueue)
-    this.level = new Level('home', this.$root)
-    this.npcManager = new NPCManager('home', this.$root)
-    this.camera = new Camera(this.taskQueue, 640, 384, this.$root, 'home')
-    this.dialogue = new Dialogue(this.taskQueue, 'home')
-    this.battle = new Battle(this.taskQueue, 'home')
+    // Pixi path doesn't use a DOM root; pass a detached element for the
+    // (unused here) legacy DOM methods on Level.
+    this.level = new Level('home', document.createElement('div'))
+    this.input = new Input(this.taskQueue)
+  }
+
+  async start(): Promise<void> {
+    const mount = document.getElementById('app')!
+    await this.pixi.init(mount)
+
+    // Load art before building views.
+    const [playerTextures, mapTexture] = await Promise.all([
+      loadPlayerTextures(),
+      loadMapTexture(mapUrlForPath(this.level.grid.path))
+    ])
+
+    // Map background (world space, scrolled by the camera). MapRenderer swaps
+    // its texture on scene transitions.
+    const mapView = new PixiMapView(mapTexture)
+    this.pixi.world.addChild(mapView.root)
+    if (DEBUG_COLLISION) {
+      this.pixi.world.addChild(drawCollisionOverlay(this.level.grid))
+    }
+
+    // NPCs (world space, above the map; scroll with it). Rebuilt per level.
+    const npcView = new PixiNpcView()
+    this.pixi.world.addChild(npcView.root)
+    const npcManager = new NPCManager(npcView, 'home', spriteUrlForPath)
+    npcManager.init()
+
+    // Player (viewport space) on the view seam.
+    const playerView = new PixiPlayerView(playerTextures)
+    this.pixi.ui.addChild(playerView.root)
     this.player = new Player(
-      'MC',
-      './assets/images/players/player.png',
-      [4, 6],
       this.taskQueue,
       'home',
+      playerView,
       this.level.isSceneTransition.bind(this.level),
       this.level.getSceneTransition.bind(this.level),
       this.level.isInteraction.bind(this.level),
       this.level.getInteraction.bind(this.level),
       this.level.isSpaceWalkable.bind(this.level)
     )
-    this.input = new Input(this.taskQueue)
-    this.transition = new Transition(this.taskQueue)
-    this.sound = new Sound('home')
-    this.screen = new Screen(this.$root)
-  }
-  setupDOM(...args: Array<HTMLElement>) {
-    this.$root.append(...args)
-  }
-  async start(): Promise<void> {
-    this.screen.init()
-    this.loadingScreen.message = 'Loading Maps...'
-    const playerSpawnPoint = await this.level.init()
-    this.loadingScreen.message = 'Loading Player...'
-    const playerElement = await this.player.init(playerSpawnPoint)
-    this.loadingScreen.message = 'Loading NPCs...'
-    await this.npcManager.loadNPCImages()
-    const npcElements = await this.npcManager.init()
-    this.loadingScreen.message = 'Loading Sounds...'
-    await this.sound.init()
-    this.loadingScreen.message = 'Loading Game...'
-    const cameraElement = this.camera.init(this.player)
-    const dialogueElement = this.dialogue.init()
-    this.setupDOM(playerElement, cameraElement, dialogueElement,...npcElements)
-    this.engine.addObserver(this.transition)
-    this.engine.addObserver(this.sound)
+    this.player.init(this.level.grid.playerSpawnPoint)
+
+    // Camera scrolls the world container.
+    const cameraView = new PixiCameraView(this.pixi.world)
+    this.camera = new Camera(this.taskQueue, VIEW_WIDTH, VIEW_HEIGHT, cameraView, 'home')
+    this.camera.init(this.player)
+
+    // Dialogue box (ui layer, above the player).
+    const dialogueView = new PixiDialogueView()
+    this.pixi.ui.addChild(dialogueView.root)
+    const dialogue = new Dialogue(this.taskQueue, 'home', dialogueView)
+
+    // Scene-transition support: fade overlay + map swapper.
+    const fadeView = new PixiFadeView()
+    this.pixi.overlay.addChild(fadeView.root)
+    const transition = new Transition(this.taskQueue, fadeView)
+    const mapRenderer = new MapRenderer(mapView, (level: string) => mapUrlForPath(levels[level].path))
+
+    // Observer order matches the legacy game: transition first; camera reads the
+    // player's pre-move position each tick, then the player moves.
+    this.engine.addObserver(transition)
     this.engine.addObserver(this.camera)
-    this.engine.addObserver(this.battle)
     this.engine.addObserver(this.player)
-    this.engine.addObserver(this.dialogue)
-    this.engine.addObserver(this.npcManager)
+    this.engine.addObserver(mapRenderer)
+    this.engine.addObserver(npcManager)
+    this.engine.addObserver(dialogue)
     this.engine.addObserver(this.level)
     this.engine.addObserver(this.input)
-    this.engine.addObserver(this.loadingScreen)
-    this.engine.start()
+
+    // Drive the engine + view easing from Pixi's ticker — a single game clock.
+    this.pixi.onTick(() => {
+      this.engine.loop()
+      playerView.update()
+      cameraView.update()
+      dialogueView.update()
+      fadeView.update()
+    })
+
     this.input.init()
-    this.loadingScreen.message = 'Press Space to Start'
+    // Skip the press-space-to-start gate (returns in M4e): go straight to walking.
+    this.taskQueue.addTask(new Task('start-game'))
   }
 }

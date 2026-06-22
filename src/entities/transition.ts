@@ -1,13 +1,14 @@
 import { Observer } from './'
 import { Delay, Task, TaskQueue } from '../helpers'
+import { FadeView } from '../render/views'
 
 export class Transition extends Observer {
-  private _domElement: HTMLElement
+  private _view: FadeView
   private _taskQueue: TaskQueue
-  constructor(taskQueue: TaskQueue) {
+  constructor(taskQueue: TaskQueue, view: FadeView) {
     super()
     this._acceptedTasks = new Set(['scene-transition-start', 'scene-transition-end', 'start-game'])
-    this._domElement = document.getElementById('transition')
+    this._view = view
     this._taskQueue = taskQueue
   }
   handleUpdate({ name }: Task): void {
@@ -40,9 +41,9 @@ export class Transition extends Observer {
     this.hide()
   }
   show(): void {
-    this._domElement.style.opacity = '1'
+    this._view.show()
   }
   hide(): void {
-    this._domElement.style.opacity = '0'
+    this._view.hide()
   }
 }

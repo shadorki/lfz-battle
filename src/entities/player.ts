@@ -1,13 +1,13 @@
-import { Animator, Sprite, Task, TaskQueue } from '../helpers'
+import { Task, TaskQueue } from '../helpers'
 import { Observer } from './'
-import { Levels, Movements, PlayerFacingPositions, Position, StoredBackgroundPositions } from '../interfaces'
+import { Levels, Movements, Position, StoredBackgroundPositions } from '../interfaces'
+import { PlayerView, TILE_WIDTH, TILE_HEIGHT } from '../render/views'
 
 export class Player extends Observer {
-  public sprite: Sprite
-  public animator: Animator
-  public domElement: HTMLElement
-  public width: number
-  public height: number
+  public view: PlayerView
+  /** Tile size in screen pixels (one tile == one player frame). */
+  public readonly width = TILE_WIDTH
+  public readonly height = TILE_HEIGHT
   public getSceneTransition: Function
   public isSpaceWalkable: Function
   public isSceneTransition: Function
@@ -15,16 +15,15 @@ export class Player extends Observer {
   public getInteraction: Function
   private _taskQueue: TaskQueue
   private _position: Position
-  private _playerFacingPositions: PlayerFacingPositions
+  /** Player position in viewport pixels (top-left origin). Was DOM left/top. */
+  private _screen: { left: number; top: number }
   private _currentLevel: keyof Levels
   private _storedBackgroundPositions: StoredBackgroundPositions
-  private _currentFacingPosition: keyof PlayerFacingPositions
+  private _currentFacingPosition: keyof Movements
   constructor(
-    name: string,
-    path: string,
-    grid: number[],
     taskQueue: TaskQueue,
     currentLevel: keyof Levels,
+    view: PlayerView,
     isSceneTransition: Function,
     getSceneTransition: Function,
     isInteraction: Function,
@@ -32,17 +31,13 @@ export class Player extends Observer {
     isSpaceWalkable: Function
   ) {
     super()
-    this.sprite = new Sprite(name, path, grid)
-    this.animator = null
-    this.domElement = null
-    this.width = null
-    this.height = null
+    this.view = view
     this._taskQueue = taskQueue
     this._currentLevel = currentLevel
     this._storedBackgroundPositions = {}
     this._acceptedTasks = new Set(['movement', 'scene-transition-start', 'interaction'])
     this._position = null
-    this._playerFacingPositions = null
+    this._screen = { left: 0, top: 0 }
     this._currentFacingPosition = 'down'
     this.getSceneTransition = getSceneTransition
     this.isSpaceWalkable = isSpaceWalkable
@@ -50,9 +45,9 @@ export class Player extends Observer {
     this.isInteraction = isInteraction
     this.getInteraction = getInteraction
   }
-  handleUpdate({name, action}: Task): void {
-    if(!this._acceptedTasks.has(name)) return
-    switch(name) {
+  handleUpdate({ name, action }: Task): void {
+    if (!this._acceptedTasks.has(name)) return
+    switch (name) {
       case 'movement':
         this.handleMovement(action as keyof Movements)
       break
@@ -95,11 +90,11 @@ export class Player extends Observer {
     const position = this.getTargetedPosition(direction)
     const { x, y } = position
     this.setFacingPosition(direction)
-    if(this.isSpaceWalkable(x, y)) {
-      this.animator.play(direction)
+    if (this.isSpaceWalkable(x, y)) {
+      this.view.playAnimation(direction)
       this._position = position
-      this.updatePositionOnDOM(direction)
-      if(this.isSceneTransition(x, y)) {
+      this.updateScreenPos(direction)
+      if (this.isSceneTransition(x, y)) {
         this._taskQueue.addTask(
           new Task(
             'scene-transition-start',
@@ -112,8 +107,7 @@ export class Player extends Observer {
     }
   }
   handleSceneTransitionStart(action: any) {
-    this._storedBackgroundPositions[this._currentLevel] = this.playerPositionOnDOM
-    this._storedBackgroundPositions[this._currentLevel]
+    this._storedBackgroundPositions[this._currentLevel] = this.screenPos
     const {
       playerPositionOnDOM,
       playerPosition,
@@ -125,12 +119,12 @@ export class Player extends Observer {
                     || playerPositionOnDOM
     this.setFacingPosition(playerFacingPosition)
     this._position = playerPosition
-    this.setPlayerPositionOnDom(x, y)
-    if(level === 'home') this.resetGym()
+    this.setScreenPos(x, y, true) // snap under the transition fade
+    if (level === 'home') this.resetGym()
   }
   handleInteraction(): void {
     const { x, y } = this.getTargetedPosition(this._currentFacingPosition)
-    if(!this.isInteraction(x, y)) return
+    if (!this.isInteraction(x, y)) return
     const interaction = this.getInteraction(x, y)
     this._taskQueue.addTask(new Task(
       `${interaction.type}-interaction-start`,
@@ -140,8 +134,8 @@ export class Player extends Observer {
       }
     ))
   }
-  updatePositionOnDOM(direction: keyof Movements): void {
-    let [ left, top ] = this.playerPositionOnDOM
+  updateScreenPos(direction: keyof Movements): void {
+    let { left, top } = this._screen
     const movements: Movements = {
       up: () => top -= this.height,
       down: () => top += this.height,
@@ -149,108 +143,26 @@ export class Player extends Observer {
       right: () => left += this.width
     }
     movements[direction]()
-    this.setPlayerPositionOnDom(left, top)
+    this.setScreenPos(left, top)
   }
-  setFacingPosition(direction: keyof PlayerFacingPositions): void {
+  setFacingPosition(direction: keyof Movements): void {
     this._currentFacingPosition = direction
-    const [x, y] = this._playerFacingPositions[direction]
-    this.domElement.style.backgroundPosition = `${x}px ${y - 24}px`
+    this.view.setFacing(direction)
   }
-  get playerPositionOnDOM(): number[] {
-    const { left, top } = this.domElement.style
-    const newLeft = Number(left.substring(0, left.length - 2))
-    const newTop = Number(top.substring(0, top.length - 2))
-    return [newLeft, newTop]
+  get screenPos(): number[] {
+    return [this._screen.left, this._screen.top]
   }
-  setPlayerPositionOnDom(x: number, y:number): void {
-    this.domElement.style.left = `${x}px`
-    this.domElement.style.top = `${y}px`
+  setScreenPos(left: number, top: number, immediate = false): void {
+    this._screen = { left, top }
+    this.view.setPosition(left, top, immediate)
   }
-  setInitialPositionOnDom(): void {
+  setInitialScreenPos(): void {
     const { x, y } = this._position
-    this.domElement.style.top = `${y * this.height}px`
-    this.domElement.style.left = `${x * this.width}px`
+    this.setScreenPos(x * this.width, y * this.height, true)
   }
-  createElement(): HTMLElement {
-    const element = document.createElement('div')
-    const { path, sheet, width, height } = this.sprite
-    const [[x, y]] = sheet
-    this.width = width
-    this.height = height
-    element.style.backgroundImage = `url('${path}')`
-    element.style.backgroundPosition = `${x}px ${y - 24}px`
-    element.style.backgroundRepeat = 'no-repeat'
-    element.style.width = `${width}px`
-    element.style.height = `${height}px`
-    element.style.position = 'absolute'
-    element.style.transition = 'left 500ms, top 500ms'
-    return element
-  }
-  debug(x: number, y: number): void{
-    const element = document.createElement('div')
-    element.className = 'space'
-    element.dataset.x = x.toString()
-    element.dataset.y = y.toString()
-    element.style.top = `${y * this.height}px`
-    element.style.left = `${x * this.width}px`
-    document.getElementById('root').append(element)
-  }
-  createAnimations(): void {
-    const { sheet } = this.sprite
-    this.animator = new Animator(this.domElement)
-    this.animator.addAnimation(
-      'down',
-      [
-        sheet[1],
-        sheet[2],
-        sheet[0],
-      ],
-      50,
-    )
-    this.animator.addAnimation(
-      'up',
-      [
-        sheet[7],
-        sheet[8],
-        sheet[6],
-      ],
-      50,
-    )
-    this.animator.addAnimation(
-      'left',
-      [
-        sheet[13],
-        sheet[14],
-        sheet[12],
-      ],
-      50,
-    )
-    this.animator.addAnimation(
-      'right',
-      [
-        sheet[19],
-        sheet[20],
-        sheet[18],
-      ],
-      50,
-    )
-  }
-  setFacingPositions() {
-    const { sheet } = this.sprite
-    this._playerFacingPositions = {
-      'up': sheet[6],
-      'down': sheet[0],
-      'right': sheet[18],
-      'left': sheet[12],
-    }
-  }
-  async init(startingPosition: Position): Promise<HTMLElement> {
+  init(startingPosition: Position): void {
     this._position = startingPosition
-    await this.sprite.init()
-    this.domElement = this.createElement()
-    this.setFacingPositions()
-    this.createAnimations()
-    this.setInitialPositionOnDom()
-    return this.domElement
+    this.setFacingPosition('down')
+    this.setInitialScreenPos()
   }
 }

@@ -2,6 +2,7 @@ import { Task, TaskQueue } from '../helpers'
 import { DialogueData, Interaction, Levels, SceneTransition } from '../interfaces'
 import { Observer } from './'
 import { dialogueData } from '../data'
+import { DialogueView } from '../render/views'
 
 export class Dialogue extends Observer {
   private _currentLevel: keyof Levels
@@ -14,11 +15,10 @@ export class Dialogue extends Observer {
   private _taskQueue: TaskQueue
   private _writingIntervalId: number
   private _currentWritingText: string[]
-  public containerElement: HTMLElement
-  public headingElement: HTMLElement
-  public contentElement: HTMLElement
+  private _view: DialogueView
+  private _content: string
   private _isShowing: boolean
-  constructor(taskQueue: TaskQueue, currentLevel: keyof Levels) {
+  constructor(taskQueue: TaskQueue, currentLevel: keyof Levels, view: DialogueView) {
     super()
     this._acceptedTasks = new Set(['npc-interaction-start', 'scene-transition-start', 'dialogue', 'npc-interaction-end', 'battle-start', 'npc-battle-end'])
     this._currentLevel = currentLevel
@@ -27,10 +27,9 @@ export class Dialogue extends Observer {
     this._currentWritingText = []
     this._taskQueue = taskQueue
     this._dialogues = dialogueData[currentLevel]
+    this._view = view
+    this._content = ''
     this._isShowing = false
-    this.containerElement = null
-    this.headingElement = null
-    this.contentElement = null
   }
   handleUpdate({ name, action }: Task): void {
     switch (name) {
@@ -54,7 +53,7 @@ export class Dialogue extends Observer {
       break
     }
   }
-  handleNPCBattleEnd({ name, level}: any): void {
+  handleNPCBattleEnd({ name, level }: any): void {
     dialogueData[level][name].hasBattled = true
   }
   handleNPCInteractionEnd() {
@@ -64,15 +63,15 @@ export class Dialogue extends Observer {
     this._currentWritingText = []
   }
   handleDialogue(): void {
-    if(this._currentWritingText.length) {
+    if (this._currentWritingText.length) {
       clearInterval(this._writingIntervalId)
       this.content = this.content + this._currentWritingText.join('')
       this._currentWritingText = []
       return
     }
     const { text, isTrigger, type, action } = this._currentDialogue.shift()
-    if(isTrigger) {
-      if(Array.isArray(type) || Array.isArray(action)) {
+    if (isTrigger) {
+      if (Array.isArray(type) || Array.isArray(action)) {
         action.forEach((a: any, i: number) => {
           this._taskQueue.addTask(
             new Task(
@@ -107,7 +106,7 @@ export class Dialogue extends Observer {
   writeText() {
     this.content = ''
     this._writingIntervalId = window.setInterval(() => {
-      if(!this._currentWritingText.length) {
+      if (!this._currentWritingText.length) {
         clearInterval(this._writingIntervalId)
         return
       }
@@ -115,7 +114,7 @@ export class Dialogue extends Observer {
       this.content = this.content + letter
     }, 50)
   }
-  handleSceneTransitionStart({ level }: SceneTransition): void{
+  handleSceneTransitionStart({ level }: SceneTransition): void {
     this._dialogues = dialogueData[level]
     this._currentLevel = level
     // Edge case, in too deep, need bandaid :(
@@ -132,53 +131,17 @@ export class Dialogue extends Observer {
   }
   set isShowing(bool: boolean) {
     this._isShowing = bool
-    if(this._isShowing) {
-      this.containerElement.style.bottom = '20px'
-      this.containerElement.style.opacity = '1'
-    } else {
-      this.containerElement.style.bottom = '-115px'
-      this.containerElement.style.opacity = '0'
-    }
+    if (this._isShowing) this._view.show()
+    else this._view.hide()
   }
   set heading(text: string) {
-    this.headingElement.textContent = text
+    this._view.setHeading(text)
   }
   get content(): string {
-    return this.contentElement.textContent
+    return this._content
   }
   set content(text: string) {
-    this.contentElement.textContent = text
-  }
-  createElement(): void {
-    const container = document.createElement('div')
-    container.style.width = '500px'
-    container.style.height = '120px'
-    container.style.bottom = '-115px'
-    container.style.opacity = '0'
-    container.style.position = 'absolute'
-    container.style.border = '6px solid rosybrown'
-    container.style.borderRadius = '6px'
-    container.style.backgroundColor = 'beige'
-    container.style.transition = 'bottom 300ms, opacity 300ms'
-    container.style.zIndex = '2'
-    const heading = document.createElement('div')
-    heading.style.fontSize = '18px'
-    heading.style.paddingLeft = '8px'
-    const headingLine = document.createElement('hr')
-    headingLine.style.margin = '2px 0'
-    const content = document.createElement('div')
-    content.style.padding = '0 8px'
-    container.append(
-      heading,
-      headingLine,
-      content
-    )
-    this.headingElement = heading
-    this.contentElement = content
-    this.containerElement = container
-  }
-  init(): HTMLElement {
-    this.createElement()
-    return this.containerElement
+    this._content = text
+    this._view.setContent(text)
   }
 }
